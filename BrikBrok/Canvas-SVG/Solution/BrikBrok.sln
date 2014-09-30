@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrikBrok", "BrikBrok\BrikBrok.csproj", "{06DC6126-66BB-4782-A7B1-E2AA04578B6A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{06DC6126-66BB-4782-A7B1-E2AA04578B6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06DC6126-66BB-4782-A7B1-E2AA04578B6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06DC6126-66BB-4782-A7B1-E2AA04578B6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06DC6126-66BB-4782-A7B1-E2AA04578B6A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
