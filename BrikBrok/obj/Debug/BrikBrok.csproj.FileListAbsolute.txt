@@ -1,0 +1,5 @@
+C:\Users\davca\Desktop\Cahier de Vacances Canvas-SVG\Solution\BrikBrok\bin\BrikBrok.dll
+C:\Users\davca\Desktop\Cahier de Vacances Canvas-SVG\Solution\BrikBrok\bin\BrikBrok.pdb
+C:\Users\davca\Desktop\Cahier de Vacances Canvas-SVG\Solution\BrikBrok\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\davca\Desktop\Cahier de Vacances Canvas-SVG\Solution\BrikBrok\obj\Debug\BrikBrok.dll
+C:\Users\davca\Desktop\Cahier de Vacances Canvas-SVG\Solution\BrikBrok\obj\Debug\BrikBrok.pdb
