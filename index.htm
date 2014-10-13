@@ -1,36 +1,36 @@
 <!DOCTYPE>
 <html>
 <head>
-	<title>Div test</title>
-	<meta charset="UTF-8"> 
-    <script>
-    function loadXMLDoc() {
-        var xmlhttp;
-        if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp=new XMLHttpRequest();
-        }
-        else {// code for IE6, IE5
-            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange=function() {
-            if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-            	document.getElementById("content").innerHTML=xmlhttp.responseText;
-            }
-        }
-        xmlhttp.open("GET","connection.php",true);
-        xmlhttp.send();
-    }
-    </script>
+<script>
+</script>
+<script src="get_random.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+<link rel="stylesheet" href="angularcss.css">
+<script>
+var click = new Audio(); click.src = "media/stapler.mp3";
+function playClick() {
+	click.play();
+}
+</script>
 </head>
-
 <body>
-    <div id="header" style="background-color:#FFA500;height:10%;width:100%;float:left">
-        <h1>Div test</h1>
-    </div>
-    <div id="menu" style="background-color:#FFD700;width:25%;height:80%;float:left">
-        <button type="button" onclick="loadXMLDoc()">Request data</button>
-    </div>
-    <div id="content" style="background-color:#EEEEEE;width:75%;height:80%;float:right"></div>
-    <div id="footer" style="background-color:#FFA500;height:10%;width:100%;float:left"></div>
+<div id="principal" ng-app>
+	<div id="header" style="height:5%;width:100%;float:left">
+		<img src="media/logo.png">
+	</div>
+	<div style="height:80%;width:100%;float:left">
+		<!-- nav is a HTML5 element -->
+		<nav class="{{active}}" onmousedown="playClick()" ng-click="$event.preventDefault()">
+			<a href="#" class="home" ng-click="active='home'">Home</a>
+			<a href="#" class="projects" ng-click="active='projects'">Projects</a>
+			<a href="#" class="services" ng-click="active='services'">Services</a>
+			<a href="#" class="about" ng-click="active='about'">About</a>
+		</nav>
+		<p id="word" onmousedown="get_random()">Word:</p>
+		<p id="definition">Definition:</p>
+	</div>
+	<div id="header" style="height:10%;width:100%;float:left">
+	</div>
+</div>
 </body>
-<html>
+</html>
