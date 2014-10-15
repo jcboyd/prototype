@@ -2,20 +2,19 @@
 
 $user = 'root';
 $pass = '';
-$db = 'testdb';
+$db = 'kamusi';
 
-$con = mysql_connect('localhost', $user, $pass);
+$con = mysqli_connect('localhost', $user, $pass, $db);
 
 if (!$con) {
-	die('Could not connect: ' . mysql_error());
+	die('Could not connect: ' . mysqli_error($con));
 }
 
-$db_selected = mysql_select_db($db, $con);
+$sql = "SELECT Word, Definition FROM wordnet ORDER BY RAND() LIMIT 1";
+$query = mysqli_query($con, $sql);
+$row = mysqli_fetch_array($query);
+$online = $row[0];
 
-$sql = "SELECT Word, Definition FROM wordnet_data ORDER BY RAND() LIMIT 1";
-$result = mysql_query($sql, $con);
-
-echo mysql_result($result, 0, 1);
-mysql_close($con);
+echo $online;
 
 ?>
