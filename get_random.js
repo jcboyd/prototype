@@ -8,8 +8,9 @@ function get_random() {
     }
     xmlhttp.onreadystatechange=function() {
         if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-        	document.getElementById("word").innerHTML=xmlhttp.responseText;
-            document.getElementById("definition").innerHTML=xmlhttp.responseText;
+            obj = JSON.parse(xmlhttp.responseText);
+        	document.getElementById("word").innerHTML = obj.Word;
+            document.getElementById("definition").innerHTML = obj.Definition;
         }
     }
     xmlhttp.open("GET","get_random.php",true);

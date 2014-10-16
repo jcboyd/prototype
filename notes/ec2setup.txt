@@ -1,0 +1,114 @@
+Source: http://www.name.com/blog/general/development/2012/01/so-you-want-free-web-hosting-an-amazon-ec2-how-to/
+
+Change access rights for digital certificate:
+
+chmod a-rwx ec2.pem
+chmod u+rw ec2.pem
+ssh -i ec2.pem ec2-user@54.186.29.34
+
+Install Yum package manager:
+
+sudo yum -y update
+
+Install LAMP:
+
+sudo yum -y install httpd php mysql mysql-server
+
+Start HTTP server:
+
+sudo /etc/init.d/httpd start
+
+Start MySql:
+
+sudo /etc/init.d/mysqld start
+
+Set autostart (on boot) for HTTP server:
+
+sudo chkconfig httpd on
+
+Set autostart (on boot) for MySql server:
+
+sudo chkconfig mysqld on
+
+Apache server folder:
+
+cd /var/www/html
+
+Copy files:
+
+scp -i ec2.pem -r prototype ec2-user@54.186.29.34:scp_temp
+
+Create Database:
+
+sudo su
+SHOW DATABASES;
+CREATE DATABASE kamusi;
+mysql> USE kamusi;
+mysql> CREATE TABLE wordnet (ID INT, Word VARCHAR(64), Definition VARCHAR(256));
+
+Install mysql driver for php
+
+yum install php-mysql
+
+Run php script:
+
+sudo php load_wordnet_data.php
+
+Modify Apache configuration file (to allow apache to use mysql):
+
+vi /etc/httpd/conf/httpd.conf
+
+[Uncomment out the following, and set document root to /var/www/html]
+
+#<VirtualHost *:80>
+#    ServerAdmin webmaster@dummy-host.example.com
+#    DocumentRoot /www/docs/dummy-host.example.com
+#    ServerName dummy-host.example.com
+#    ErrorLog logs/dummy-host.example.com-error_log
+#    CustomLog logs/dummy-host.example.com-access_log common
+#</VirtualHost>
+
+Restart Apache:
+
+/etc/init.d/httpd restart
+
+http://www.alexkorn.com/blog/2011/03/getting-php-mysql-running-amazon-ec2/
+
+Install mod_ssl:
+
+sudo yum install mod_ssl
+
+Obtaining a digital certificate:
+
+Generate public/private key pair:
+
+openssl req -nodes -newkey rsa:2048 -keyout myserver.key -out server.csr
+
+https://devcenter.heroku.com/articles/ssl-certificate-self
+
+openssl req -nodes -newkey rsa:2048 -keyout myserver.key -out server.csr
+
+openssl x509 -req -days 365 -in server.csr -signkey myserver.key -out server.crt
+
+https://www.digicert.com/ssl-certificate-installation-apache.htm
+https://www.sslshopper.com/article-how-to-create-and-install-an-apache-self-signed-certificate.html
+
+Place these files on server in /etc/ssl/crt
+
+Add the following to etc/httpd/conf/httpd.conf:
+
+<VirtualHost *:443>
+    ServerAdmin webmaster@dummy-host.example.com
+    DocumentRoot /var/www/html
+    ServerName dummy-host.example.com
+    SSLEngine on
+    SSLCertificateFile /etc/ssl/crt/server.crt
+    SSLCertificateKeyFile /etc/ssl/crt/myserver.key
+    ErrorLog logs/dummy-host.example.com-error_log
+    CustomLog logs/dummy-host.example.com-access_log common
+</VirtualHost>
+
+Restart Apache:
+
+/etc/init.d/httpd restart
+

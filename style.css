@@ -14,6 +14,10 @@ a, a:visited {
 	color:#389dc1;
 }
 
+#header {
+	padding-top: 25px;
+}
+
 /*a:hover{
 	text-decoration:none;
 }*/
@@ -61,8 +65,8 @@ nav a:last-child{
 /*This is how highlighting is done. The class of the navigation is set 
 dynamically according to the expression. This is a nice aspect of angularJS*/
 nav.home .home,
-nav.projects .projects,
-nav.services .services,
+nav.words .words,
+nav.definitions .definitions,
 nav.about .about{
 	background-color:#e35885;
 }
