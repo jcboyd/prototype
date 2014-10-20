@@ -1,6 +1,7 @@
 <!DOCTYPE>
 <html>
 <head>
+	<meta charset="UTF-8">
 	<script src="get_random.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
 	<script>
@@ -12,23 +13,92 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="principal" ng-app>
-	<div id="header" style="height:5%;width:100%;float:left">
-		<img src="media/logo.png">
+	<!--Load and initialise the Facebook API. xfbml checks for active login-->
+	<script>
+		function statusChangeCallback(response) {
+		    console.log('statusChangeCallback');
+		    console.log(response);
+		    if (response.status === 'connected') {
+		      	// Logged into your app and Facebook.
+		      	testAPI();
+		    } 
+		    else if (response.status === 'not_authorized') {
+		    	// The person is logged into Facebook, but not your app.
+		      	document.getElementById('word').innerHTML = 'Please log ' + 'into this app.';
+		    } 
+		    else {
+		      	// The person is not logged into Facebook, so we're not sure if
+		      	// they are logged into this app or not.
+		      	document.getElementById('word').innerHTML = 'Please log ' +
+		        'into Facebook.';
+		    }
+		}
+		
+		//FB.login(function(response){
+	  	// Handle the response object, like in statusChangeCallback() in our demo
+	  	// code.
+		//});
+
+		function checkLoginState() {
+	    	FB.getLoginStatus(function(response) {
+	      	statusChangeCallback(response);
+	    	});
+	  	}
+
+		//Called when page loads
+		window.fbAsyncInit = function() {
+			//Initialise SDK
+	  		FB.init({
+	    		appId      : '1525612724344445',
+	    		cookie     : true,  // enable cookies to allow the server to access 
+	            		            // the session
+	    		xfbml      : true,  // parse social plugins on this page
+	    		version    : 'v2.1' // use version 2.1
+	  		});
+
+	  		//Get login status
+	  		FB.getLoginStatus(function(response) {
+	  			statusChangeCallback(response);
+	  		});
+		};
+
+		// Load the SDK asynchronously
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+		    if (d.getElementById(id)) return;
+		    js = d.createElement(s); js.id = id;
+		    js.src = "//connect.facebook.net/en_US/sdk.js";
+		    fjs.parentNode.insertBefore(js, fjs);
+		  	} (document, 'script', 'facebook-jssdk')
+	  	);
+
+	  	function testAPI() {
+	    	console.log('Welcome!  Fetching your information.... ');
+	    	FB.api('/me', function(response) {
+	      		console.log('Successful login for: ' + response.name);
+	      		document.getElementById('word').innerHTML = 'Thanks for logging in, ' + response.name + '!';
+	    	});
+	    }
+	</script>
+
+	<div id="principal" ng-app>
+		<div id="header" style="height:5%;width:100%;float:left">
+			<img src="media/logo.png">
+		</div>
+		<div style="height:80%;width:100%;float:left">
+			<!-- nav is a HTML5 element -->
+			<nav class="{{active}}" onmousedown="playClick()" ng-click="$event.preventDefault()">
+				<a href="#" class="home" ng-click="active='home'">Home</a>
+				<a href="#" class="words" ng-click="active='words'">Words</a>
+				<a href="#" class="definitions" ng-click="active='definitions'">Definitions</a>
+				<a href="#" class="about" ng-click="active='about'">About</a>
+			</nav>
+			<p id="word" onmousedown="get_random()">Click here...</p>
+			<p id="definition"></p>
+		</div>
+		<div id="footer" style="height:10%;width:100%;float:left">
+			<fb:login-button scope="public_profile,email" onlogin="checkLoginState();"> </fb:login-button>
+		</div>
 	</div>
-	<div style="height:80%;width:100%;float:left">
-		<!-- nav is a HTML5 element -->
-		<nav class="{{active}}" onmousedown="playClick()" ng-click="$event.preventDefault()">
-			<a href="#" class="home" ng-click="active='home'">Home</a>
-			<a href="#" class="words" ng-click="active='words'">Words</a>
-			<a href="#" class="definitions" ng-click="active='definitions'">Definitions</a>
-			<a href="#" class="about" ng-click="active='about'">About</a>
-		</nav>
-		<p id="word" onmousedown="get_random()">Click here...</p>
-		<p id="definition"></p>
-	</div>
-	<div id="header" style="height:10%;width:100%;float:left">
-	</div>
-</div>
 </body>
 </html>
