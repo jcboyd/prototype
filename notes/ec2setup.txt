@@ -114,7 +114,7 @@ Restart Apache:
 
 [WEB SITE UP]
 
-FURTHER DEVELOPMENT:
+[FURTHER DEVELOPMENT:]
 
 Create Database:
 
@@ -124,7 +124,8 @@ CREATE DATABASE kamusi;
 mysql> USE kamusi;
 mysql> CREATE TABLE rankedwords (ID INT, Word VARCHAR(64), PartOfSpeech VARCHAR(16), Rank INT);
 mysql> CREATE TABLE users (UserID VARCHAR(64));
+mysql> CREATE TABLE definitions (DefinitionID INT, WordID INT, Definition VARCHAR(256), UserID VARCHAR(64));
 
-
+php load_ranked_words.php
 
 

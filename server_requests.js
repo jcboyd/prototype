@@ -1,3 +1,5 @@
+var wordID;
+
 function get_random() {
     var xmlhttp;
     if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -14,6 +16,26 @@ function get_random() {
         }
     }
     xmlhttp.open("GET","get_random.php",true);
+    xmlhttp.send();
+}
+
+function get_ranked() {
+    var xmlhttp;
+    if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+    }
+    else {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function() {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+            obj = JSON.parse(xmlhttp.responseText);
+            wordID = obj.ID;
+            document.getElementById("word").innerHTML = "Word: " + obj.Word;
+            document.getElementById("partofspeech").innerHTML = "Part of speech: " + obj.PartOfSpeech;
+        }
+    }
+    xmlhttp.open("GET","get_ranked.php",true);
     xmlhttp.send();
 }
 
