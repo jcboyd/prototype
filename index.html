@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<script src="get_random.js"></script>
+	<script src="server_requests.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
 	<script>
 		var click = new Audio(); click.src = "media/click.mp3";
@@ -16,8 +16,8 @@
 	<!--Load and initialise the Facebook API. xfbml checks for active login-->
 	<script>
 		function statusChangeCallback(response) {
-		    console.log('statusChangeCallback');
-		    console.log(response);
+		    //console.log('statusChangeCallback');
+		    //console.log(response);
 		    if (response.status === 'connected') {
 		      	// Logged into your app and Facebook.
 		      	testAPI();
@@ -25,12 +25,11 @@
 		    else if (response.status === 'not_authorized') {
 		    	// The person is logged into Facebook, but not your app.
 		      	document.getElementById('word').innerHTML = 'Please log ' + 'into this app.';
-		    } 
+		    }
 		    else {
 		      	// The person is not logged into Facebook, so we're not sure if
 		      	// they are logged into this app or not.
-		      	document.getElementById('word').innerHTML = 'Please log ' +
-		        'into Facebook.';
+		      	document.getElementById('word').innerHTML = 'Please log ' + 'into Facebook.';
 		    }
 		}
 		
@@ -73,10 +72,15 @@
 	  	);
 
 	  	function testAPI() {
-	    	console.log('Welcome!  Fetching your information.... ');
+	    	//console.log('Welcome! Fetching your information.... ');
 	    	FB.api('/me', function(response) {
-	      		console.log('Successful login for: ' + response.name);
-	      		document.getElementById('word').innerHTML = 'Thanks for logging in, ' + response.name + '!';
+	      		//console.log('Successful login for: ' + response.name);
+	      		if(check_user(response.id)) {
+	      			document.getElementById('word').innerHTML = 'Welcome back, ' + response.name + '!';
+	      		}
+	      		else {
+	      			document.getElementById('word').innerHTML = 'Welcome, ' + response.name + '!';
+	      		}
 	    	});
 	    }
 	</script>

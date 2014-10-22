@@ -13,7 +13,6 @@ if (!$con) {
 $sql = "SELECT Word, Definition FROM wordnet ORDER BY RAND() LIMIT 1";
 $query = mysqli_query($con, $sql);
 $row = mysqli_fetch_array($query);
-//$online = $row[0];
 
 $jsonData = json_encode($row);
 

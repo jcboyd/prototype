@@ -112,3 +112,19 @@ Restart Apache:
 
 /etc/init.d/httpd restart
 
+[WEB SITE UP]
+
+FURTHER DEVELOPMENT:
+
+Create Database:
+
+sudo su
+SHOW DATABASES;
+CREATE DATABASE kamusi;
+mysql> USE kamusi;
+mysql> CREATE TABLE rankedwords (ID INT, Word VARCHAR(64), PartOfSpeech VARCHAR(16), Rank INT);
+mysql> CREATE TABLE users (UserID VARCHAR(64));
+
+
+
+
