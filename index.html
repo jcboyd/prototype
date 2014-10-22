@@ -75,12 +75,7 @@
 	    	//console.log('Welcome! Fetching your information.... ');
 	    	FB.api('/me', function(response) {
 	      		//console.log('Successful login for: ' + response.name);
-	      		if(check_user(response.id)) {
-	      			document.getElementById('word').innerHTML = 'Welcome back, ' + response.name + '!';
-	      		}
-	      		else {
-	      			document.getElementById('word').innerHTML = 'Welcome, ' + response.name + '!';
-	      		}
+	      		check_user(response);
 	    	});
 	    }
 	</script>

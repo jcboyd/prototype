@@ -17,7 +17,7 @@ function get_random() {
     xmlhttp.send();
 }
 
-function check_user(userid) {
+function check_user(response) {
     var xmlhttp;
     if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp=new XMLHttpRequest();
@@ -28,9 +28,14 @@ function check_user(userid) {
     xmlhttp.onreadystatechange=function() {
         if (xmlhttp.readyState==4 && xmlhttp.status==200) {
             obj = JSON.parse(xmlhttp.responseText);
-            return obj.CheckResult;
+            if(obj.CheckResult) {
+                document.getElementById('word').innerHTML = 'Welcome back, ' + response.name + '!';
+            }
+            else {
+                document.getElementById('word').innerHTML = 'Welcome, ' + response.name + '!';
+            }
         }
     }
-    xmlhttp.open("GET","check_user.php?userID=" + userid,true);
+    xmlhttp.open("GET","check_user.php?userID=" + response.id,true);
     xmlhttp.send();
 }
