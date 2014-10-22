@@ -82,7 +82,7 @@
 
 	<div id="principal" ng-app>
 		<div id="header" style="height:5%;width:100%;float:left">
-			<img src="media/logo.png">
+			<img src="media/logo.png" onmousedown="submit_definition()">
 		</div>
 		<div style="height:80%;width:100%;float:left">
 			<!-- nav is a HTML5 element -->
@@ -92,11 +92,12 @@
 				<a href="#" class="definitions" ng-click="active='definitions'">Definitions</a>
 				<a href="#" class="about" ng-click="active='about'">About</a>
 			</nav>
-			<p id="word" onmousedown="get_ranked()"></p>
+			<p id="word" onmousedown="get_ranked()">Click here...</p>
 			<p id="partofspeech"></p>
 			<p id="def1"></p>
 			<p id="def2"></p>
 			<p id="def3"></p>
+			<input id="definition" type="text" class="inputs" placeholder="Write a new definition here!" /> 
 		</div>
 		<div id="footer" style="height:10%;width:100%;float:left">
 			<fb:login-button scope="public_profile,email" onlogin="checkLoginState();"> </fb:login-button>

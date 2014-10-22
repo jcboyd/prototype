@@ -12,7 +12,7 @@ if (!$con) {
 	die('Could not connect: ' . mysqli_error($con));
 }
 
-$sql = "SELECT * FROM definitions WHERE ID=" . $wordID . " LIMIT 3;";
+$sql = "SELECT * FROM definitions WHERE WordID=" . $wordID . " LIMIT 1;";
 
 $query = mysqli_query($con, $sql);
 $row = mysqli_fetch_array($query);
