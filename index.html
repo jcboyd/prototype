@@ -16,27 +16,16 @@
 	<!--Load and initialise the Facebook API. xfbml checks for active login-->
 	<script>
 		function statusChangeCallback(response) {
-		    //console.log('statusChangeCallback');
-		    //console.log(response);
 		    if (response.status === 'connected') {
-		      	// Logged into your app and Facebook.
 		      	testAPI();
 		    } 
 		    else if (response.status === 'not_authorized') {
-		    	// The person is logged into Facebook, but not your app.
 		      	document.getElementById('word').innerHTML = 'Please log ' + 'into this app.';
 		    }
 		    else {
-		      	// The person is not logged into Facebook, so we're not sure if
-		      	// they are logged into this app or not.
 		      	document.getElementById('word').innerHTML = 'Please log ' + 'into Facebook.';
 		    }
 		}
-		
-		//FB.login(function(response){
-	  	// Handle the response object, like in statusChangeCallback() in our demo
-	  	// code.
-		//});
 
 		function checkLoginState() {
 	    	FB.getLoginStatus(function(response) {
@@ -72,9 +61,7 @@
 	  	);
 
 	  	function testAPI() {
-	    	//console.log('Welcome! Fetching your information.... ');
 	    	FB.api('/me', function(response) {
-	      		//console.log('Successful login for: ' + response.name);
 	      		check_user(response);
 	    	});
 	    }

@@ -33,29 +33,10 @@ function get_ranked() {
             wordID = obj.ID;
             document.getElementById("word").innerHTML = "Word: " + obj.Word;
             document.getElementById("partofspeech").innerHTML = "Part of speech: " + obj.PartOfSpeech;
-            document.getElementById("def1").innerHTML = "Definition: ";
-            get_definitions();
-        }
-    }
-    xmlhttp.open("GET","get_ranked.php", true);
-    xmlhttp.send();
-}
-
-function get_definitions() {
-    var xmlhttp;
-    if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-        xmlhttp=new XMLHttpRequest();
-    }
-    else {// code for IE6, IE5
-        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    xmlhttp.onreadystatechange=function() {
-        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-            obj = JSON.parse(xmlhttp.responseText);
             document.getElementById("def1").innerHTML = "Definition: " + obj.Definition;
         }
     }
-    xmlhttp.open("GET","get_definitions.php?wordID=" + wordID, true);
+    xmlhttp.open("GET","get_ranked.php", true);
     xmlhttp.send();
 }
 
@@ -84,7 +65,7 @@ function check_user(response) {
     xmlhttp.onreadystatechange=function() {
         if (xmlhttp.readyState==4 && xmlhttp.status==200) {
             obj = JSON.parse(xmlhttp.responseText);
-            if(obj.CheckResult) {
+            if(obj.CheckResult == 1) {
                 document.getElementById('word').innerHTML = 'Welcome back, ' + response.name + '!';
             }
             else {
@@ -92,6 +73,7 @@ function check_user(response) {
             }
         }
     }
-    xmlhttp.open("GET","check_user.php?userID=" + response.id, true);
+    var noCache = new Date().getTime();
+    xmlhttp.open("GET","check_user.php?userID=" + response.id + "&noCache=" + "noCache", true);
     xmlhttp.send();
 }
