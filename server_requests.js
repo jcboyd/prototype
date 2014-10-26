@@ -1,3 +1,4 @@
+var userID;
 var wordID;
 
 function get_random() {
@@ -50,7 +51,7 @@ function submit_definition() {
     }
 
     var definition = document.getElementById("definition").value;
-    xmlhttp.open("GET","submit_definition.php?wordID=" + wordID + "&definition=" + definition + "&userID=42", true);
+    xmlhttp.open("GET","submit_definition.php?wordID=" + wordID + "&definition=" + definition + "&userID=" + userID, true);
     xmlhttp.send();
 }
 
@@ -72,6 +73,7 @@ function check_user(response) {
                 document.getElementById('word').innerHTML = 'Welcome, ' + response.name + '!';
             }
         }
+        userID = response.id;
     }
     var noCache = new Date().getTime();
     xmlhttp.open("GET","check_user.php?userID=" + response.id + "&noCache=" + "noCache", true);

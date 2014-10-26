@@ -128,4 +128,23 @@ mysql> CREATE TABLE definitions (DefinitionID INT, WordID INT, Definition VARCHA
 
 php load_ranked_words.php
 
+Set primary keys:
+
+ALTER TABLE rankedwords ADD primarykey(ID)
+
+ALTER TABLE definitions ADD PRIMARY KEY(DefinitionID);
+
+ALTER TABLE users ADD PRIMARY KEY(UserID)
+
+Add foreign keys:
+
+ALTER TABLE definitions ADD CONSTRAINT FK_RANKEDWORDS FOREIGN KEY (WordID) REFERENCES rankedwords (ID);
+
+ALTER TABLE definitions ADD CONSTRAINT FK_USERS FOREIGN KEY (UserID) REFERENCES users (UserID);
+
+Add Index [this speeds up the join queries dramatically]:
+
+CREATE INDEX RankIndex ON rankedwords(Rank);
+
+ALTER TABLE definitions MODIFY COLUMN DefinitionID INT auto_increment;
 

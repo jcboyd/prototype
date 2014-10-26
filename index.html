@@ -17,7 +17,7 @@
 	<script>
 		function statusChangeCallback(response) {
 		    if (response.status === 'connected') {
-		      	testAPI();
+		      	welcome();
 		    } 
 		    else if (response.status === 'not_authorized') {
 		      	document.getElementById('word').innerHTML = 'Please log ' + 'into this app.';
@@ -60,7 +60,8 @@
 		  	} (document, 'script', 'facebook-jssdk')
 	  	);
 
-	  	function testAPI() {
+	  	function welcome() {
+	  		document.getElementById("login_button").style.display = "none";
 	    	FB.api('/me', function(response) {
 	      		check_user(response);
 	    	});
@@ -68,17 +69,10 @@
 	</script>
 
 	<div id="principal" ng-app>
-		<div id="header" style="height:5%;width:100%;float:left">
-			<img src="media/logo.png" onmousedown="submit_definition()">
+		<div id="header" style="height:15%;width:100%;float:left">
+			<img id="logo" src="media/logo.png" onmousedown="submit_definition()">
 		</div>
-		<div style="height:80%;width:100%;float:left">
-			<!-- nav is a HTML5 element -->
-			<nav class="{{active}}" onmousedown="playClick()" ng-click="$event.preventDefault()">
-				<a href="#" class="home" ng-click="active='home'">Home</a>
-				<a href="#" class="words" ng-click="active='words'">Words</a>
-				<a href="#" class="definitions" ng-click="active='definitions'">Definitions</a>
-				<a href="#" class="about" ng-click="active='about'">About</a>
-			</nav>
+		<div style="height:70%;width:100%;float:left">
 			<p id="word" onmousedown="get_ranked()">Click here...</p>
 			<p id="partofspeech"></p>
 			<p id="def1"></p>
@@ -86,8 +80,10 @@
 			<p id="def3"></p>
 			<input id="definition" type="text" class="inputs" placeholder="Write a new definition here!" /> 
 		</div>
-		<div id="footer" style="height:10%;width:100%;float:left">
-			<fb:login-button scope="public_profile,email" onlogin="checkLoginState();"> </fb:login-button>
+		<div id="footer" style="height:15%;width:100%;float:left">
+			<span id="login_button">
+				<fb:login-button scope="public_profile,email" onlogin="checkLoginState();"> </fb:login-button>
+			</span>
 		</div>
 	</div>
 </body>
