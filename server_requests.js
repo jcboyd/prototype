@@ -84,10 +84,10 @@ function check_user(response) {
         if (xmlhttp.readyState==4 && xmlhttp.status==200) {
             obj = JSON.parse(xmlhttp.responseText);
             if(obj.CheckResult) {
-                document.getElementById('greeting').innerHTML = 'Welcome back, ' + response.name + '!';
+                document.getElementById("greeting").innerHTML = 'Welcome back, ' + response.name + '!';
             }
             else {
-                document.getElementById('greeting').innerHTML = 'Welcome, ' + response.name + '!';
+                document.getElementById("greeting").innerHTML = 'Welcome, ' + response.name + '!';
             }
         }
     }
