@@ -5,36 +5,41 @@
 	<script src="server_requests.js"></script>
 	<script src="login.js"></script>
 	<script src="sound.js"></script>
+	<script src="menu.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
 	<div id="main">
 		<div id="header">
-			<img id="logo" src="media/logo.png" onmousedown="submit_definition()">
+			<img id="logo" src="media/logo.png" onmousedown="change_view()">
 		</div>
 		<div id="left_margin" class="margin"></div>
 		<div id="dictionary" ng-app>
 			<div id="left_page" class="page">
-				<div style="background-color: #FFFFFF">
-					<h1>English</h1>
-					<p id="left_word">Word</p>
+				<div id="entry">
+					<h2>Pick a definition for...</h2>
+					<p id="word">Word</p>
 					<p id="part_of_speech">Part of speech</p>
 				</div>
 				<ul class="{{active}}" ng-click="$event.preventDefault()">
-					<li class="def1" onmousedown="playClick()" ng-click="active='def1'">Def1</li>
-					<li class="def2" onmousedown="playClick()" ng-click="active='def2'">Def2</li>
-					<li class="def3" onmousedown="playClick()" ng-click="active='def3'">Def3</li>
-					<li class="none" onmousedown="playClick()" ng-click="active='none'">None</li>
+					<li id="def1" class="def1" onmousedown="playClick()" ng-click="active='def1'">Def1</li>
+					<li id="def2" class="def2" onmousedown="playClick()" ng-click="active='def2'">Def2</li>
+					<li id="def3" class="def3" onmousedown="playClick()" ng-click="active='def3'">Def3</li>
+					<li id="none" class="none" onmousedown="playClick()" ng-click="active='none'">None</li>
 				</ul>
 			</div>
 			<div id="right_page" class="page">
-				<h1>Swahili</h1>
-				<p id="right_word">Word</p>
+				<h2>Add a Definition</h2>
+				<textarea ng-click="active=''" id="definition" type="text" class="inputs" placeholder="Write a new definition here!"></textarea>
+				<a href="#" class="myButton" onmousedown="submit_definition()">Submit</a>
+				<a href="#" class="myButton" onmousedown="get_ranked()">Next</a>
 			</div>
-			<div id="menu_page" class="page">
-				<h1>Swahili</h1>
-				<p id="right_word">Word</p>
+			<div id="about_page" class="page">
+				<h2>About</h2>
+				<p id="about">
+					The Kamusi Project is a participatory international effort dedicated to improving knowledge of the world's languages. Our long term mission is to produce dictionaries and other language resources for every language, and to make those resources available for free to everyone.
+				</p>
 			</div>
 		</div>
 		<div id="right_margin" class="margin"></div>
