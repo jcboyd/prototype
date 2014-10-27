@@ -1,4 +1,3 @@
-var userID;
 var wordID;
 
 function get_random() {
@@ -34,10 +33,28 @@ function get_ranked() {
             wordID = obj.ID;
             document.getElementById("word").innerHTML = "Word: " + obj.Word;
             document.getElementById("partofspeech").innerHTML = "Part of speech: " + obj.PartOfSpeech;
-            document.getElementById("def1").innerHTML = "Definition: " + obj.Definition;
+            get_definitions();
         }
     }
     xmlhttp.open("GET","get_ranked.php", true);
+    xmlhttp.send();
+}
+
+function get_definitions() {
+    var xmlhttp;
+    if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+    }
+    else {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function() {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+            obj = JSON.parse(xmlhttp.responseText);
+            document.getElementById("def1").innerHTML = "Definition: " + obj.Definition;
+        }
+    }
+    xmlhttp.open("GET","get_definitions.php?wordID=" + wordID, true);
     xmlhttp.send();
 }
 
@@ -51,7 +68,7 @@ function submit_definition() {
     }
 
     var definition = document.getElementById("definition").value;
-    xmlhttp.open("GET","submit_definition.php?wordID=" + wordID + "&definition=" + definition + "&userID=" + userID, true);
+    xmlhttp.open("GET","submit_definition.php?wordID=" + wordID + "&definition=" + definition + "&userID=42", true);
     xmlhttp.send();
 }
 
@@ -66,16 +83,14 @@ function check_user(response) {
     xmlhttp.onreadystatechange=function() {
         if (xmlhttp.readyState==4 && xmlhttp.status==200) {
             obj = JSON.parse(xmlhttp.responseText);
-            if(obj.CheckResult == 1) {
-                document.getElementById('word').innerHTML = 'Welcome back, ' + response.name + '!';
+            if(obj.CheckResult) {
+                document.getElementById('greeting').innerHTML = 'Welcome back, ' + response.name + '!';
             }
             else {
-                document.getElementById('word').innerHTML = 'Welcome, ' + response.name + '!';
+                document.getElementById('greeting').innerHTML = 'Welcome, ' + response.name + '!';
             }
         }
-        userID = response.id;
     }
-    var noCache = new Date().getTime();
-    xmlhttp.open("GET","check_user.php?userID=" + response.id + "&noCache=" + "noCache", true);
+    xmlhttp.open("GET","check_user.php?userID=" + response.id, true);
     xmlhttp.send();
 }

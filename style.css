@@ -9,66 +9,55 @@ body{
 	text-align:center;
 }
 
-a, a:visited {
-	outline:none;
-	color:#389dc1;
+#main {
+	height:100%;
+	width:100%;
 }
 
 #header {
-	padding-top: 25px;
+	height:13%;
+	width:100%;
+	float:left;
+	padding-top: 10px;
 }
 
-/*a:hover{
-	text-decoration:none;
-}*/
-
-/*section, footer, header, aside, nav{
-	display: block;
-}*/
-
-/*-------------------------
-	The menu
---------------------------*/
-
-nav{
-	display:inline-block;
-	margin:60px auto 45px;
-	background-color:#5597b4;
-	box-shadow:0 10px 10px #ccc;
-	border-radius:2px;
+#footer {
+	 height:7%;
+	 width:100%;
+	 float:left;
 }
 
-nav a{
-	display:inline-block;
-	padding: 18px 30px;
-	color:#fff !important;
+.margin {
+	height:75%;
+	width:10%;
+	float:left;
+}
+
+#dictionary {
+	 height:75%;
+	 width:80%;
+	 float:left;
+	 text-align:center; 
+}
+
+.page {
+	width:350px;
+	height:430px;
+	border:2px solid;
+	border-radius:5px;
+	padding:25px;
+	display:inline-table;
+	background-color: #B2B2B2
+}
+
+#right_page {
+	background-color: #8DAAC6
+}
+
+#greeting {
+	font-size:15px;
 	font-weight:bold;
-	font-size:16px;
-	text-decoration:none !important;
-	line-height:1;
-	text-transform: uppercase;
-	background-color:transparent;
-
-	-webkit-transition:background-color 0.05s;
-	-moz-transition:background-color 0.05s;
-	transition:background-color 0.05s;
-}
-
-nav a:first-child{
-	border-radius:2px 0 0 2px;
-}
-
-nav a:last-child{
-	border-radius:0 2px 2px 0;
-}
-
-/*This is how highlighting is done. The class of the navigation is set 
-dynamically according to the expression. This is a nice aspect of angularJS*/
-nav.home .home,
-nav.words .words,
-nav.definitions .definitions,
-nav.about .about{
-	background-color:#e35885;
+	color:#7d9098;
 }
 
 p{
@@ -87,39 +76,31 @@ p b{
 	font-size:18px;
 }
 
-<style> 
-inputs:-webkit-input-placeholder {
-    color: #b5b5b5;
+ul.def1 .def1,
+ul.def2 .def2,
+ul.def3 .def3,
+ul.none .none{
+	background-color:#e35885;
 }
 
-inputs-moz-placeholder {
-    color: #b5b5b5;
+ul{
+	list-style:none;
+	color:#fff;
+	font-size:20px;
+	font-weight:bold;
+	text-align:left;
+	margin:20px 0 15px;	
 }
 
-.inputs {
-    width: 500px;
-    padding: 15px 25px;
-    font:15px/1.3 'Courier', sans-serif;
-    font-weight: 400;    color: #9D9E9E;
-    text-shadow: 1px 1px 0 rgba(256, 256, 256, 1.0);
-    background: #FFF;
-    border: 1px solid #FFF;
-    border-radius: 5px;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.50);
-    -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.50);
-    -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.50);
-}
+ul li{
+	padding:20px 30px;
+	background-color:#339966;
+	margin-bottom:8px;
+	box-shadow:0 1px 1px rgba(0,0,0,0.1);
+	text-transform: uppercase;
+	cursor:pointer;
 
-.inputs:focus {
-    background: #DFE9EC;
-    color: #414848;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25);
-    -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25);
-    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25);
-    outline: 0;
-}
-
-.inputs:hover {
-    background: #DFE9EC;
-    color: #414848;
+	-webkit-transition:background-color 0.05s;
+	-moz-transition:background-color 0.05s;
+	transition:background-color 0.05s;
 }
