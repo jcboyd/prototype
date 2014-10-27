@@ -1,0 +1,49 @@
+<!DOCTYPE>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<script src="server_requests.js"></script>
+	<script src="login.js"></script>
+	<script src="sound.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div id="main">
+		<div id="header">
+			<img id="logo" src="media/logo.png" onmousedown="submit_definition()">
+		</div>
+		<div id="left_margin" class="margin"></div>
+		<div id="dictionary" ng-app>
+			<div id="left_page" class="page">
+				<div style="background-color: #FFFFFF">
+					<h1>English</h1>
+					<p id="left_word">Word</p>
+					<p id="part_of_speech">Part of speech</p>
+				</div>
+				<ul class="{{active}}" ng-click="$event.preventDefault()">
+					<li class="def1" onmousedown="playClick()" ng-click="active='def1'">Def1</li>
+					<li class="def2" onmousedown="playClick()" ng-click="active='def2'">Def2</li>
+					<li class="def3" onmousedown="playClick()" ng-click="active='def3'">Def3</li>
+					<li class="none" onmousedown="playClick()" ng-click="active='none'">None</li>
+				</ul>
+			</div>
+			<div id="right_page" class="page">
+				<h1>Swahili</h1>
+				<p id="right_word">Word</p>
+			</div>
+			<div id="menu_page" class="page">
+				<h1>Swahili</h1>
+				<p id="right_word">Word</p>
+			</div>
+		</div>
+		<div id="right_margin" class="margin"></div>
+		<div id="footer">
+			<p id="greeting"></p>
+			<span id="login_button">
+				<fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+			</span>
+		</div>
+	</div>
+</body>
+</html>
