@@ -19,21 +19,23 @@
 			<div id="left_page" class="page">
 				<div id="entry">
 					<h2>Pick a definition for...</h2>
-					<p id="word">Word</p>
-					<p id="part_of_speech">Part of speech</p>
+					<p id="word">-</p>
+					<p id="part_of_speech">-</p>
 				</div>
-				<ul class="{{active}}" ng-click="$event.preventDefault()">
-					<li id="def1" class="def1" onmousedown="playClick()" ng-click="active='def1'">Def1</li>
-					<li id="def2" class="def2" onmousedown="playClick()" ng-click="active='def2'">Def2</li>
-					<li id="def3" class="def3" onmousedown="playClick()" ng-click="active='def3'">Def3</li>
+				<ul id="definitions" class="{{active}}" ng-click="$event.preventDefault()">
+					<li id="def1" class="def1" onmousedown="playClick()" ng-click="active='def1'">-</li>
+					<li id="def2" class="def2" onmousedown="playClick()" ng-click="active='def2'">-</li>
+					<li id="def3" class="def3" onmousedown="playClick()" ng-click="active='def3'">-</li>
 					<li id="none" class="none" onmousedown="playClick()" ng-click="active='none'">None</li>
 				</ul>
 			</div>
 			<div id="right_page" class="page">
 				<h2>Add a Definition</h2>
 				<textarea ng-click="active=''" id="definition" type="text" class="inputs" placeholder="Write a new definition here!"></textarea>
-				<a href="#" class="myButton" onmousedown="submit_definition()">Submit</a>
-				<a href="#" class="myButton" onmousedown="get_ranked()">Next</a>
+				<ul id="navlist">
+					<li onmousedown="submit_definition()">Submit</li>
+					<li onmousedown="get_ranked()">Next</li>
+				</ul>
 			</div>
 			<div id="about_page" class="page">
 				<h2>About</h2>

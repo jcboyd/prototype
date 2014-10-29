@@ -10,7 +10,7 @@ if (!$con) {
 	die('Could not connect: ' . mysqli_error($con));
 }
 
-$sql =	"SELECT * FROM  (" . 
+$sql =	"SELECT sq.ID, sq.Word, sq.PartOfSpeech, d.Definition FROM  (" . 
 		"SELECT * FROM rankedwords " . 
 		"WHERE Rank BETWEEN 1 and 20 " .
 		"ORDER BY RAND() LIMIT 1" .
@@ -19,11 +19,15 @@ $sql =	"SELECT * FROM  (" .
 		"definitions As d " .
 		"ON sq.ID = d.WordID;";
 
-$query = mysqli_query($con, $sql);
-$row = mysqli_fetch_array($query);
+$result = mysqli_query($con, $sql);
 
-$jsonData = json_encode($row);
+$results_array = array();
 
+while ($row = $result->fetch_assoc()) {
+  $results_array[] = $row;
+}
+
+$jsonData = json_encode($results_array);
 echo $jsonData;
 
 ?>

@@ -4,18 +4,18 @@ function statusChangeCallback(response) {
       	welcome();
     } 
     else if (response.status === 'not_authorized') {
-      	document.getElementById('word').innerHTML = 'Please log ' + 'into this app.';
+      	document.getElementById('def1').innerHTML = 'Please log ' + 'into this app.';
     }
     else {
-      	document.getElementById('word').innerHTML = 'Please log ' + 'into Facebook.';
+      	document.getElementById('def1').innerHTML = 'Please log ' + 'into Facebook.';
     }
 }
 
 function checkLoginState() {
 	FB.getLoginStatus(function(response) {
-  	statusChangeCallback(response);
+  		statusChangeCallback(response);
 	});
-	}
+}
 
 //Called when page loads
 window.fbAsyncInit = function() {
