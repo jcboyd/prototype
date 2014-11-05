@@ -20,18 +20,18 @@ function checkLoginState() {
 //Called when page loads
 window.fbAsyncInit = function() {
 	//Initialise SDK
-		FB.init({
-		appId      : '1525612724344445',
-		cookie     : true,  // enable cookies to allow the server to access 
-        		            // the session
-		xfbml      : true,  // parse social plugins on this page
-		version    : 'v2.1' // use version 2.1
-		});
+	FB.init({
+	appId      : '1525612724344445',
+	cookie     : true,  // enable cookies to allow the server to access 
+    		            // the session
+	xfbml      : true,  // parse social plugins on this page
+	version    : 'v2.1' // use version 2.1
+	});
 
-		//Get login status
-		FB.getLoginStatus(function(response) {
-			statusChangeCallback(response);
-		});
+	//Get login status
+	FB.getLoginStatus(function(response) {
+		statusChangeCallback(response);
+	});
 };
 
 // Load the SDK asynchronously
@@ -49,4 +49,20 @@ window.fbAsyncInit = function() {
 	FB.api('/me', function(response) {
   		check_user(response);
 	});
+}
+
+function share() {
+	FB.ui({
+			method: 'share',
+			href: 'https://apps.facebook.com/thekamusiapp/',
+		}, function(response){}
+	);
+}
+
+function request() {
+	FB.ui({method: 'apprequests',
+      message: 'Kamusi is Swahili for "dictionary"'
+    }, function(response){
+        console.log(response);
+    });
 }

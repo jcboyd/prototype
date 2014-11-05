@@ -37,8 +37,7 @@ function get_ranked() {
             }
             var results_array = JSON.parse(xmlhttp.responseText);
             wordID = results_array[0].ID;
-            document.getElementById("word").innerHTML = results_array[0].Word;
-            document.getElementById("part_of_speech").innerHTML = results_array[0].PartOfSpeech;
+            document.getElementById("word").innerHTML = results_array[0].Word + " " + results_array[0].PartOfSpeech + ";";
 
             for(var i = 0; i < results_array.length; i++) {
                 if(results_array[i].Definition != undefined) {
@@ -47,7 +46,7 @@ function get_ranked() {
             }
         }
     }
-    document.getElementById("definition").value = "";
+    //document.getElementById("definition").value = "";
     xmlhttp.open("GET","get_ranked.php", true);
     xmlhttp.send();
 }

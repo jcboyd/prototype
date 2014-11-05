@@ -1,10 +1,15 @@
-function change_view() {
-	if(document.getElementById("right_page").style.display == "none") {
-		document.getElementById("about_page").style.display = "none";
-		document.getElementById("right_page").style.display = "inline-table";
-	}
-	else {
-		document.getElementById("right_page").style.display = "none";
-		document.getElementById("about_page").style.display = "inline-table";
-	}
+function enter_game() {
+	document.getElementById("welcome").style.display = "none";
+	document.getElementById("game").style.display = "inline-block";
+	get_ranked();
+}
+
+function display_about() {
+	document.getElementById("game").style.display = "none";
+	document.getElementById("about").style.display = "inline-block";
+}
+
+function return_to_game() {
+	document.getElementById("about").style.display = "none";
+	document.getElementById("game").style.display = "inline-block";
 }
