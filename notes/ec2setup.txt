@@ -130,11 +130,11 @@ php load_ranked_words.php
 
 Set primary keys:
 
-ALTER TABLE rankedwords ADD primarykey(ID)
+ALTER TABLE rankedwords ADD PRIMARY KEY(ID);
 
 ALTER TABLE definitions ADD PRIMARY KEY(DefinitionID);
 
-ALTER TABLE users ADD PRIMARY KEY(UserID)
+ALTER TABLE users ADD PRIMARY KEY(UserID);
 
 Add foreign keys:
 
@@ -147,4 +147,11 @@ Add Index [this speeds up the join queries dramatically]:
 CREATE INDEX RankIndex ON rankedwords(Rank);
 
 ALTER TABLE definitions MODIFY COLUMN DefinitionID INT auto_increment;
+
+[VOTING FUNCTIONALITY]
+
+ALTER TABLE definitions ADD COLUMN Votes INT DEFAULT 0;
+
+
+
 

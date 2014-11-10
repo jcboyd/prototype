@@ -15,7 +15,7 @@ $sql =	"SELECT sq.ID, sq.Word, sq.PartOfSpeech, d.Definition FROM  (" .
 		"WHERE Rank BETWEEN 1 and 20 " .
 		"ORDER BY RAND() LIMIT 1" .
 		") As sq " .
-		"LEFT JOIN " . 
+		"LEFT JOIN " .
 		"definitions As d " .
 		"ON sq.ID = d.WordID;";
 

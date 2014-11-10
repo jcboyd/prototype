@@ -85,3 +85,16 @@ function check_user(response) {
     xmlhttp.open("GET","check_user.php?userID=" + response.id + "&noCache=" + "noCache", true);
     xmlhttp.send();
 }
+
+function submit_vote(definition_id, vote) {
+    var xmlhttp;
+    if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+    }
+    else {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    xmlhttp.open("GET","submit_vote.php?definitionID=" + definition_id + "&definition=" + definition + "&vote=" + vote, true);
+    xmlhttp.send();
+}

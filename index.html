@@ -15,7 +15,6 @@
 			<div id="welcome">
 				<img id="logo" src="media/logo.png" onmousedown="animate_logo()">
 				<img id="enter" class="shaded_enter" src="media/xbox.png" onmousedown="enter_game();get_ranked();">
-				<!-- <p id="enter" class="shaded_enter" onclick="enter_game();get_ranked();">ENTER</p> -->
 			</div>
 			<div id="game">
 				<div id="gamezone">
@@ -24,16 +23,7 @@
 							<p id="word">-</p>
 						</div>
 						<div id="definitions_wrapper">
-							<!--
-							<ul id="definitions" class="{{active}}" ng-click="$event.preventDefault()">
-							<li id="def1" class="def1" onmousedown="playClick()" ng-click="active='def1'">-</li>
-							<li id="def2" class="def2" onmousedown="playClick()" ng-click="active='def2'">-</li>
-							<li id="def3" class="def3" onmousedown="playClick()" ng-click="active='def3'">-</li>
-							<li id="none" class="none" onmousedown="playClick()" ng-click="active='none'">None</li>
-							</ul>
-							-->
-							<table id="definitions">
-							</table>
+							<table id="definitions"></table>
 						</div>
 					</div>
 					<div id="gamezone-footer">
@@ -55,6 +45,7 @@
 					<img id="user" class="control" src="media/user.png" onclick="share();playClick()">
 					<img id="shield" class="control" src="media/shield.png" onclick="request();playClick()">
 					<img id="information" class="control" src="media/info.png" onclick="display_about();playClick()">
+					<img id="auction" class="control" src="media/auction.png" onclick="display_definition_window();playClick()">
 				</div>
 			</div>
 			<div id="about">
@@ -65,7 +56,16 @@
 					</p>
 				</div>
 				<div id="about-footer">
-					<img id="return" class="control" src="media/leftarrow.png" onclick="return_to_game();playClick()">
+					<img class="control" src="media/leftarrow.png" onclick="return_to_game();playClick()">
+				</div>
+			</div>
+			<div id="insert">
+				<div id="insert-main">
+					<textarea ng-click="active=''" id="definition" type="text" class="inputs" placeholder="Write a new definition here!"></textarea>
+					<a href="#" class="myButton" onmousedown="submit_definition()">Submit</a>
+				</div>
+				<div id="insert-footer">
+					<img class="control" src="media/leftarrow.png" onclick="return_to_game();playClick()">
 				</div>
 			</div>
 		</div>

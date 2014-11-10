@@ -10,6 +10,7 @@ function display_about() {
 
 function return_to_game() {
 	document.getElementById("about").style.display = "none";
+	document.getElementById("insert").style.display = "none";
 	document.getElementById("game").style.display = "inline-block";
 }
 
@@ -17,6 +18,11 @@ function animate_logo() {
 	document.getElementById("logo").classList.add("animatelogo");
 	document.getElementById("enter").classList.remove("shaded_enter");
 	document.getElementById("enter").classList.add("animateenter");
+}
+
+ function display_definition_window() {
+ 	document.getElementById("game").style.display = "none";
+	document.getElementById("insert").style.display = "inline-block";
 }
 
 function set_word(word, pos) {
@@ -28,14 +34,9 @@ function clear_definitions() {
 	while (table.rows[0]) {
 		table.deleteRow(0);
 	}
-
-	// var ul = document.getElementById("definitions");
- //    while (ul.firstChild) {
- //  		ul.removeChild(ul.firstChild);
- //    }
 }
 
-function add_definition(definition) {
+function add_definition(id, definition) {
 	var table = document.getElementById("definitions");
 
 	var row = table.insertRow(0);
@@ -50,17 +51,18 @@ function add_definition(definition) {
 
 	var img1 = document.createElement("img");
 	img1.src = 'media/up.png';
+	img1.classList.add('vote_button');
 	var img2 = document.createElement("img");
 	img2.src = 'media/down.png';
+	img2.classList.add('vote_button');
 
-	img1.onclick = function() {get_ranked();};
-	img2.onclick = function() {get_ranked();};
+	img1.onclick = function() {vote(id, 1);playClick();};
+	img2.onclick = function() {vote(id, -1);playClick();};
 
 	cell2.appendChild(img1);
 	cell2.appendChild(img2);
+}
 
-	// var ul = document.getElementById("definitions");
-	// li = document.createElement("li");
-	// li.innerHTML = definition;
-	// ul.appendChild(li);	
+function vote(definition_number, vote) {
+	submit_vote(definition_number, vote);
 }
