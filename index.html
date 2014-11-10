@@ -13,7 +13,9 @@
 	<div id="main">
 		<div id="portal">
 			<div id="welcome">
-				<img id="logo" src="media/logo.png" onmousedown="enter_game()">
+				<img id="logo" src="media/logo.png" onmousedown="animate_logo()">
+				<img id="enter" class="shaded_enter" src="media/xbox.png" onmousedown="enter_game();get_ranked();">
+				<!-- <p id="enter" class="shaded_enter" onclick="enter_game();get_ranked();">ENTER</p> -->
 			</div>
 			<div id="game">
 				<div id="gamezone">
@@ -21,12 +23,18 @@
 						<div id="entry">
 							<p id="word">-</p>
 						</div>
-						<ul id="definitions" class="{{active}}" ng-click="$event.preventDefault()">
+						<div id="definitions_wrapper">
+							<!--
+							<ul id="definitions" class="{{active}}" ng-click="$event.preventDefault()">
 							<li id="def1" class="def1" onmousedown="playClick()" ng-click="active='def1'">-</li>
 							<li id="def2" class="def2" onmousedown="playClick()" ng-click="active='def2'">-</li>
 							<li id="def3" class="def3" onmousedown="playClick()" ng-click="active='def3'">-</li>
 							<li id="none" class="none" onmousedown="playClick()" ng-click="active='none'">None</li>
-						</ul>
+							</ul>
+							-->
+							<table id="definitions">
+							</table>
+						</div>
 					</div>
 					<div id="gamezone-footer">
 						<div id="footer-greeting">
@@ -44,17 +52,21 @@
 					<div id="controlheader">
 						<p id="controltitle"><b>Controls</b></p>
 					</div>
-					<img id="user" class="control" src="media/user.png" onmousedown="share();playClick()">
-					<img id="shield" class="control" src="media/shield.png" onmousedown="request();playClick()">
-					<img id="information" class="control" src="media/info.png" onmousedown="display_about();playClick()">
+					<img id="user" class="control" src="media/user.png" onclick="share();playClick()">
+					<img id="shield" class="control" src="media/shield.png" onclick="request();playClick()">
+					<img id="information" class="control" src="media/info.png" onclick="display_about();playClick()">
 				</div>
 			</div>
 			<div id="about">
-				<h2>About</h2>
-				<p>
-				The Kamusi Project is a participatory international effort dedicated to improving knowledge of the world's languages. Our long term mission is to produce dictionaries and other language resources for every language, and to make those resources available for free to everyone.
-				</p>
-				<img id="return" class="control" src="media/leftarrow.png" onmousedown="return_to_game();playClick()">
+				<div id="about-main">
+					<h2>About</h2>
+					<p>
+					The Kamusi Project is a participatory international effort dedicated to improving knowledge of the world's languages. Our long term mission is to produce dictionaries and other language resources for every language, and to make those resources available for free to everyone.
+					</p>
+				</div>
+				<div id="about-footer">
+					<img id="return" class="control" src="media/leftarrow.png" onclick="return_to_game();playClick()">
+				</div>
 			</div>
 		</div>
 	</div>

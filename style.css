@@ -12,6 +12,8 @@ body {
 	height:100%;
 	width:100%;
 	text-align: center;
+/*	background-image: -moz-linear-gradient(top center, #a50000 10%, #E4B2B2 90%);
+	background-image: -webkit-linear-gradient(top center, #a50000 10%, #E4B2B2 90%);*/
 	background-image: -moz-linear-gradient(top center, #66CCFF 10%, #CCFFFF 90%);
 	background-image: -webkit-linear-gradient(top center, #66CCFF 10%, #CCFFFF 90%);
 }
@@ -27,10 +29,14 @@ body {
 
 #welcome {
 	width: 930px;
-	height: 350px;
-	padding-top:200px;
+	height: 550px;
+	/*padding-top:200px;*/
 	background-color: #F5F5F5;
-	display: inline-block;
+	/*display: inline-block;*/
+	position: relative;
+/*	background-image: url("media/Test.png");
+	background-width: 100%;
+	background-height:100%;*/
 }
 
 #game {
@@ -57,6 +63,7 @@ body {
 	padding:20px;
 	background-color: #F5F5F5;
 	float:left;
+	/*overflow: scroll;*/
 }
 
 #gamezone-footer {
@@ -64,6 +71,22 @@ body {
 	width:790px;
 	float:left;
 	background-color: #F5F5F5;
+}
+
+#about-main {
+	height:410px;
+	width:890px;
+	padding:20px;
+	background-color: #F5F5F5;
+	float:left;
+}
+
+#about-footer {
+	height:100px;
+	width:930px;
+	float:left;
+	background-color: #F5F5F5;
+	text-align:left;
 }
 
 #footer-greeting {
@@ -81,21 +104,39 @@ body {
 }
 
 #entry {
-	width:640;
+	width:640px;
 	padding:20px;
 	font-size: 30px;
 	color: red;
 	background:white;
 	text-align:left;
-	text-transform:capitalize;"
+	text-transform:capitalize;
+}
+
+#definitions_wrapper {	
+	margin-top:20px;
+	width: 680px;
+	height: 380px;
+	overflow: scroll;
+}
+
+table tr td {
+	border: 1px solid black;
 }
 
 #definitions {
-	width:640px;
-	margin-top:20px;
+	width:680px;
 	padding:20px;
 	background:white;
 	text-align:left;
+}
+
+.left_cell {
+	width: 95%;
+}
+
+.right_cell {
+	width: 5%;
 }
 
 #about {
@@ -107,8 +148,39 @@ body {
 }
 
 #logo {
-	width:438px;
-	height:111px;
+	position: absolute;
+	top: 238px;
+	left: 319px;
+}
+
+.animatelogo {
+  	-moz-transition: transform 500ms;
+	-webkit-transform: translate(0px, -150px);
+	-moz-transform: translate(0px, -150px);
+}
+
+.shaded_enter {
+	/*Element not clickable when hidden*/
+	visibility:hidden;
+	position: absolute;
+	top: 211px;
+	left: 401px;
+	-moz-opacity: 0;
+	opacity: 0;
+}
+
+.animateenter {
+	visibility:visible;
+	position: absolute;
+	top: 211px;
+	left: 401px;
+	-webkit-transition: all 3s ease;
+  	-moz-transition: all 3s ease;
+  	-ms-transition: all 3s ease;
+  	-o-transition: all 3s ease;
+  	transition: all 3s ease;
+  	-moz-opacity: 1;
+	opacity: 1;
 }
 
 #controlheader {
@@ -122,9 +194,11 @@ body {
 	cursor:pointer;
 	height:100px;
 	width:100px;
+	opacity:0.5;
 }
 
 .control:hover {
+	opacity:1;
 	transform: scale(1.05);
 }
 

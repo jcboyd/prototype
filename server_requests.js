@@ -1,6 +1,5 @@
 var userID;
 var wordID;
-var definition_ids=["def1","def2","def3"];
 
 function get_random() {
     var xmlhttp;
@@ -31,22 +30,20 @@ function get_ranked() {
     }
     xmlhttp.onreadystatechange=function() {
         if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+            clear_definitions();
 
-            for(var i = 0; i < definition_ids.length; i++) {
-                document.getElementById(definition_ids[i]).innerHTML = "-";
-            }
             var results_array = JSON.parse(xmlhttp.responseText);
+
             wordID = results_array[0].ID;
-            document.getElementById("word").innerHTML = results_array[0].Word + " " + results_array[0].PartOfSpeech + ";";
+            set_word(results_array[0].Word, results_array[0].PartOfSpeech);
 
             for(var i = 0; i < results_array.length; i++) {
                 if(results_array[i].Definition != undefined) {
-                    document.getElementById(definition_ids[i]).innerHTML = results_array[i].Definition;
+                    add_definition(results_array[i].Definition);
                 }
             }
         }
     }
-    //document.getElementById("definition").value = "";
     xmlhttp.open("GET","get_ranked.php", true);
     xmlhttp.send();
 }
