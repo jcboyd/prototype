@@ -149,7 +149,7 @@ body {
 }
 */
 
-tr:nth-of-type(odd) {
+tr:nth-of-type(even) {
 	background-color:#ccc;
 }
 

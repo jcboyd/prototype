@@ -39,7 +39,7 @@ function get_ranked() {
 
             for(var i = 0; i < results_array.length; i++) {
                 if(results_array[i].Definition != undefined) {
-                    add_definition(results_array[i].Definition);
+                    add_definition(results_array[i].DefinitionID, results_array[i].Definition);
                 }
             }
         }
@@ -95,6 +95,6 @@ function submit_vote(definition_id, vote) {
         xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
     }
 
-    xmlhttp.open("GET","submit_vote.php?definitionID=" + definition_id + "&definition=" + definition + "&vote=" + vote, true);
+    xmlhttp.open("GET","submit_vote.php?definitionID=" + definition_id + "&vote=" + vote, true);
     xmlhttp.send();
 }

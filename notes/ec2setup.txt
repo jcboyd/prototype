@@ -151,7 +151,3 @@ ALTER TABLE definitions MODIFY COLUMN DefinitionID INT auto_increment;
 [VOTING FUNCTIONALITY]
 
 ALTER TABLE definitions ADD COLUMN Votes INT DEFAULT 0;
-
-
-
-

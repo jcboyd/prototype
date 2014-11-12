@@ -1,6 +1,7 @@
 function enter_game() {
 	document.getElementById("welcome").style.display = "none";
 	document.getElementById("game").style.display = "inline-block";
+	get_ranked();
 }
 
 function display_about() {
@@ -32,6 +33,7 @@ function set_word(word, pos) {
 function clear_definitions() {
 	var table = document.getElementById("definitions");
 	while (table.rows[0]) {
+		table.rows[0].
 		table.deleteRow(0);
 	}
 }
@@ -55,13 +57,17 @@ function add_definition(id, definition) {
 	var img2 = document.createElement("img");
 	img2.src = 'media/down.png';
 	img2.classList.add('vote_button');
-
-	img1.onclick = function() {vote(id, 1);playClick();};
-	img2.onclick = function() {vote(id, -1);playClick();};
+	//NOTE THIS PROBABLY CAUSES A MEMORY LEAK - TO BE REVIEWED
+	img1.onclick = (function(definition_id) { return function() { vote(definition_id, 1); playClick(); }; })(id);
+	img2.onclick = (function(definition_id) { return function() { vote(definition_id, -1); playClick(); }; })(id);
 
 	cell2.appendChild(img1);
 	cell2.appendChild(img2);
 }
+
+// function vote_closure(definition_number, vote) {
+// 	return function () {vote(definition_number, vote);};
+// }
 
 function vote(definition_number, vote) {
 	submit_vote(definition_number, vote);
