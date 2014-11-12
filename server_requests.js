@@ -35,7 +35,7 @@ function get_ranked() {
             var results_array = JSON.parse(xmlhttp.responseText);
 
             wordID = results_array[0].ID;
-            set_word(results_array[0].Word, results_array[0].PartOfSpeech);
+            set_word(results_array[0].Word, results_array[0].PartOfSpeech, results_array[0].UserID);
 
             for(var i = 0; i < results_array.length; i++) {
                 if(results_array[i].Definition != undefined) {

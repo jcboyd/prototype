@@ -26,14 +26,13 @@ function animate_logo() {
 	document.getElementById("insert").style.display = "inline-block";
 }
 
-function set_word(word, pos) {
-	document.getElementById("word").innerHTML = word + " " + pos + ";";
+function set_word(word, pos, userID) {
+	document.getElementById("word").innerHTML = word + " " + pos + "; proposed by: " + userID;
 }
 
 function clear_definitions() {
 	var table = document.getElementById("definitions");
 	while (table.rows[0]) {
-		table.rows[0].
 		table.deleteRow(0);
 	}
 }
@@ -41,7 +40,7 @@ function clear_definitions() {
 function add_definition(id, definition) {
 	var table = document.getElementById("definitions");
 
-	var row = table.insertRow(0);
+	var row = table.insertRow(-1);
 
 	var cell1 = row.insertCell(0);
 	var cell2 = row.insertCell(1);
@@ -60,6 +59,9 @@ function add_definition(id, definition) {
 	//NOTE THIS PROBABLY CAUSES A MEMORY LEAK - TO BE REVIEWED
 	img1.onclick = (function(definition_id) { return function() { vote(definition_id, 1); playClick(); }; })(id);
 	img2.onclick = (function(definition_id) { return function() { vote(definition_id, -1); playClick(); }; })(id);
+
+	// img1.onclick = vote_closure(id, 1);
+	// img1.onclick = vote_closure(id, -1);
 
 	cell2.appendChild(img1);
 	cell2.appendChild(img2);
