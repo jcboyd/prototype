@@ -30,6 +30,10 @@ function set_word(word, pos, userID) {
 	document.getElementById("word").innerHTML = word + " " + pos + "; proposed by: " + userID;
 }
 
+function set_avatar(userID) {
+    document.getElementById("avatar").src = "https://graph.facebook.com/" + userID + "/picture";
+}
+
 function clear_definitions() {
 	var table = document.getElementById("definitions");
 	while (table.rows[0]) {

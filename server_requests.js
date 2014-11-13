@@ -80,6 +80,7 @@ function check_user(response) {
             }
         }
         userID = response.id;
+        set_avatar(userID);
     }
     var noCache = new Date().getTime();
     xmlhttp.open("GET","check_user.php?userID=" + response.id + "&noCache=" + "noCache", true);
