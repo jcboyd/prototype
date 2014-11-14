@@ -176,8 +176,10 @@ tr:first-child {
 
 #logo {
 	position: absolute;
-	top: 238px;
-	left: 319px;
+	/*top: 238px;
+	left: 319px;*/
+	top: 200px;
+	left: 258px;
 }
 
 .animatelogo {
