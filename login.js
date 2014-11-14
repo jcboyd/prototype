@@ -4,10 +4,10 @@ function statusChangeCallback(response) {
       	welcome();
     } 
     else if (response.status === 'not_authorized') {
-      	document.getElementById('def1').innerHTML = 'Please log ' + 'into this app.';
+      	document.getElementById('word').innerHTML = 'Please log ' + 'into this app.';
     }
     else {
-      	document.getElementById('def1').innerHTML = 'Please log ' + 'into Facebook.';
+      	document.getElementById('word').innerHTML = 'Please log ' + 'into Facebook.';
     }
 }
 
