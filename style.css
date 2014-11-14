@@ -155,10 +155,10 @@ tr:nth-of-type(even) {
 	background-color:#ccc;
 }
 
-tr:first-child {
+/*tr:first-child {
 	background-color:#FF0000;
 }
-
+*/
 #definitions {
 	width:680px;
 	padding:20px;
