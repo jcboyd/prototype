@@ -189,3 +189,20 @@ create composer.json:
 }
 
 php composer.phar install
+
+[UPGRADE TO PHP 5.5]
+
+yum remove php
+
+yum remove php54-common-5.4.34-1.62.amzn1.x86_64
+
+yum remove httpd24
+
+yum remove httpd-tools
+
+sudo yum install php55 php55-devel php55-common php55-cli php55-pecl-apc php55-pdo php55-mysql php55-xml php55-gd php55-mbstring php-pear php55-mysqlnd
+
+yum install mod24_ssl
+
+service httpd restart
+

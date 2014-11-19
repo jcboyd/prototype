@@ -35,31 +35,40 @@ function set_avatar(userID) {
 }
 
 function clear_definitions() {
-	var table = document.getElementById("definitions");
-	while (table.rows[0]) {
-		table.deleteRow(0);
-	}
+	// var table = document.getElementById("definitions");
+	// while (table.rows[0]) {
+	// 	table.deleteRow(0);
+	// }
+	var ul = document.getElementById("definitions");
+	ul.empty();
 }
 
 function add_definition(id, definition) {
-	var table = document.getElementById("definitions");
+	//var table = document.getElementById("definitions");
+	var ul = document.getElementById("definitions");
+	var li = document.createElement('li');
+	li.classList.add('definition_button');
 
-	var row = table.insertRow(-1);
+	li.innerHTML = definition;
+	ul.appendChild(li);
 
-	var cell1 = row.insertCell(0);
-	var cell2 = row.insertCell(1);
+	// var row = table.insertRow(-1);
 
-	cell1.classList.add("left_cell");
-	cell2.classList.add("right_cell");
+	// var cell1 = row.insertCell(0);
+	// var cell2 = row.insertCell(1);
 
-	cell1.innerHTML = definition;
+	// cell1.classList.add("left_cell");
+	// cell2.classList.add("right_cell");
 
-	var img1 = document.createElement("img");
-	img1.src = 'media/up.png';
-	img1.classList.add('vote_button');
-	var img2 = document.createElement("img");
-	img2.src = 'media/down.png';
-	img2.classList.add('vote_button');
+	// cell1.innerHTML = definition;
+
+	// var img1 = document.createElement("img");
+	// img1.src = 'media/up.png';
+	// img1.classList.add('vote_button');
+	// var img2 = document.createElement("img");
+	// img2.src = 'media/down.png';
+	// img2.classList.add('vote_button');
+
 	//NOTE THIS PROBABLY CAUSES A MEMORY LEAK - TO BE REVIEWED
 	img1.onclick = (function(definition_id) { return function() { vote(definition_id, 1); playClick(); }; })(id);
 	img2.onclick = (function(definition_id) { return function() { vote(definition_id, -1); playClick(); }; })(id);
@@ -67,8 +76,8 @@ function add_definition(id, definition) {
 	// img1.onclick = vote_closure(id, 1);
 	// img1.onclick = vote_closure(id, -1);
 
-	cell2.appendChild(img1);
-	cell2.appendChild(img2);
+	// cell2.appendChild(img1);
+	// cell2.appendChild(img2);
 }
 
 // function vote_closure(definition_number, vote) {

@@ -35,48 +35,61 @@ use Facebook\FacebookAuthorizationException;
 use Facebook\GraphObject;
 use Facebook\GraphSessionInfo;
 
-//These must be retrieved from the database
-$app_id = '';
-$app_secret = '';
-$user_id = ''
+function send_notification($user_id) {
+	$user = 'root';
+	$pass = '';
+	$db = 'kamusi';
 
-FacebookSession::setDefaultApplication($app_id, $app_secret);
+	$con = mysqli_connect('localhost', $user, $pass, $db);
 
-// If you already have a valid access token:
-//$session = new FacebookSession($access_token);
+	if (!$con) {
+		die('Could not connect: ' . mysqli_error($con));
+	}
 
-// If you're making app-level requests:
-$session = FacebookSession::newAppSession();
+	$sql =	"SELECT * FROM app;";
 
-// To validate the session:
-try {
-	$session->validate();
+	$result = mysqli_query($con, $sql);
+
+	$results_array = $result->fetch_assoc();
+
+	//These must be retrieved from the database
+	$app_id = $results_array["app_id"];
+	$app_secret = $results_array["app_secret"];
+
+	FacebookSession::setDefaultApplication($app_id, $app_secret);
+
+	// If you already have a valid access token:
+	//$session = new FacebookSession($access_token);
+
+	// If you're making app-level requests:
+	$session = FacebookSession::newAppSession();
+
+	// To validate the session:
+	try {
+		$session->validate();
+	}
+	catch (FacebookRequestException $ex) {
+		// Session not valid, Graph API returned an exception with the reason.
+		echo $ex->getMessage();
+	}
+	catch (\Exception $ex) {
+		// Graph API returned info, but it may mismatch the current app or have expired.
+		echo $ex->getMessage();
+	}
+
+	// start session
+	$request = new FacebookRequest(
+		$session,
+		'POST',
+		'/' . $user_id . '/notifications',
+		array (
+	    	'href' => '',
+	    	'template' => 'Your definition has been voted best!',
+	  	)
+	);
+
+	$response = $request->execute();
+	$graphObject = $response->getGraphObject();
 }
-catch (FacebookRequestException $ex) {
-	// Session not valid, Graph API returned an exception with the reason.
-	echo $ex->getMessage();
-}
-catch (\Exception $ex) {
-	// Graph API returned info, but it may mismatch the current app or have expired.
-	echo $ex->getMessage();
-}
-
-// start session
-
-$request = new FacebookRequest(
-	$session,
-	'POST',
-	'/' . $user_id . '/notifications',
-	array (
-    	'href' => '',
-    	'template' => 'Kamusi test',
-  	)
-);
-
-$response = $request->execute();
-$graphObject = $response->getGraphObject();
-
-/* handle the result */
-//echo $graphObject->getProperty('success');
 
 ?>

@@ -14,8 +14,9 @@ body {
 	text-align: center;
 /*	background-image: -moz-linear-gradient(top center, #a50000 10%, #E4B2B2 90%);
 	background-image: -webkit-linear-gradient(top center, #a50000 10%, #E4B2B2 90%);*/
-	background-image: -moz-linear-gradient(top center, #66CCFF 10%, #CCFFFF 90%);
-	background-image: -webkit-linear-gradient(top center, #66CCFF 10%, #CCFFFF 90%);
+	/*background-image: -moz-linear-gradient(top center, #66CCFF 10%, #CCFFFF 90%);
+	background-image: -webkit-linear-gradient(top center, #66CCFF 10%, #CCFFFF 90%);*/
+	background-image: url('media/kikoi1.jpg');
 }
 
 #portal {
@@ -94,7 +95,9 @@ body {
 #controls {
 	height:100%;
 	width:140px;
-	background-color: #0099FF;
+	/*background: url('media/nav-back.png');*/
+	background-color: #664132;
+	/*background-color: #0099FF;*/
 	float:left;
 }
 
@@ -102,6 +105,7 @@ body {
 	height:410px;
 	width:750px;
 	padding:20px;
+	/*background: url('media/kikoi1.jpg');*/
 	background-color: #F5F5F5;
 	float:left;
 	/*overflow: scroll;*/
@@ -133,10 +137,11 @@ body {
 	width:640px;
 	padding:20px;
 	font-size: 30px;
-	color: red;
+	color: #af0800;
 	background:white;
 	text-align:left;
 	text-transform:capitalize;
+	/*background: url('media/nav-back.png');*/
 }
 
 #definitions_wrapper {	
@@ -164,6 +169,14 @@ tr:nth-of-type(even) {
 	padding:20px;
 	background:white;
 	text-align:left;
+}
+
+#definition_button {
+	padding:20px 30px;
+	background-color:#e35885;
+	margin-bottom:8px;
+	box-shadow:0 1px 1px rgba(0,0,0,0.1);
+	cursor:pointer;
 }
 
 .left_cell {
@@ -212,11 +225,14 @@ tr:nth-of-type(even) {
 	opacity: 1;
 }
 
+/*eba634*/
+
 #controlheader {
 	height: 30px;
 	width: 100%;
 	padding-top: 10px;
-	background-color: #0066FF;
+	background-color: #af0800;
+	/*background-color: #0066FF;*/
 }
 
 .control {
