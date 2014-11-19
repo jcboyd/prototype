@@ -13,7 +13,8 @@
 	<div id="main">
 		<div id="portal">
 			<div id="welcome">
-				<img id="logo" src="media/logo.png" onmousedown="animate_logo()">
+				<canvas id="animation" width="930" height="550">Your browser doesn't support HTML5.</canvas>
+				<img id="logo" src="media/logo.png" onmousedown="animate_logo();">
 				<img id="enter" class="shaded_enter" src="media/xbox.png" onmousedown="enter_game();">
 			</div>
 			<div id="game">
@@ -23,7 +24,7 @@
 							<p id="word">-</p>
 						</div>
 						<div id="definitions_wrapper">
-							<table id="definitions"></table>
+							<ul id="definitions"></ul>
 						</div>
 					</div>
 					<div id="gamezone-footer">
@@ -37,18 +38,19 @@
 							</span>
 						</div>
 						<div id="footer-next">
-							<img id="next" class="control" src="media/rightarrow.png" onmousedown="get_ranked();playClick()">
+							<img id="next" class="control" src="media/rightarrow.png" onmousedown="playClick();get_ranked();">
 						</div>
 					</div>
 				</div>
 				<div id="controls">
 					<div id="controlheader">
-						<p id="controltitle"><b>Controls</b></p>
+						<p id="controltitle"><b>Kamusi</b></p>
 					</div>
-					<img id="user" class="control" src="media/user.png" onclick="share();playClick()">
-					<img id="shield" class="control" src="media/shield.png" onclick="request();playClick()">
-					<img id="information" class="control" src="media/info.png" onclick="display_about();playClick()">
-					<img id="auction" class="control" src="media/auction.png" onclick="display_definition_window();playClick()">
+					<img id="user" class="control" src="media/user.png" onclick="playClick();display_profile();">
+					<img id="share" class="control" src="media/balloon.png" onclick="share();">
+					<img id="shield" class="control" src="media/shield.png" onclick="playClick();request();">
+					<img id="information" class="control" src="media/info.png" onclick="playClick();display_about();">
+					<img id="auction" class="control" src="media/auction.png" onclick="playClick();display_definition_window();">
 				</div>
 			</div>
 			<div id="about">
@@ -59,7 +61,7 @@
 					</p>
 				</div>
 				<div id="about-footer">
-					<img class="control" src="media/leftarrow.png" onclick="return_to_game();playClick()">
+					<img class="control" src="media/leftarrow.png" onclick="playClick();return_to_game();">
 				</div>
 			</div>
 			<div id="insert">
@@ -68,10 +70,18 @@
 					<a href="#" class="myButton" onmousedown="submit_definition()">Submit</a>
 				</div>
 				<div id="insert-footer">
-					<img class="control" src="media/leftarrow.png" onclick="return_to_game();playClick()">
+					<img class="control" src="media/leftarrow.png" onclick="playClick();return_to_game();">
+				</div>
+			</div>
+			<div id="profile">
+				<div id="profile-main">
+				</div>
+				<div id="profile-footer">
+					<img class="control" src="media/leftarrow.png" onclick="playClick();return_to_game();">
 				</div>
 			</div>
 		</div>
 	</div>
+	<script src="animation.js"></script>
 </body>
 </html>

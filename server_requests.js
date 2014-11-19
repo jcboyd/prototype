@@ -30,10 +30,9 @@ function get_ranked() {
     }
     xmlhttp.onreadystatechange=function() {
         if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-            clear_definitions();
-
             var results_array = JSON.parse(xmlhttp.responseText);
 
+            clear_definitions();
             wordID = results_array[0].ID;
             set_word(results_array[0].Word, results_array[0].PartOfSpeech, results_array[0].UserID);
 
@@ -42,6 +41,7 @@ function get_ranked() {
                     add_definition(results_array[i].DefinitionID, results_array[i].Definition);
                 }
             }
+            add_input();
         }
     }
     xmlhttp.open("GET","get_ranked.php", true);
