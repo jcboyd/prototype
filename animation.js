@@ -6,7 +6,7 @@ var context = canvas.getContext("2d"); //Canvas context
 var animationID = -1; //Game loop time interval
 var dx = 1;
 
-var symbols = ["قاموس", "ਕੋਸ਼", "字典", "речник", "orðabók", "מילון"];// ["Saab", "Volvo", "BMW"];
+var symbols = ["قاموس", "ਕੋਸ਼", "字典", "речник", "orðabók", "מילון"];
 var delta_xs = [1, -1, 1, -1, 1, -1];
 var delta_ys = [1, 1, -1, -1, -1, 1];
 var init_x = [0, 930, 0, 930, 0, 930];
