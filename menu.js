@@ -68,7 +68,15 @@ function add_definition(id, definition) {
 	li.classList.add("inactive_definition");
 
 	li.innerHTML = definition;
-	li.onclick = function () { remove_active(); this.className = "active_definition"; };
+	li.onmousedown = function () { 
+		if(this.className == "active_definition") {
+			remove_active();
+		}
+		else {
+			remove_active();
+			this.className = "active_definition"
+		}
+	};
 	ul.appendChild(li);
 }
 

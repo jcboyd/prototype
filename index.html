@@ -15,7 +15,7 @@
 			<div id="welcome">
 				<canvas id="animation" width="930" height="550">Your browser doesn't support HTML5.</canvas>
 				<img id="logo" src="media/logo.png" onmousedown="animate_logo();">
-				<img id="enter" class="shaded_enter" src="media/xbox.png" onmousedown="enter_game();">
+				<img id="enter" class="shaded_enter" src="media/rightarrow.png" onmousedown="enter_game();">
 			</div>
 			<div id="game">
 				<div id="gamezone">
@@ -38,13 +38,13 @@
 							</span>
 						</div>
 						<div id="footer-next">
-							<img id="next" class="control" src="media/rightarrow.png" onmousedown="playClick();get_ranked();">
+							<img id="next" class="control" src="media/rightarrow.png" onclick="playClick();submit_vote();get_ranked();">
 						</div>
 					</div>
 				</div>
 				<div id="controls">
 					<div id="controlheader">
-						<p id="controltitle"><b>Kamusi</b></p>
+						<img id="controltitle" src="media/banner.png">
 					</div>
 					<img id="user" class="control" src="media/user.png" onclick="playClick();display_profile();">
 					<img id="gossip" class="control" src="media/balloon.png" onclick="share();">

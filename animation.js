@@ -1,20 +1,37 @@
 //Global variables
-var canvasX = 930;
-var canvasY = 550;
 var canvas = document.getElementById("animation"); //Canvas element
 var context = canvas.getContext("2d"); //Canvas context
+var canvasX = canvas.width; //930;
+var canvasY = canvas.height; //550;
 var animationID = -1; //Game loop time interval
-var dx = 1;
 
-var symbols = ["قاموس", "ਕੋਸ਼", "字典", "речник", "orðabók", "מילון"];
-var delta_xs = [1, -1, 1, -1, 1, -1];
-var delta_ys = [1, 1, -1, -1, -1, 1];
-var init_x = [0, 930, 0, 930, 0, 930];
+var symbols = 	["قاموس", "ਕੋਸ਼", "字典", "речник", "orðabók", "מילון",
+				 "tự điển", "kamus", "isichazamazwi", "k'amus",
+				 "maanatiira", "rimayqillqa", "geiriadur"];
+
 var symbol_objects = new Array();
 
 function startAnimation() {
+	var total_space = 2 * canvasX + 2 * canvasY;
+
 	for(var index = 0; index < symbols.length; index++) {
-		symbol_objects[index] = new Symbol(symbols[index], init_x[index], (index + 1) * 75, delta_xs[index], delta_ys[index]);
+		var position = (total_space / symbols.length) * index;
+		var init_x, init_y, dx, dy;
+
+		if (position < canvasX) {
+			init_x = position; init_y = 0; dx = 1; dy = -1;
+		}
+		else if (position < canvasX + canvasY) {
+			init_x = canvasX; init_y = position - canvasX; dx = -1; dy = -1;
+		}
+		else if (position < 2 * canvasX + canvasY) {
+			init_x = position - canvasX - canvasY; init_y = canvasY; dx = -1; dy = 1;
+		}
+		else {
+			init_x = 0; init_y = total_space - position; dx = 1; dy = -1;
+		}
+
+		symbol_objects[index] = new Symbol(symbols[index], init_x, init_y, dx, dy);
 	}
 	if(animationID > -1)
 		clearInterval(animationID);
@@ -41,17 +58,16 @@ function clearCanvas() {
 
 function Symbol(symbol_text, x, y, dx, dy) {
 	var text = symbol_text;
-	var initial_x = x;
-	var initial_y = y;
-	var x_pos = x;
-	var y_pos = y;
-	var delta_x = dx;
-	var delta_y = dy;
+	var initial_x = x, initial_y = y;
+	var delta_x = dx, delta_y = dy;
+
+	var x_pos = x, y_pos = y;
 
 	this.draw = function () {
 		x_pos += delta_x;
 		y_pos += delta_y;
-		context.font = "50px Arial";
+		context.font = "30px Xits";
+		context.fillStyle = 'gray';
 		context.fillText(text, x_pos, y_pos);
 		if(x_pos < 0 || canvasX < x_pos || y_pos < 0 || canvasY < y_pos ) {
 			x_pos = initial_x;

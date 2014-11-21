@@ -189,6 +189,7 @@ tr:nth-of-type(even) {
 	left: 319px;*/
 	top: 200px;
 	left: 258px;
+	cursor:pointer;
 }
 
 .animatelogo {
@@ -208,6 +209,7 @@ tr:nth-of-type(even) {
 }
 
 .animateenter {
+	cursor:pointer;
 	visibility:visible;
 	position: absolute;
 	top: 211px;
@@ -218,7 +220,12 @@ tr:nth-of-type(even) {
   	-o-transition: all 3s ease;
   	transition: all 3s ease;
   	-moz-opacity: 1;
-	opacity: 1;
+	opacity: 0.5;
+}
+
+.animateenter:hover {
+	opacity:1;
+	transform: scale(1.05);
 }
 
 /*eba634*/
