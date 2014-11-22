@@ -223,10 +223,10 @@ tr:nth-of-type(even) {
 	opacity: 0.5;
 }
 
-.animateenter:hover {
+/*.animateenter:hover {
 	opacity:1;
 	transform: scale(1.05);
-}
+}*/
 
 /*eba634*/
 

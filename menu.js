@@ -64,22 +64,26 @@ function add_input() {
 
 function add_definition(id, definition) {
 	var ul = document.getElementById("definitions");
-	var li = document.createElement('li');
+	var li = document.createElement("li");
 	li.classList.add("inactive_definition");
-
 	li.innerHTML = definition;
-	li.onmousedown = function () { 
-		if(this.className == "active_definition") {
-			remove_active();
-		}
-		else {
-			remove_active();
-			this.className = "active_definition"
-		}
-	};
+	li.onmousedown = (function(id_num) {
+		return function () {
+			definitionID = id_num;
+			if (this.className == "active_definition") {
+				remove_active();
+			}
+			else {
+				remove_active();
+				this.className = "active_definition";
+			}
+		};
+	})(id);
 	ul.appendChild(li);
 }
 
-function vote(definition_number, vote) {
-	submit_vote(definition_number, vote);
+function vote() {
+	if(definitionID != -1) {
+		submit_vote(definitionID, 1);
+	}
 }

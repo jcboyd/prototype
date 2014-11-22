@@ -1,5 +1,6 @@
 var userID;
 var wordID;
+var definitionID;
 
 function get_random() {
     var xmlhttp;
@@ -42,6 +43,7 @@ function get_ranked() {
                 }
             }
             add_input();
+            definitionID = -1;
         }
     }
     xmlhttp.open("GET","get_ranked.php", true);
