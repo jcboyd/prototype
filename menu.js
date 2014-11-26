@@ -1,3 +1,53 @@
+// The controller is a regular JavaScript function. It is called
+// once when AngularJS runs into the ng-controller declaration.
+
+function InlineEditorController($scope){
+
+	// $scope is a special object that makes
+	// its properties available to the view as
+	// variables. Here we set some default values:
+
+	$scope.showtooltip = false;
+	$scope.value = 'I can do better!';
+
+	// Some helper functions that will be
+	// available in the angular declarations
+
+	$scope.hideTooltip = function(){
+
+		// When a model is changed, the view will be automatically
+		// updated by by AngularJS. In this case it will hide the tooltip.
+
+		$scope.showtooltip = false;
+	}
+
+	$scope.toggleTooltip = function(e){
+		e.stopPropagation();
+		$scope.showtooltip = !$scope.showtooltip;
+	}
+}
+
+function add_user_definition() {
+	document.getElementById("add_delete").src = "media/delete.png";
+	document.getElementById("add_delete").onclick = delete_user_definition;
+	// var ul = document.getElementById("definitions");
+	// var li = document.createElement("li");
+	document.getElementById("user_definition").style.display = "inline-block";
+	// li.classList.add("inactive_definition");
+	// li.id = "user_definition";
+	// ul.appendChild(li);
+}
+
+function delete_user_definition() {
+	// var ul = document.getElementById("definitions");
+	// var li = document.getElementById("user_definition");
+	// ul.removeChild(li);
+	document.getElementById("add_delete").src = "media/add.png";
+	document.getElementById("add_delete").onclick = add_user_definition;
+	document.getElementById("user_definition").style.display = "none";
+	document.getElementById("input_tool_box").value = "";
+}
+
 function enter_game() {
 	document.getElementById("welcome").style.display = "none";
 	document.getElementById("game").style.display = "inline-block";
@@ -38,6 +88,7 @@ function set_word(word, pos, userID) {
 
 function set_avatar(userID) {
     document.getElementById("avatar").src = "https://graph.facebook.com/" + userID + "/picture";
+    document.getElementById("profile_avatar").src = "https://graph.facebook.com/" + userID + "/picture";
 }
 
 function remove_active() {
@@ -51,15 +102,13 @@ function remove_active() {
 
 function clear_definitions() {
 	var ul = document.getElementById("definitions");
+	var li =  ul.getElementsByTagName("li");
 
-	while(ul.firstChild){
- 		ul.removeChild(ul.firstChild);
+	for(var i = 1; i < li.length; i++) {
+		ul.removeChild(li[i]);
 	}
-}
 
-function add_input() {
-	var ul = document.getElementById("definitions");
-	//Add textbox to list
+	delete_user_definition();
 }
 
 function add_definition(id, definition) {
@@ -83,6 +132,9 @@ function add_definition(id, definition) {
 }
 
 function vote() {
+	if(document.getElementById("input_tool_box").value != "") {
+		submit_definition(document.getElementById("input_tool_box").value);
+	}
 	if(definitionID != -1) {
 		submit_vote(definitionID, 1);
 	}

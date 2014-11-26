@@ -23,8 +23,18 @@
 						<div id="entry">
 							<p id="word">-</p>
 						</div>
-						<div id="definitions_wrapper">
-							<ul id="definitions"></ul>
+						<div id="definitions_wrapper" ng-app ng-controller="InlineEditorController" ng-click="hideTooltip()">
+							<!-- This is the tooltip. It is shown only when the showtooltip variable is truthful -->
+							<div class="input_tool" ng-click="$event.stopPropagation()" ng-show="showtooltip">
+
+								<!-- ng-model binds the contents of the text field with the "value" model.
+								 Any changes to the text field will automatically update the value, and
+								 all other bindings on the page that depend on it.  -->
+								<input id="input_tool_box" type="text" ng-model="value"/>
+							</div>
+							<ul id="definitions">
+								<li ng-click="toggleTooltip($event)" id="user_definition" class="active_definition">{{value}}</li>
+							</ul>
 						</div>
 					</div>
 					<div id="gamezone-footer">
@@ -38,6 +48,7 @@
 							</span>
 						</div>
 						<div id="footer-next">
+							<img id="add_delete" class="control" src="media/add.png" onclick="playClick();add_user_definition()">
 							<img id="next" class="control" src="media/rightarrow.png" onclick="playClick();vote();get_ranked();">
 						</div>
 					</div>
@@ -66,8 +77,8 @@
 			</div>
 			<div id="insert">
 				<div id="insert-main">
-					<textarea ng-click="active=''" id="definition" type="text" class="inputs" placeholder="Write a new definition here!"></textarea>
-					<a href="#" class="myButton" onmousedown="submit_definition()">Submit</a>
+					<!-- <textarea ng-click="active=''" id="definition" type="text" class="inputs" placeholder="Write a new definition here!"></textarea>
+					<a href="#" class="myButton" onmousedown="submit_definition()">Submit</a> -->
 				</div>
 				<div id="insert-footer">
 					<img class="control" src="media/leftarrow.png" onclick="playClick();return_to_game();">
@@ -75,6 +86,7 @@
 			</div>
 			<div id="profile">
 				<div id="profile-main">
+					<span><img id="profile_avatar" src="" width="50"></span>
 				</div>
 				<div id="profile-footer">
 					<img class="control" src="media/leftarrow.png" onclick="playClick();return_to_game();">

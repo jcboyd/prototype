@@ -42,7 +42,6 @@ function get_ranked() {
                     add_definition(results_array[i].DefinitionID, results_array[i].Definition);
                 }
             }
-            add_input();
             definitionID = -1;
         }
     }
@@ -50,7 +49,7 @@ function get_ranked() {
     xmlhttp.send();
 }
 
-function submit_definition() {
+function submit_definition(definition) {
     var xmlhttp;
     if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp=new XMLHttpRequest();
@@ -58,7 +57,6 @@ function submit_definition() {
     else {// code for IE6, IE5
         xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
     }
-    var definition = document.getElementById("definition").value;
     xmlhttp.open("GET","submit_definition.php?wordID=" + wordID + "&definition=" + definition + "&userID=" + userID, true);
     xmlhttp.send();
 }

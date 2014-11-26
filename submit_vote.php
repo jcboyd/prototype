@@ -32,8 +32,8 @@ $votes = $results_array["Votes"];
 
 echo $votes;
 
-if($votes == 15) {
-	send_notification('1629333623960388');
+if($votes == 1 && $user_id != 'wordnet') {
+	send_notification($user_id);
 }
 
 echo 'Success';
