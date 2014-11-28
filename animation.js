@@ -89,14 +89,19 @@ function Symbol(symbol_text, x, y, dx, dy, opacity) {
 		// x_pos += delta_x;
 		// y_pos += delta_y;
 
-		context.font = "30px Xits";
+		context.font = "30px Tahoma";
 
 		opacity += delta;
 
 		if(Math.abs(opacity) == 1000)
 			delta = -delta;
 
-		context.fillStyle = "rgba(0, 0, 0," + opacity/1000.0 + ")";
+		if(opacity == -1000) {
+			x_pos = Math.random() * canvasX;
+			y_pos = Math.random() * canvasY;
+		}
+
+		context.fillStyle = "rgba(150, 150, 150," + opacity/1000.0 + ")";
 
 		context.fillText(text, x_pos, y_pos);
 
