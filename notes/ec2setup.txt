@@ -206,3 +206,25 @@ yum install mod24_ssl
 
 service httpd restart
 
+ALTER TABLE users ADD COLUMN Points INT DEFAULT 0;
+
+CREATE TABLE pos (ID VARCHAR(64), Full VARCHAR(256));
+
+INSERT INTO pos (Code, Full) VALUES ('det', 'determiner');
+INSERT INTO pos (Code, Full) VALUES ('adv', 'adverb');
+INSERT INTO pos (Code, Full) VALUES ('v', 'verb');
+INSERT INTO pos (Code, Full) VALUES ('n', 'noun');
+INSERT INTO pos (Code, Full) VALUES ('adj', 'adjective');
+INSERT INTO pos (Code, Full) VALUES ('prep', 'preposition');
+INSERT INTO pos (Code, Full) VALUES ('conj', 'conjunction');
+INSERT INTO pos (Code, Full) VALUES ('interj', 'interjection');
+INSERT INTO pos (Code, Full) VALUES ('u', 'u');
+INSERT INTO pos (Code, Full) VALUES ('det.pron', 'det.pron');
+INSERT INTO pos (Code, Full) VALUES ('pron.pers', 'personal pronoun');
+INSERT INTO pos (Code, Full) VALUES ('n.prop', 'proper noun');
+INSERT INTO pos (Code, Full) VALUES ('num', 'cardinal number');
+INSERT INTO pos (Code, Full) VALUES ('neg', 'neg');
+INSERT INTO pos (Code, Full) VALUES ('ex', 'ex');
+INSERT INTO pos (Code, Full) VALUES ('infinitive marke', 'infinitive marker');
+
+CREATE TABLE pos (ID INT auto_increment, Code VARCHAR(64), Full VARCHAR(64), PRIMARY KEY (ID), FOREIGN KEY (Code) REFERENCES rankedwords(PartOfSpeech));

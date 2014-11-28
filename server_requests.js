@@ -35,7 +35,7 @@ function get_ranked() {
 
             clear_definitions();
             wordID = results_array[0].ID;
-            set_word(results_array[0].Word, results_array[0].PartOfSpeech, results_array[0].UserID);
+            set_word(results_array[0].Word, results_array[0].Full, results_array[0].UserID);
 
             for(var i = 0; i < results_array.length; i++) {
                 if(results_array[i].Definition != undefined) {
@@ -84,6 +84,25 @@ function check_user(response) {
     }
     var noCache = new Date().getTime();
     xmlhttp.open("GET","check_user.php?userID=" + response.id + "&noCache=" + "noCache", true);
+    xmlhttp.send();
+}
+
+function get_user_stats() {
+    var xmlhttp;
+    if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+    }
+    else {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function() {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+            var results_array = JSON.parse(xmlhttp.responseText);
+            //set_profile_data(results_array[0].Points);
+            document.getElementById("profile_votes").innerHTML = xmlhttp.responseText;
+        }
+    }
+    xmlhttp.open("GET","get_profile.php?userID=" + userID, true);
     xmlhttp.send();
 }
 

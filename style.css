@@ -19,6 +19,35 @@ body {
 	background-image: url('media/kikoi.jpg');
 }
 
+#entry {
+	height:40px;
+	width:710px;
+	padding:20px;
+	/*font-size: 30px;*/
+	color: #af0800;
+	background:white;
+	/*text-align:left;*/
+	/*background: url('media/nav-back.png');*/
+}
+
+#word {
+   	/*display: table-cell;
+   	text-align: bottom;*/
+	font-size: 30px;
+	float:left;
+	margin-right:0.5em;
+	text-transform:capitalize;
+}
+
+#pos {
+   	/*display: table-cell;
+   	text-align: bottom;*/
+	float:left;
+	font-size:30px;
+	color:gray;
+	font-style: italic;
+}
+
 #portal {
 	width: 930px;
 	height: 550px;
@@ -26,6 +55,7 @@ body {
 	margin: 20px;
 	display: inline-block;
 	background-color: gray;
+	background-image: url("media/block-back.jpg");
 }
 
 #welcome {
@@ -44,7 +74,7 @@ body {
 #insert, #about, #profile {
 	width: 100%;
 	height: 100%;
-	background-color: #F5F5F5;
+	/*background-color: #F5F5F5;*/
 	text-align:center;
 	display:none;
 }
@@ -53,7 +83,7 @@ body {
 	height:410px;
 	width:890px;
 	padding:20px;
-	background-color: #F5F5F5;
+	/*background-color: #F5F5F5;*/
 	float:left;
 }
 
@@ -61,7 +91,7 @@ body {
 	height:100px;
 	width:930px;
 	float:left;
-	background-color: #F5F5F5;
+	/*background-color: #F5F5F5;*/
 	text-align:left;
 }
 
@@ -107,16 +137,18 @@ body {
 	width:750px;
 	padding:20px;
 	/*background: url('media/kikoi1.jpg');*/
-	background-color: #F5F5F5;
+	/*background-color: #F5F5F5;*/
 	float:left;
 	/*overflow: scroll;*/
+	/*background-image: url("media/block-back.jpg");*/
 }
 
 #gamezone-footer {
 	height:100px;
 	width:790px;
 	float:left;
-	background-color: #F5F5F5;
+	/*background-color: #F5F5F5;*/
+	/*background-image: url("media/block-back.jpg");*/
 }
 
 #footer-greeting {
@@ -131,18 +163,6 @@ body {
 	float:left;
 	height:100px;
 	width:200px;
-}
-
-#entry {
-	height:40px;
-	width:710px;
-	padding:20px;
-	font-size: 30px;
-	color: #af0800;
-	background:white;
-	text-align:left;
-	text-transform:capitalize;
-	/*background: url('media/nav-back.png');*/
 }
 
 #definitions_wrapper {	
@@ -202,8 +222,8 @@ tr:nth-of-type(even) {
 	/*Element not clickable when hidden*/
 	visibility:hidden;
 	position: absolute;
-	top: 211px;
-	left: 401px;
+/*	top: 211px;
+	left: 401px;*/
 	-moz-opacity: 0;
 	opacity: 0;
 }
@@ -212,15 +232,35 @@ tr:nth-of-type(even) {
 	cursor:pointer;
 	visibility:visible;
 	position: absolute;
-	top: 211px;
-	left: 401px;
+	/*	top: 211px;
+	left: 401px;*/
 	-webkit-transition: all 3s ease;
   	-moz-transition: all 3s ease;
   	-ms-transition: all 3s ease;
   	-o-transition: all 3s ease;
   	transition: all 3s ease;
-  	-moz-opacity: 1;
+  	-moz-opacity: 0.5;
 	opacity: 0.5;
+}
+
+#enter1 {
+	top: 211px;
+	left: 347px;
+}
+
+#enter2 {
+	top: 211px;
+	left: 475px;
+}
+
+#enter1:hover {
+	transform: scale(1.05);
+	opacity:1;
+}
+
+#enter2:hover {
+	transform: scale(1.05);
+	opacity:1;
 }
 
 /*.animateenter:hover {

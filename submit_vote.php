@@ -30,9 +30,12 @@ $results_array = $result->fetch_assoc();
 $user_id = $results_array["UserID"];
 $votes = $results_array["Votes"];
 
-echo $votes;
-
 if($votes == 1 && $user_id != 'wordnet') {
+	$sql = 	"UPDATE users " .
+			"SET Points = Points + 1 " . 
+			"WHERE UserID = '" . $user_id . "';";
+	$query = mysqli_query($con, $sql);
+
 	send_notification($user_id);
 }
 

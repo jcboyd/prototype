@@ -10,7 +10,7 @@ if (!$con) {
 	die('Could not connect: ' . mysqli_error($con));
 }
 
-$sql =	"SELECT sq.ID, sq.Word, sq.PartOfSpeech, d.DefinitionID, d.Definition, d.UserID, d.Votes FROM (" . 
+$sql =	"SELECT sq.ID, sq.Word, p.Full, d.DefinitionID, d.Definition, d.UserID, d.Votes FROM (" . 
 		"SELECT * FROM rankedwords " . 
 		"WHERE Rank BETWEEN 1 and 100 " .
 		"ORDER BY RAND() LIMIT 1" .
@@ -18,6 +18,7 @@ $sql =	"SELECT sq.ID, sq.Word, sq.PartOfSpeech, d.DefinitionID, d.Definition, d.
 		"LEFT JOIN " .
 		"definitions As d " .
 		"ON sq.ID = d.WordID " .
+		"LEFT JOIN pos As p ON sq.PartOfSpeech = p.Code " .
 		"ORDER BY d.Votes;";
 
 $result = mysqli_query($con, $sql);

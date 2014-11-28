@@ -10,20 +10,22 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<div id="main">
+	<div id="main" ng-app ng-controller="InlineEditorController" ng-click="hideTooltip()">
 		<div id="portal">
 			<div id="welcome">
 				<canvas id="animation" width="930" height="550">Your browser doesn't support HTML5.</canvas>
 				<img id="logo" src="media/logo.png" onmousedown="animate_logo();">
-				<img id="enter" class="shaded_enter" src="media/xbox.png" onmousedown="enter_game();">
+				<img id="enter1" class="shaded_enter" src="media/book.png" onmousedown="enter_game();">
+				<img id="enter2" class="shaded_enter" src="media/quill.png" onmousedown="enter_game();">
 			</div>
 			<div id="game">
 				<div id="gamezone">
 					<div id="gamezone-main">
 						<div id="entry">
-							<p id="word">-</p>
+							<p id="word"></p>
+							<p id="pos"></p>
 						</div>
-						<div id="definitions_wrapper" ng-app ng-controller="InlineEditorController" ng-click="hideTooltip()">
+						<div id="definitions_wrapper">
 							<!-- This is the tooltip. It is shown only when the showtooltip variable is truthful -->
 							<div class="input_tool" ng-click="$event.stopPropagation()" ng-show="showtooltip">
 
@@ -48,7 +50,7 @@
 							</span>
 						</div>
 						<div id="footer-next">
-							<img id="add_delete" class="control" src="media/add.png" onclick="playClick();add_user_definition()">
+							<img id="add_delete" class="control" src="media/add.png" ng-click="clear($event)" onclick="playClick();add_user_definition()">
 							<img id="next" class="control" src="media/rightarrow.png" onclick="playClick();vote();get_ranked();">
 						</div>
 					</div>
@@ -61,7 +63,7 @@
 					<img id="gossip" class="control" src="media/balloon.png" onclick="playClick();share();">
 					<img id="shield" class="control" src="media/shield.png" onclick="playClick();request();">
 					<img id="information" class="control" src="media/info.png" onclick="playClick();display_about();">
-					<img id="auction" class="control" src="media/auction.png" onclick="playClick();display_definition_window();">
+					<img id="auction" class="control" src="media/home.png" onclick="playClick();display_welcome();">
 				</div>
 			</div>
 			<div id="about">
@@ -75,18 +77,19 @@
 					<img class="control" src="media/leftarrow.png" onclick="playClick();return_to_game();">
 				</div>
 			</div>
-			<div id="insert">
+			<!-- <div id="insert">
 				<div id="insert-main">
-					<!-- <textarea ng-click="active=''" id="definition" type="text" class="inputs" placeholder="Write a new definition here!"></textarea>
-					<a href="#" class="myButton" onmousedown="submit_definition()">Submit</a> -->
+					<textarea ng-click="active=''" id="definition" type="text" class="inputs" placeholder="Write a new definition here!"></textarea>
+					<a href="#" class="myButton" onmousedown="submit_definition()">Submit</a>
 				</div>
 				<div id="insert-footer">
 					<img class="control" src="media/leftarrow.png" onclick="playClick();return_to_game();">
 				</div>
-			</div>
+			</div> -->
 			<div id="profile">
 				<div id="profile-main">
 					<span><img id="profile_avatar" src="" width="50"></span>
+					<p id="profile_votes"></p>
 				</div>
 				<div id="profile-footer">
 					<img class="control" src="media/leftarrow.png" onclick="playClick();return_to_game();">
