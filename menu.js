@@ -8,7 +8,7 @@ function InlineEditorController($scope){
 	// variables. Here we set some default values:
 
 	$scope.showtooltip = false;
-	$scope.value = '✎ I can do better!';
+	$scope.value = '✎ I can write a great definition!';
 
 	// Some helper functions that will be
 	// available in the angular declarations
