@@ -6,6 +6,8 @@ var height = canvas.height; //550;
 var animationID = -1;
 var opacity_delta = 5;
 var colours = [{r:235, g:166, b:52}, {r:128, g:128, b:128}];
+var min_opacity = -500;
+var max_opacity = 700;
 
 var symbols = 	["قاموس", "ਕੋਸ਼", "字典", "речник", "orðabók", "מילון",
 "tự điển", "kamus", "isichazamazwi", "k'amus", "maanatiira", "rimayqillqa",
@@ -60,10 +62,10 @@ function Symbol(symbol_text, x, y, opacity, colour) {
 	var delta = opacity_delta;
 
 	this.draw = function () {
-		if((opacity == 1000 && delta > 0) || (opacity == -500 && delta < 0))
+		if((opacity == max_opacity && delta > 0) || (opacity == min_opacity && delta < 0))
 			delta = -delta;
 
-		if(opacity == -500) {
+		if(opacity == min_opacity) {
 			x_pos = Math.random() * width;
 			y_pos = Math.random() * height;
 			colour = (colour + 1) % 2;
@@ -71,7 +73,7 @@ function Symbol(symbol_text, x, y, opacity, colour) {
 
 		opacity += delta;
 
-		context.font = "30px Tahoma";
+		context.font = "30px 'Courier'";
 		context.fillStyle = "rgba(" + colours[colour].r + "," + 
 			colours[colour].g + "," + colours[colour].b + "," + opacity/1000.0 + ")";
 		context.fillText(text, x_pos, y_pos);
