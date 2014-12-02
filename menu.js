@@ -1,6 +1,9 @@
 // The controller is a regular JavaScript function. It is called
 // once when AngularJS runs into the ng-controller declaration.
 
+var default_value = '✎ I can write a great definition!';
+var min_length = 4;
+
 function InlineEditorController($scope){
 
 	// $scope is a special object that makes
@@ -8,7 +11,7 @@ function InlineEditorController($scope){
 	// variables. Here we set some default values:
 
 	$scope.showtooltip = false;
-	$scope.value = '✎ I can write a great definition!';
+	$scope.value = default_value;
 
 	// Some helper functions that will be
 	// available in the angular declarations
@@ -23,15 +26,22 @@ function InlineEditorController($scope){
 
 	$scope.toggleTooltip = function(e){
 		e.stopPropagation();
+
 		$scope.showtooltip = !$scope.showtooltip;
-		if(! $scope.showtooltip) {
-			$scope.value = '✎ I can do better!';
+		
+		if($scope.showtooltip) {
+			// $scope.value = '✎ I can write a great definition!';
+			remove_active();
+			document.getElementById("user_definition").className = "active_definition";
+		}
+		else {
+			document.getElementById("user_definition").className = "inactive_definition";
 		}
 	}
 
 	$scope.clear = function(e) {
 		e.stopPropagation();
-		$scope.value = '✎ I can do better!';
+		$scope.value = '✎ I can write a great definition!';
 	}
 }
 
@@ -50,18 +60,22 @@ function delete_user_definition() {
 	// var ul = document.getElementById("definitions");
 	// var li = document.getElementById("user_definition");
 	// ul.removeChild(li);
-	document.getElementById("add_delete").src = "media/add.png";
-	document.getElementById("add_delete").onclick = add_user_definition;
-	document.getElementById("user_definition").style.display = "none";
+	// document.getElementById("add_delete").src = "media/add.png";
+	// document.getElementById("add_delete").onclick = add_user_definition;
+	// document.getElementById("user_definition").style.display = "none";
 	// document.getElementById("input_tool_box").value = "";
+}
+
+function initialise() {
+	get_ranked();
+	get_user_stats();
+	get_user_trophies();
 }
 
 function enter_game() {
 	document.getElementById("welcome").style.display = "none";
 	document.getElementById("game").style.display = "inline-block";
 	pause_animation();
-	get_ranked();
-	get_user_stats();
 }
 
 function display_about() {
@@ -110,7 +124,7 @@ function set_avatar(userID) {
     document.getElementById("profile_avatar").src = "https://graph.facebook.com/" + userID + "/picture";
 }
 
-function set_profile_data(points) {
+function set_profile_data(userID, points) {
 	document.getElementById("profile_votes").innerHTML = "Points: " + points;
 }
 
@@ -154,10 +168,11 @@ function add_definition(id, definition) {
 }
 
 function vote() {
-	if(document.getElementById("input_tool_box").value != '✎ I can do better!') {
-		submit_definition(document.getElementById("input_tool_box").value);
-	}
+	var user_definition = document.getElementById("input_tool_box").value;
 	if(definitionID != -1) {
 		submit_vote(definitionID, 1);
+	}
+	else if(user_definition != default_value && user_definition.length >= min_length) {
+		submit_definition(document.getElementById("input_tool_box").value);
 	}
 }

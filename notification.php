@@ -35,7 +35,7 @@ use Facebook\FacebookAuthorizationException;
 use Facebook\GraphObject;
 use Facebook\GraphSessionInfo;
 
-function send_notification($user_id) {
+function send_notification($user_id, $word_id) {
 	$user = 'root';
 	$pass = '';
 	$db = 'kamusi';
@@ -55,6 +55,14 @@ function send_notification($user_id) {
 	//These must be retrieved from the database
 	$app_id = $results_array["app_id"];
 	$app_secret = $results_array["app_secret"];
+
+	$sql = 	"SELECT Word FROM rankedwords " .
+			"WHERE ID='" . $word_id . "';";
+	$result = mysqli_query($con, $sql);
+
+	$results_array = $result->fetch_assoc();
+
+	$word = $results_array["Word"];
 
 	FacebookSession::setDefaultApplication($app_id, $app_secret);
 
@@ -84,7 +92,7 @@ function send_notification($user_id) {
 		'/' . $user_id . '/notifications',
 		array (
 	    	'href' => '',
-	    	'template' => 'Your definition has been voted best!',
+	    	'template' => "Your definition for '" . $word . "' has been voted best!",
 	  	)
 	);
 

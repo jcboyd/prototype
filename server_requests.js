@@ -45,7 +45,7 @@ function get_ranked() {
             definitionID = -1;
         }
     }
-    xmlhttp.open("GET","get_ranked.php", true);
+    xmlhttp.open("GET","get_ranked.php?userID=" + userID, true);
     xmlhttp.send();
 }
 
@@ -97,12 +97,35 @@ function get_user_stats() {
     }
     xmlhttp.onreadystatechange=function() {
         if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-            var results_array = JSON.parse(xmlhttp.responseText);
-            //set_profile_data(results_array[0].Points);
-            document.getElementById("profile_votes").innerHTML = xmlhttp.responseText;
+            var obj = JSON.parse(xmlhttp.responseText);
+            set_profile_data(obj.UserID, obj.Points);
         }
     }
     xmlhttp.open("GET","get_profile.php?userID=" + userID, true);
+    xmlhttp.send();
+}
+
+function get_user_trophies() {
+    var xmlhttp;
+    if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+    }
+    else {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function() {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+            var results_array = JSON.parse(xmlhttp.responseText);
+            document.getElementById("profile_trophies").innerHTML = xmlhttp.responseText;
+
+            // for(var i = 0; i < results_array.length; i++) {
+            //     if(results_array[i].Definition != undefined) {
+            //         add_definition(results_array[i].DefinitionID, results_array[i].Definition);
+            //     }
+            // }
+        }
+    }
+    xmlhttp.open("GET","get_trophies.php?userID=" + userID, true);
     xmlhttp.send();
 }
 
@@ -115,6 +138,6 @@ function submit_vote(definition_id, vote) {
         xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
     }
 
-    xmlhttp.open("GET","submit_vote.php?definitionID=" + definition_id + "&vote=" + vote, true);
+    xmlhttp.open("GET","submit_vote.php?wordID=" + wordID + "&definitionID=" + definition_id + "&vote=" + vote, true);
     xmlhttp.send();
 }

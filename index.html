@@ -9,7 +9,7 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
 	<link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body onload="initialise();">
 	<div id="main" ng-app ng-controller="InlineEditorController" ng-click="hideTooltip()">
 		<div id="portal">
 			<div id="welcome">
@@ -28,14 +28,13 @@
 						<div id="definitions_wrapper">
 							<!-- This is the tooltip. It is shown only when the showtooltip variable is truthful -->
 							<div class="input_tool" ng-click="$event.stopPropagation()" ng-show="showtooltip">
-
 								<!-- ng-model binds the contents of the text field with the "value" model.
 								 Any changes to the text field will automatically update the value, and
 								 all other bindings on the page that depend on it.  -->
 								<input id="input_tool_box" type="text" ng-model="value"/>
 							</div>
 							<ul id="definitions">
-								<li ng-click="toggleTooltip($event)" id="user_definition" class="active_definition">{{value}}</li>
+								<li ng-click="toggleTooltip($event)" id="user_definition" class="inactive_definition">{{value}}</li>
 							</ul>
 						</div>
 					</div>
@@ -50,8 +49,8 @@
 							</span>
 						</div>
 						<div id="footer-next">
-							<img id="add_delete" class="control" src="media/add.png" ng-click="clear($event)" onclick="playClick();add_user_definition()">
-							<img id="next" class="control" src="media/rightarrow.png" onclick="playClick();vote();get_ranked();">
+							<!-- <img id="add_delete" class="control" src="media/add.png" ng-click="clear($event)" onclick="playClick();add_user_definition()"> -->
+							<img id="next" ng-click="clear($event)" class="control" src="media/rightarrow.png" onclick="playClick();vote();get_ranked();">
 						</div>
 					</div>
 				</div>
@@ -68,17 +67,29 @@
 			</div>
 			<div id="about">
 				<div id="about-main">
-					<h2>About</h2>
-					<p>
-					The Kamusi Project is a participatory international effort dedicated to improving knowledge of the world's languages. Our long term mission is to produce dictionaries and other language resources for every language, and to make those resources available for free to everyone.
-					</p>
-					<a href="http://kamusi.org/">https://www.youtube.com/watch?v=aaqOQQOYuHA</a>
-					</br>
-					<h2>How to write a great definition:</h2>
-					<p>
-					Definitions are explanations of what a word means. They are not single words (those are synonyms). You can usually use a definition instead of the actual word. Stick to these rules: Short and sweet: A definition should be as brief as possible to explain the concept, but long enough to describe it fully. If the same word has different meanings, those are different concepts with different definitions- a definition in Kamusi only explains *one* concept. Easy does it: Use the simplest words you can -definitions should not force readers to jump around the dictionary more, unless technical terms are absolutely necessary. No circles: Definitions should NOT contain the word that is being defined, nor its close relatives. "Happiness" is "A feeling of joy.", not "The feeling of being happy."Definitions should not be circular - we cannot now say "joy" is "A feeling of happiness." No fluff: Do not start with "A term meaning", or "This is a", or "X refers to", etc. Style: Begin with a Capital letter and end with a period. For more information, you can watch this video.
-					</p>
-					<a href="https://www.youtube.com/watch?v=aaqOQQOYuHA">https://www.youtube.com/watch?v=aaqOQQOYuHA</a>
+					<div id="about-data">
+						<h2>About</h2>
+						<p>
+						The Kamusi Project (<a href="http://kamusi.org/">http://kamusi.org/</a>) is a participatory international effort dedicated to improving knowledge of the world's languages. Our long term mission is to produce dictionaries and other language resources for every language, and to make those resources available for free to everyone.
+						</p>
+						</br>
+						<h2>How to write a great definition</h2>
+						<p>
+						Definitions are explanations of what a word means. They are not single words (those are synonyms). You can usually use a definition instead of the actual word. Stick to these rules:
+						</p>
+						<ul>
+							<li> Short and sweet: A definition should be as brief as possible to explain the concept, but long enough to describe it fully. If the same word has different meanings, those are different concepts with different definitions- a definition in Kamusi only explains *one* concept.
+							</li>
+							<li> Easy does it: Use the simplest words you can -definitions should not force readers to jump around the dictionary more, unless technical terms are absolutely necessary.
+							</li>
+							<li> No circles: Definitions should NOT contain the word that is being defined, nor its close relatives. "Happiness" is "A feeling of joy.", not "The feeling of being happy." Definitions should not be circular - we cannot now say "joy" is "A feeling of happiness."
+							</li>
+							<li> No fluff: Do not start with "A term meaning", or "This is a", or "X refers to", etc. Style: Begin with a Capital letter and end with a period.
+							</li>
+						</ul>
+						</br>
+						For more information, you can watch this video: <a href="https://www.youtube.com/watch?v=aaqOQQOYuHA">https://www.youtube.com/watch?v=aaqOQQOYuHA</a>
+					</div>
 				</div>
 				<div id="about-footer">
 					<img class="control" src="media/leftarrow.png" onclick="playClick();return_to_game();">
@@ -95,8 +106,12 @@
 			</div> -->
 			<div id="profile">
 				<div id="profile-main">
-					<span><img id="profile_avatar" src="" width="50"></span>
-					<p id="profile_votes"></p>
+					<div id="profile-data">
+						<span><img id="profile_avatar" src="" width="50"></span>
+						<p id="profile_name"></p>
+						<p id="profile_votes"></p>
+						<p id="profile_trophies"></p>
+					</div>
 				</div>
 				<div id="profile-footer">
 					<img class="control" src="media/leftarrow.png" onclick="playClick();return_to_game();">

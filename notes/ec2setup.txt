@@ -228,3 +228,12 @@ INSERT INTO pos (Code, Full) VALUES ('ex', 'ex');
 INSERT INTO pos (Code, Full) VALUES ('infinitive marke', 'infinitive marker');
 
 CREATE TABLE pos (ID INT auto_increment, Code VARCHAR(64), Full VARCHAR(64), PRIMARY KEY (ID), FOREIGN KEY (Code) REFERENCES rankedwords(PartOfSpeech));
+
+
+
+ALTER TABLE users ADD COLUMN Rating INT DEFAULT 0;
+ALTER TABLE users ADD COLUMN Position INT DEFAULT 1;
+
+ALTER TABLE rankedwords ADD COLUMN Consensus TINYINT(1) DEFAULT 0;
+
+

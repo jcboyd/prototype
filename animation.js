@@ -12,7 +12,7 @@ var max_opacity = 700;
 var symbols = 	["قاموس", "ਕੋਸ਼", "字典", "речник", "orðabók", "מילון",
 "tự điển", "kamus", "isichazamazwi", "k'amus", "maanatiira", "rimayqillqa",
 "geiriadur", "ວັດຈະນານຸກົມ", "அகராதி", "शब्दकोश", "слоўнік", "dictionnaire",
-"qaamuus", "lexicon", "ლექსიკონი"];
+"qaamuus", "lexicon", "ლექსიკონი", "dicționar"];
 
 var symbol_objects = new Array();
 
@@ -54,7 +54,7 @@ function animation() {
 }
 
 function clear_canvas() {
-	context.clearRect(0, 0, canvas.width, canvas.height);
+	context.clearRect(0, 0, width, height);
 }
 
 function Symbol(symbol_text, x, y, opacity, colour) {
