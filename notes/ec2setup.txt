@@ -236,4 +236,10 @@ ALTER TABLE users ADD COLUMN Position INT DEFAULT 1;
 
 ALTER TABLE rankedwords ADD COLUMN Consensus TINYINT(1) DEFAULT 0;
 
+[AT SOME POINT THE SERVER WENT DOWN (WEB SITE WAS UNREACHABLE) THOUGH THE NODE WAS STILL ACTIVE]
+
+[ec2-user@ip-172-31-16-173 html]$ sudo /etc/init.d/httpd restart
+Stopping httpd:                                            [FAILED]
+Starting httpd:                                            [  OK  ]
+
 

@@ -1,6 +1,6 @@
 <?php
 
-$userID = 1479788208970002;// $_GET['userID'];
+$userID = $_GET['userID'];
 
 $user = 'root';
 $pass = '';
@@ -38,7 +38,7 @@ $sql =	"SELECT sq.ID, sq.Word, p.Full, d.DefinitionID, d.Definition, d.UserID, d
 		"LEFT JOIN pos As p ON sq.PartOfSpeech = p.Code " .
 		"ORDER BY d.Votes " .
 		"LIMIT 5;";
-
+		
 $result = mysqli_query($con, $sql);
 
 $results_array = array();

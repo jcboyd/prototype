@@ -22,6 +22,10 @@ function InlineEditorController($scope){
 		// updated by by AngularJS. In this case it will hide the tooltip.
 
 		$scope.showtooltip = false;
+		if ($scope.value == '') {
+			$scope.value = default_value;
+			document.getElementById("user_definition").className = "inactive_definition";
+		}
 	}
 
 	$scope.toggleTooltip = function(e){
@@ -33,15 +37,24 @@ function InlineEditorController($scope){
 			// $scope.value = '✎ I can write a great definition!';
 			remove_active();
 			document.getElementById("user_definition").className = "active_definition";
+			if($scope.value == default_value) {
+				$scope.value = '';
+
+			}
+			// document.getElementById("input_tool_box").focus();
+        	document.getElementById("input_tool_box").disable = 'false';
 		}
 		else {
-			document.getElementById("user_definition").className = "inactive_definition";
+			if ($scope.value == '') {
+				$scope.value = default_value;
+				document.getElementById("user_definition").className = "inactive_definition";
+			}
 		}
 	}
 
 	$scope.clear = function(e) {
 		e.stopPropagation();
-		$scope.value = '✎ I can write a great definition!';
+		$scope.value = default_value;
 	}
 }
 
