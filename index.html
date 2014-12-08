@@ -33,9 +33,16 @@
 								 all other bindings on the page that depend on it.  -->
 								<input id="input_tool_box" type="text" ng-model="value"/>
 							</div>
-							<ul id="definitions">
+							<!-- <ul id="definitions">
 								<li ng-click="toggleTooltip($event)" id="user_definition" class="inactive_definition">{{value}}</li>
-							</ul>
+							</ul> -->
+							<table id="definitions">
+								<tr>
+									<td>
+										<li ng-click="toggleTooltip($event)" id="user_definition" class="inactive_definition">{{value}}</li>
+									</td>
+								</tr>
+							</table>
 						</div>
 					</div>
 					<div id="gamezone-footer">
@@ -102,7 +109,7 @@
 				</div>
 				<div id="insert-footer">
 					<img class="control" src="media/leftarrow.png" onclick="playClick();return_to_game();">
-				</div>
+				</dd
 			</div> -->
 			<div id="profile">
 				<div id="profile-main">

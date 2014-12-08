@@ -141,3 +141,16 @@ function submit_vote(definition_id, vote) {
     xmlhttp.open("GET","submit_vote.php?wordID=" + wordID + "&definitionID=" + definition_id + "&vote=" + vote, true);
     xmlhttp.send();
 }
+
+function report_spam(definition_id) {
+    var xmlhttp;
+    if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+    }
+    else {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    xmlhttp.open("GET","report_spam.php?wordID=" + wordID + "&definitionID=" + definition_id + "&user=" + userID, true);
+    xmlhttp.send();
+}

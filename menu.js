@@ -164,8 +164,22 @@ function add_definition(id, definition) {
 	var ul = document.getElementById("definitions");
 	var li = document.createElement("li");
 	li.classList.add("inactive_definition");
-	li.innerHTML = definition;
-	li.onmousedown = (function(id_num) {
+	var div_main = document.createElement("div");
+	div_main.classList.add("button_div_main");
+	var div_footer = document.createElement("div");
+	div_footer.classList.add("button_div_footer");
+	div_main.innerHTML = definition;
+	var img1 = document.createElement("img");
+	img1.src = 'media/up.png';
+	img1.classList.add('vote_button');
+	var img2 = document.createElement("img");
+	img2.src = 'media/down.png';
+	img2.classList.add('vote_button');
+	div_footer.appendChild(img1);
+	div_footer.appendChild(img2);
+
+	// li.innerHTML = definition;
+	img1.onmousedown = (function(id_num) {
 		return function () {
 			definitionID = id_num;
 			if (this.className == "active_definition") {
@@ -177,8 +191,47 @@ function add_definition(id, definition) {
 			}
 		};
 	})(id);
+
+	img2.onmousedown = (function(id_num) {
+		return function () {
+			definitionID = id_num;
+			report_spam(definitionID);
+		};
+	})(id);
+
+	li.appendChild(div_main);
+	li.appendChild(div_footer);
 	ul.appendChild(li);
 }
+
+// function clear_definitions() {
+// 	var table = document.getElementById("definitions");
+// 	while (table.rows[1]) {
+// 		table.rows[1].
+// 		table.deleteRow(1);
+// 	}
+// }
+
+// function add_definition(id, definition) {
+// 	var table = document.getElementById("definitions");
+// 	var row = table.insertRow(0);
+// 	var cell1 = row.insertCell(0);
+// 	var cell2 = row.insertCell(1);
+// 	cell1.classList.add("left_cell");
+// 	cell2.classList.add("right_cell");
+// 	cell1.innerHTML = definition;
+// 	var img1 = document.createElement("img");
+// 	img1.src = 'media/up.png';
+// 	img1.classList.add('vote_button');
+// 	var img2 = document.createElement("img");
+// 	img2.src = 'media/down.png';
+// 	img2.classList.add('vote_button');
+// 	//NOTE THIS PROBABLY CAUSES A MEMORY LEAK - TO BE REVIEWED
+// 	img1.onclick = (function(definition_id) { return function() { vote(definition_id, 1); playClick(); }; })(id);
+// 	img2.onclick = (function(definition_id) { return function() { vote(definition_id, -1); playClick(); }; })(id);
+// 	cell2.appendChild(img1);
+// 	cell2.appendChild(img2);
+// }
 
 function vote() {
 	var user_definition = document.getElementById("input_tool_box").value;

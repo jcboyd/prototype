@@ -243,3 +243,5 @@ Stopping httpd:                                            [FAILED]
 Starting httpd:                                            [  OK  ]
 
 
+
+CREATE TABLE admin (Alias VARCHAR(64), Email VARCHAR(256));
