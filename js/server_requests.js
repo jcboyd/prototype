@@ -17,7 +17,7 @@ function get_random() {
             document.getElementById("definition").innerHTML = obj.Definition;
         }
     }
-    xmlhttp.open("GET","get_random.php", true);
+    xmlhttp.open("GET","php/get_random.php", true);
     xmlhttp.send();
 }
 
@@ -45,7 +45,7 @@ function get_ranked() {
             definitionID = -1;
         }
     }
-    xmlhttp.open("GET","get_ranked.php?userID=" + userID, true);
+    xmlhttp.open("GET","php/get_ranked.php?userID=" + userID, true);
     xmlhttp.send();
 }
 
@@ -57,7 +57,7 @@ function submit_definition(definition) {
     else {// code for IE6, IE5
         xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
     }
-    xmlhttp.open("GET","submit_definition.php?wordID=" + wordID + "&definition=" + definition + "&userID=" + userID, true);
+    xmlhttp.open("GET","php/submit_definition.php?wordID=" + wordID + "&definition=" + definition + "&userID=" + userID, true);
     xmlhttp.send();
 }
 
@@ -83,7 +83,7 @@ function check_user(response) {
         set_avatar(userID);
     }
     var noCache = new Date().getTime();
-    xmlhttp.open("GET","check_user.php?userID=" + response.id + "&noCache=" + "noCache", true);
+    xmlhttp.open("GET","php/check_user.php?userID=" + response.id + "&noCache=" + "noCache", true);
     xmlhttp.send();
 }
 
@@ -101,7 +101,7 @@ function get_user_stats() {
             set_profile_data(obj.UserID, obj.Points);
         }
     }
-    xmlhttp.open("GET","get_profile.php?userID=" + userID, true);
+    xmlhttp.open("GET","php/get_profile.php?userID=" + userID, true);
     xmlhttp.send();
 }
 
@@ -125,7 +125,7 @@ function get_user_trophies() {
             // }
         }
     }
-    xmlhttp.open("GET","get_trophies.php?userID=" + userID, true);
+    xmlhttp.open("GET","php/get_trophies.php?userID=" + userID, true);
     xmlhttp.send();
 }
 
@@ -138,7 +138,7 @@ function submit_vote(definition_id, vote) {
         xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
     }
 
-    xmlhttp.open("GET","submit_vote.php?wordID=" + wordID + "&definitionID=" + definition_id + "&vote=" + vote, true);
+    xmlhttp.open("GET","php/submit_vote.php?wordID=" + wordID + "&definitionID=" + definition_id + "&vote=" + vote, true);
     xmlhttp.send();
 }
 
@@ -151,6 +151,6 @@ function report_spam(definition_id) {
         xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
     }
 
-    xmlhttp.open("GET","report_spam.php?wordID=" + wordID + "&definitionID=" + definition_id + "&user=" + userID, true);
+    xmlhttp.open("GET","php/report_spam.php?wordID=" + wordID + "&definitionID=" + definition_id + "&user=" + userID, true);
     xmlhttp.send();
 }
