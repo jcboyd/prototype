@@ -23,8 +23,6 @@ a a:hover, a:visited, a:link, a:active {
 	text-align:right;
 }
 
-
-
 .about_main {
 	text-align:justify;
 }
@@ -377,6 +375,7 @@ a a:hover, a:visited, a:link, a:active {
 	background:white;
 	text-align:left;
 	font-size: 20px;
+	border-spacing:0;
 }
 
 .inactive_definition {
