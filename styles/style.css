@@ -19,7 +19,7 @@ a a:hover, a:visited, a:link, a:active {
 
 .button_div_footer {
 	width:670px;
-	height:34px;
+	height:20px;
 	text-align:right;
 }
 
@@ -364,6 +364,7 @@ a a:hover, a:visited, a:link, a:active {
 }*/
 
 #user_definition {
+	min-height:25px;
 	padding-bottom:20px;
 	/*display:none;*/
 }

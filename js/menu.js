@@ -170,16 +170,17 @@ function add_definition(id, definition) {
 	div_footer.classList.add("button_div_footer");
 	div_main.innerHTML = definition;
 	var img1 = document.createElement("img");
-	img1.src = 'media/up.png';
+	img1.src = 'media/exclamation.png';
 	img1.classList.add('vote_button');
-	var img2 = document.createElement("img");
-	img2.src = 'media/down.png';
-	img2.classList.add('vote_button');
+	img1.title = "Report spam";
+	// var img2 = document.createElement("img");
+	// img2.src = 'media/down.png';
+	// img2.classList.add('vote_button');
 	div_footer.appendChild(img1);
-	div_footer.appendChild(img2);
+	// div_footer.appendChild(img2);
 
 	// li.innerHTML = definition;
-	img1.onmousedown = (function(id_num) {
+	li.onmousedown = (function(id_num) {
 		return function () {
 			definitionID = id_num;
 			if (this.className == "active_definition") {
@@ -192,7 +193,7 @@ function add_definition(id, definition) {
 		};
 	})(id);
 
-	img2.onmousedown = (function(id_num) {
+	img1.onmousedown = (function(id_num) {
 		return function () {
 			definitionID = id_num;
 			report_spam(definitionID);

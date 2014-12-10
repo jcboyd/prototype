@@ -1,6 +1,7 @@
 <!DOCTYPE>
 <html>
 <head>
+	<title>Kamusi GAME</title>
 	<meta charset="UTF-8">
 	<script src="js/server_requests.js"></script>
 	<script src="js/login.js"></script>
@@ -57,7 +58,7 @@
 						</div>
 						<div id="footer-next">
 							<!-- <img id="add_delete" class="control" src="media/add.png" ng-click="clear($event)" onclick="playClick();add_user_definition()"> -->
-							<img id="next" ng-click="clear($event)" class="control" src="media/rightarrow.png" onclick="playClick();vote();get_ranked();">
+							<img title="Next" id="next" ng-click="clear($event)" class="control" src="media/rightarrow.png" onclick="playClick();vote();get_ranked();">
 						</div>
 					</div>
 				</div>
@@ -65,11 +66,11 @@
 					<div id="controlheader">
 						<img id="controltitle" src="media/banner.png">
 					</div>
-					<img id="user" class="control" src="media/user.png" onclick="playClick();display_profile();">
-					<img id="gossip" class="control" src="media/balloon.png" onclick="playClick();share();">
-					<img id="shield" class="control" src="media/shield.png" onclick="playClick();request();">
-					<img id="information" class="control" src="media/info.png" onclick="playClick();display_about();">
-					<img id="auction" class="control" src="media/home.png" onclick="playClick();display_welcome();">
+					<img title="Profile" id="user" class="control" src="media/user.png" onclick="playClick();display_profile();">
+					<img title="Invite" id="shield" class="control" src="media/invite.png" onclick="playClick();request();">
+					<img title="Share" id="gossip" class="control" src="media/balloon.png" onclick="playClick();share();">
+					<img title="Info" id="information" class="control" src="media/info.png" onclick="playClick();display_about();">
+					<img title="Home" id="auction" class="control" src="media/home.png" onclick="playClick();display_welcome();">
 				</div>
 			</div>
 			<div id="about">
@@ -99,18 +100,9 @@
 					</div>
 				</div>
 				<div id="about-footer">
-					<img class="control" src="media/leftarrow.png" onclick="playClick();return_to_game();">
+					<img title="Return" class="control" src="media/leftarrow.png" onclick="playClick();return_to_game();">
 				</div>
 			</div>
-			<!-- <div id="insert">
-				<div id="insert-main">
-					<textarea ng-click="active=''" id="definition" type="text" class="inputs" placeholder="Write a new definition here!"></textarea>
-					<a href="#" class="myButton" onmousedown="submit_definition()">Submit</a>
-				</div>
-				<div id="insert-footer">
-					<img class="control" src="media/leftarrow.png" onclick="playClick();return_to_game();">
-				</dd
-			</div> -->
 			<div id="profile">
 				<div id="profile-main">
 					<div id="profile-data">
@@ -121,7 +113,7 @@
 					</div>
 				</div>
 				<div id="profile-footer">
-					<img class="control" src="media/leftarrow.png" onclick="playClick();return_to_game();">
+					<img title="Return" class="control" src="media/leftarrow.png" onclick="playClick();return_to_game();">
 				</div>
 			</div>
 		</div>
