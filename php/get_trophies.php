@@ -1,6 +1,6 @@
 <?php
 
-$userID = $_GET['userID'];
+$userID = '1479788208970002'; // $_GET['userID'];
 
 $user = 'root';
 $pass = '';
@@ -19,10 +19,15 @@ $sql =  "SELECT u.UserID, u.Points, r.Word, d.Definition FROM " .
 		"ON r.ID=d.WordID " .
 		"WHERE u.UserID='" . $userID . "' AND d.Votes=1;";
 
-$query = mysqli_query($con, $sql);
-$profileData = mysqli_fetch_array($query);
+$result = mysqli_query($con, $sql);
 
-$jsonData = json_encode($profileData);
+$results_array = array();
+
+while ($row = $result->fetch_assoc()) {
+	$results_array[] = $row;
+}
+
+$jsonData = json_encode($results_array);
 echo $jsonData;
 
 ?>

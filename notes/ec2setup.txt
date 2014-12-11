@@ -245,3 +245,5 @@ Starting httpd:                                            [  OK  ]
 
 
 CREATE TABLE admin (Alias VARCHAR(64), Email VARCHAR(256));
+
+ALTER TABLE users ADD Notify INT DEFAULT 0;

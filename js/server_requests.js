@@ -74,9 +74,11 @@ function check_user(response) {
             obj = JSON.parse(xmlhttp.responseText);
             if(obj.CheckResult == 1) {
                 document.getElementById('greeting').innerHTML = 'Welcome back, ' + response.name + '!';
+                document.getElementById('profile_name').innerHTML = response.name;
             }
             else {
                 document.getElementById('greeting').innerHTML = 'Welcome, ' + response.name + '!';
+                document.getElementById('profile_name').innerHTML = response.name;
             }
         }
         userID = response.id;
@@ -98,7 +100,7 @@ function get_user_stats() {
     xmlhttp.onreadystatechange=function() {
         if (xmlhttp.readyState==4 && xmlhttp.status==200) {
             var obj = JSON.parse(xmlhttp.responseText);
-            set_profile_data(obj.UserID, obj.Points);
+            set_profile_data(obj.UserID, obj.Points, obj.Position, obj.Notify);
         }
     }
     xmlhttp.open("GET","php/get_profile.php?userID=" + userID, true);
@@ -116,13 +118,13 @@ function get_user_trophies() {
     xmlhttp.onreadystatechange=function() {
         if (xmlhttp.readyState==4 && xmlhttp.status==200) {
             var results_array = JSON.parse(xmlhttp.responseText);
-            document.getElementById("profile_trophies").innerHTML = xmlhttp.responseText;
-
-            // for(var i = 0; i < results_array.length; i++) {
-            //     if(results_array[i].Definition != undefined) {
-            //         add_definition(results_array[i].DefinitionID, results_array[i].Definition);
-            //     }
-            // }
+            if(results_array != undefined) {
+                for(var i = 0; i < results_array.length; i++) {
+                    if(results_array[i].Definition != undefined) {
+                        add_trophy(results_array[i].Word, results_array[i].Definition);
+                    }
+                }
+            }
         }
     }
     xmlhttp.open("GET","php/get_trophies.php?userID=" + userID, true);
@@ -151,6 +153,6 @@ function report_spam(definition_id) {
         xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
     }
 
-    xmlhttp.open("GET","php/report_spam.php?wordID=" + wordID + "&definitionID=" + definition_id + "&user=" + userID, true);
+    xmlhttp.open("GET","php/report_spam.php?wordID=" + wordID + "&definitionID=" + definition_id + "&userID=" + userID, true);
     xmlhttp.send();
 }

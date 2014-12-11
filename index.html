@@ -16,8 +16,8 @@
 			<div id="welcome">
 				<canvas id="animation" width="930" height="550">Your browser doesn't support HTML5.</canvas>
 				<img id="logo" src="media/logo.png" onmousedown="animate_logo();">
-				<img id="enter1" class="shaded_enter" src="media/book.png" onmousedown="enter_game();">
-				<img id="enter2" class="shaded_enter" src="media/quill.png" onmousedown="enter_game();">
+				<img id="enter1" class="shaded_enter" src="media/book.png" onmousedown="playClick();enter_game();">
+				<img id="enter2" class="shaded_enter" src="media/quill.png" onmousedown="playClick();enter_game();">
 			</div>
 			<div id="game">
 				<div id="gamezone">
@@ -47,7 +47,9 @@
 						</div>
 					</div>
 					<div id="gamezone-footer">
-						<div id="footer-greeting">
+						<div id="footer-greeting"><!-- 
+							<p id="greeting"></p>
+							<span><img id="avatar" src="" width="50"></span> -->
 							<a class="tooltip">
 								<p id="greeting"></p>
 								<span><img id="avatar" src="" width="50"></span>
@@ -105,11 +107,27 @@
 			</div>
 			<div id="profile">
 				<div id="profile-main">
-					<div id="profile-data">
-						<span><img id="profile_avatar" src="" width="50"></span>
-						<p id="profile_name"></p>
-						<p id="profile_votes"></p>
-						<p id="profile_trophies"></p>
+					<div id="profile-avatar-wrapper">
+						<img id="profile_avatar" src="" width="200">
+					</div>
+					<div id="profile-info-wrapper">
+						<table id="profile_info">
+							<tr>
+								<td>Name</td>
+								<td id="profile_name"></td>
+							</tr>
+							<tr>
+								<td>Points</td>
+								<td id="profile_points"></td>
+							</tr>
+							<tr>
+								<td>Attempts</td>
+								<td id="profile_attempts"></td>
+							</tr>
+						</table>
+					</div>
+					<div id="profile_trophies_wrapper">
+						<table id="profile_trophies"></table>
 					</div>
 				</div>
 				<div id="profile-footer">

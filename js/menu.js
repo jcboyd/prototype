@@ -134,11 +134,15 @@ function set_word(word, pos) {
 
 function set_avatar(userID) {
     document.getElementById("avatar").src = "https://graph.facebook.com/" + userID + "/picture";
-    document.getElementById("profile_avatar").src = "https://graph.facebook.com/" + userID + "/picture";
+    document.getElementById("profile_avatar").src = "https://graph.facebook.com/" + userID + "/picture??width=200&height=200";
 }
 
-function set_profile_data(userID, points) {
-	document.getElementById("profile_votes").innerHTML = "Points: " + points;
+function set_profile_data(userID, points, position, notify) {
+	document.getElementById("profile_points").innerHTML = points;
+	document.getElementById("profile_attempts").innerHTML = position;
+	if(notify == 1) {
+		document.getElementById("user").src = "/media/xbox.png";
+	}
 }
 
 function remove_active() {
@@ -178,7 +182,6 @@ function add_definition(id, definition) {
 	// img2.classList.add('vote_button');
 	div_footer.appendChild(img1);
 	// div_footer.appendChild(img2);
-
 	// li.innerHTML = definition;
 	li.onmousedown = (function(id_num) {
 		return function () {
@@ -203,6 +206,30 @@ function add_definition(id, definition) {
 	li.appendChild(div_main);
 	li.appendChild(div_footer);
 	ul.appendChild(li);
+}
+
+function add_trophy(word, definition) {
+	var table = document.getElementById("profile_trophies");
+	var row = table.insertRow(0);
+	var cell1 = row.insertCell(0);
+	var cell2 = row.insertCell(1);
+	var cell3 = row.insertCell(2);
+	// cell1.classList.add("left_cell");
+	// cell2.classList.add("right_cell");
+	var img = document.createElement("img");
+	img.src = 'media/medal.png';
+	cell1.appendChild(img);
+	cell2.innerHTML = word;
+	cell3.innerHTML = definition;
+	// img1.classList.add('vote_button');
+	// var img2 = document.createElement("img");
+	// img2.src = 'media/down.png';
+	// img2.classList.add('vote_button');
+	// //NOTE THIS PROBABLY CAUSES A MEMORY LEAK - TO BE REVIEWED
+	// img1.onclick = (function(definition_id) { return function() { vote(definition_id, 1); playClick(); }; })(id);
+	// img2.onclick = (function(definition_id) { return function() { vote(definition_id, -1); playClick(); }; })(id);
+	// cell2.appendChild(img1);
+	// cell2.appendChild(img2);
 }
 
 // function clear_definitions() {

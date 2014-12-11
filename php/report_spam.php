@@ -23,7 +23,7 @@ while ($row = $result->fetch_assoc()) {
 
 	$subject = "Spam report!";
 	$body = "Hi " . $alias . ",\n\n" .
-	"We have received a report from user: " . $userID . " " .
+	"We have received a report from user: '" . $userID . "' " .
 	"that definition '" . $definitionID . "' for word '" . $wordID . "' " .
 	"is spam.\n\n" .
 	"Please note that this email is auto-generated.";

@@ -8,6 +8,45 @@ body {
 	font:15px/1.3 'Gill Sans', sans-serif;
 }
 
+#profile-avatar-wrapper {
+	height:200px;
+	width:310px;
+	padding:20px;
+	float:left;
+}
+
+#profile-info-wrapper {
+	height:200px;
+	width:500px;
+	padding:20px;
+	float:left;
+}
+
+#profile_info {
+	width:100%;
+	height:100%;
+	font-size:30px;
+}
+
+#profile_trophies {
+	width:100%;
+	height:100%;
+	font-size:30px;
+}
+
+#profile_trophies_wrapper {
+	width:850px;
+	padding:20px;
+	/*:100%;*/
+	/*height:50%;*/
+}
+
+#profile_info {
+	width:100%;
+	height:100%;
+	font-size:30px;
+}
+
 a a:hover, a:visited, a:link, a:active {
 	text-decoration:none;
 	color:blue;
@@ -244,17 +283,18 @@ a a:hover, a:visited, a:link, a:active {
 
 .shaded_enter {
 	/*Element not clickable when hidden*/
-	visibility:hidden;
+	/
 	position: absolute;
 /*	top: 211px;
 	left: 401px;*/
 	-moz-opacity: 0;
-	opacity: 0;
+	opacity: 0;/*
+	-moz-visibility: hidden;
+	-moz-transition: opacity 2s ease, visibility 2s ease;*/
 }
 
 .animateenter {
 	cursor:pointer;
-	visibility:visible;
 	position: absolute;
 	/*	top: 211px;
 	left: 401px;*/
@@ -263,8 +303,10 @@ a a:hover, a:visited, a:link, a:active {
   	-ms-transition: opacity 3s ease;
   	-o-transition: opacity 3s ease;
   	transition: opacity 3s ease;*/
+  	/*visibility:visible;*/
   	-moz-opacity: 0.5;
 	opacity: 0.5;
+	/*-moz-transition: opacity 2s ease, visibility 2s ease;*/
 }
 
 #enter1 {

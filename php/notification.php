@@ -72,6 +72,10 @@ function send_notification($user_id, $word_id) {
 	// If you're making app-level requests:
 	$session = FacebookSession::newAppSession();
 
+	//Mark user for notification on loading game
+	$sql = 	"UPDATE users SET Notify=1 WHERE UserID='" . $user_id . "'";
+	$query = mysqli_query($con, $sql);
+
 	// To validate the session:
 	try {
 		$session->validate();
