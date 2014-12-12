@@ -80,9 +80,9 @@ function check_user(response) {
                 document.getElementById('greeting').innerHTML = 'Welcome, ' + response.name + '!';
                 document.getElementById('profile_name').innerHTML = response.name;
             }
+            userID = response.id;
+            initialise(userID);
         }
-        userID = response.id;
-        set_avatar(userID);
     }
     var noCache = new Date().getTime();
     xmlhttp.open("GET","php/check_user.php?userID=" + response.id + "&noCache=" + "noCache", true);
@@ -154,5 +154,18 @@ function report_spam(definition_id) {
     }
 
     xmlhttp.open("GET","php/report_spam.php?wordID=" + wordID + "&definitionID=" + definition_id + "&userID=" + userID, true);
+    xmlhttp.send();
+}
+
+function complete_notification() {
+    var xmlhttp;
+    if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+    }
+    else {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    xmlhttp.open("GET","php/complete_notification.php?userID=" + userID, true);
     xmlhttp.send();
 }

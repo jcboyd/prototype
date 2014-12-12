@@ -10,7 +10,7 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
 	<link rel="stylesheet" href="styles/style.css">
 </head>
-<body onload="initialise();">
+<body>
 	<div id="main" ng-app ng-controller="InlineEditorController" ng-click="hideTooltip()">
 		<div id="portal">
 			<div id="welcome">
@@ -32,7 +32,7 @@
 								<!-- ng-model binds the contents of the text field with the "value" model.
 								 Any changes to the text field will automatically update the value, and
 								 all other bindings on the page that depend on it.  -->
-								<input id="input_tool_box" type="text" ng-model="value"/>
+								<input id="input_tool_box" type="text" ng-model="value" ng-keypress="searchEnter($event);" onFocus="this.select()"/>
 							</div>
 							<!-- <ul id="definitions">
 								<li ng-click="toggleTooltip($event)" id="user_definition" class="inactive_definition">{{value}}</li>

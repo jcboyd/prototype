@@ -1,25 +1,12 @@
-// The controller is a regular JavaScript function. It is called
-// once when AngularJS runs into the ng-controller declaration.
-
-var default_value = '✎ I can write a great definition!';
+var default_value = '✎ I can write the winning definition!';
 var min_length = 4;
 
 function InlineEditorController($scope){
 
-	// $scope is a special object that makes
-	// its properties available to the view as
-	// variables. Here we set some default values:
-
 	$scope.showtooltip = false;
 	$scope.value = default_value;
 
-	// Some helper functions that will be
-	// available in the angular declarations
-
 	$scope.hideTooltip = function(){
-
-		// When a model is changed, the view will be automatically
-		// updated by by AngularJS. In this case it will hide the tooltip.
 
 		$scope.showtooltip = false;
 		if ($scope.value == '') {
@@ -34,15 +21,15 @@ function InlineEditorController($scope){
 		$scope.showtooltip = !$scope.showtooltip;
 		
 		if($scope.showtooltip) {
-			// $scope.value = '✎ I can write a great definition!';
 			remove_active();
 			document.getElementById("user_definition").className = "active_definition";
 			if($scope.value == default_value) {
 				$scope.value = '';
 
 			}
-			// document.getElementById("input_tool_box").focus();
-        	document.getElementById("input_tool_box").disable = 'false';
+        	document.getElementById("input_tool_box").focus();
+			document.getElementById("input_tool_box").select();
+   //      	document.getElementById("input_tool_box").focus();
 		}
 		else {
 			if ($scope.value == '') {
@@ -55,6 +42,12 @@ function InlineEditorController($scope){
 	$scope.clear = function(e) {
 		e.stopPropagation();
 		$scope.value = default_value;
+	}
+
+	$scope.searchEnter = function(e) {
+        if (e.keyCode == 13) {
+            $scope.hideTooltip();
+        }
 	}
 }
 
@@ -69,17 +62,8 @@ function add_user_definition() {
 	// ul.appendChild(li);
 }
 
-function delete_user_definition() {
-	// var ul = document.getElementById("definitions");
-	// var li = document.getElementById("user_definition");
-	// ul.removeChild(li);
-	// document.getElementById("add_delete").src = "media/add.png";
-	// document.getElementById("add_delete").onclick = add_user_definition;
-	// document.getElementById("user_definition").style.display = "none";
-	// document.getElementById("input_tool_box").value = "";
-}
-
-function initialise() {
+function initialise(userID) {
+	set_avatar(userID);
 	get_ranked();
 	get_user_stats();
 	get_user_trophies();
@@ -97,6 +81,7 @@ function display_about() {
 }
 
 function display_profile() {
+	document.getElementById("welcome").style.display = "none";
 	document.getElementById("game").style.display = "none";
 	document.getElementById("profile").style.display = "inline-block";
 }
@@ -121,11 +106,6 @@ function animate_logo() {
 	document.getElementById("enter2").classList.add("animateenter");
 }
 
-// function display_definition_window() {
-//  	document.getElementById("game").style.display = "none";
-// 	document.getElementById("insert").style.display = "inline-block";
-// }
-
 function set_word(word, pos) {
 	//document.getElementById("word").innerHTML = word + "; " + pos + "; proposed by: " + userID;
 	document.getElementById("word").innerHTML = word; // + "; proposed by: " + userID;
@@ -141,7 +121,8 @@ function set_profile_data(userID, points, position, notify) {
 	document.getElementById("profile_points").innerHTML = points;
 	document.getElementById("profile_attempts").innerHTML = position;
 	if(notify == 1) {
-		document.getElementById("user").src = "/media/xbox.png";
+		display_profile();
+		complete_notification();
 	}
 }
 
@@ -161,7 +142,6 @@ function clear_definitions() {
 	for(var i = li.length - 1; i > 0; i = i - 1) {
 		ul.removeChild(li[i]);
 	}
-	delete_user_definition();
 }
 
 function add_definition(id, definition) {

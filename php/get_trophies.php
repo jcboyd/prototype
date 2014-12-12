@@ -17,7 +17,7 @@ $sql =  "SELECT u.UserID, u.Points, r.Word, d.Definition FROM " .
 		"ON u.UserID=d.UserID " .
 		"LEFT JOIN rankedwords As r " .
 		"ON r.ID=d.WordID " .
-		"WHERE u.UserID='" . $userID . "' AND d.Votes=1;";
+		"WHERE u.UserID='" . $userID . "' AND d.Votes>=1;";
 
 $result = mysqli_query($con, $sql);
 
