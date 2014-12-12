@@ -69,9 +69,15 @@ function initialise(userID) {
 	get_user_trophies();
 }
 
-function enter_game() {
+function enter_game1() {
 	document.getElementById("welcome").style.display = "none";
 	document.getElementById("game").style.display = "inline-block";
+	pause_animation();
+}
+
+function enter_game2() {
+	document.getElementById("welcome").style.display = "none";
+	document.getElementById("game2").style.display = "inline-block";
 	pause_animation();
 }
 
@@ -94,6 +100,7 @@ function return_to_game() {
 
 function display_welcome() {
 	document.getElementById("game").style.display = "none";
+	document.getElementById("game2").style.display = "none";
 	document.getElementById("welcome").style.display = "inline-block";
 	continue_animation();
 }

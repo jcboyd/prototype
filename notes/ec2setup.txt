@@ -247,3 +247,44 @@ Starting httpd:                                            [  OK  ]
 CREATE TABLE admin (Alias VARCHAR(64), Email VARCHAR(256));
 
 ALTER TABLE users ADD Notify INT DEFAULT 0;
+
+
+[PREVENT VISITORS FROM BROWSING WEB SITE CONTENTS]
+
+In /etc/httpd/conf/httpd.conf, find 
+
+# Further relax access to the default document root:
+<Directory "/var/www/html">
+    #
+    # Possible values for the Options directive are "None", "All",
+    # or any combination of:
+    #   Indexes Includes FollowSymLinks SymLinksifOwnerMatch ExecCGI MultiViews
+    #
+    # Note that "MultiViews" must be named *explicitly* --- "Options All"
+    # doesn't give it to you.
+    #
+    # The Options directive is both complicated and important.  Please see
+    # http://httpd.apache.org/docs/2.4/mod/core.html#options
+    # for more information.
+    #
+    Options Indexes FollowSymLinks
+
+    #
+    # AllowOverride controls what directives may be placed in .htaccess files.
+    # It can be "All", "None", or any combination of the keywords:
+    #   Options FileInfo AuthConfig Limit
+    #
+    AllowOverride None
+
+    #
+    # Controls who can get stuff from this server.
+    #
+    Require all granted
+</Directory>
+
+The lines "Options Indexes FollowSymLinks", and "AllowOverride None" where commented out and "Options -Indexes" was added. Note this is not really a security measure, it just hides the site's contents from visitors.
+
+/etc/init.d/httpd restart
+
+
+

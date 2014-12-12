@@ -1,9 +1,4 @@
-/* Thus, by default, elements are without margin and padding */
-*{
-	margin:0;
-	padding:0;
-}
-
+/* MOBILE CSS */
 body {
 	font:15px/1.3 'Gill Sans', sans-serif;
 }
@@ -94,8 +89,8 @@ a a:hover, a:visited, a:link, a:active {
 }
 
 #portal {
-	width: 930px;
-	height: 550px;
+	width: 870px;
+	height: 1316px;
 	border: 15px solid white;
 	margin: 20px;
 	display: inline-block;
@@ -104,6 +99,7 @@ a a:hover, a:visited, a:link, a:active {
 }
 
 #welcome {
+	/*display:none;*/
 	width: 930px;
 	height: 550px;
 	position: relative;
@@ -480,4 +476,9 @@ a a:hover, a:visited, a:link, a:active {
 	width:850px;
 	padding:20px;
 	float:left;
+}
+
+#animation {
+	width:"500px";
+	height:"1000px";
 }
