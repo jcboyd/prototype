@@ -223,7 +223,7 @@ function add_trophy(word, definition) {
 // 	var table = document.getElementById("definitions");
 // 	while (table.rows[1]) {
 // 		table.rows[1].
-// 		table.deleteRow(1);
+// 		table.deleteRow(1); 
 // 	}
 // }
 

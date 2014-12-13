@@ -282,7 +282,7 @@ In /etc/httpd/conf/httpd.conf, find
     Require all granted
 </Directory>
 
-The lines "Options Indexes FollowSymLinks", and "AllowOverride None" where commented out and "Options -Indexes" was added. Note this is not really a security measure, it just hides the site's contents from visitors.
+The lines "Options Indexes FollowSymLinks", and "AllowOverride None" where commented out and "Options -Indexes" was added. Note this is not really a security measure, it just hides the site's contents from visitors. (http://www.thesitewizard.com/apache/prevent-directory-listing-htaccess.shtml)
 
 /etc/init.d/httpd restart
 
