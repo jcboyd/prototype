@@ -9,14 +9,14 @@
 	<script src="js/menu.js"></script>	
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="styles/style.css">
-	<!-- <link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="styles/mstyle.css" /> -->
-	<link rel="stylesheet" type="text/css" media="only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2)" href="styles/mstyle.css"/>
+	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="styles/mstyle.css" />
+	<!-- <link rel="stylesheet" type="text/css" media="only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2)" href="styles/mstyle.css"/> -->
 </head>
 <body>
 	<div id="main" ng-app ng-controller="InlineEditorController" ng-click="hideTooltip()">
 		<div id="portal">
 			<div id="welcome">
-				<canvas id="animation" width="930" height="550">Your browser doesn't support HTML5.</canvas>
+				<canvas width="930" height="550" id="animation">Your browser doesn't support HTML5.</canvas>
 				<img id="logo" src="media/logo.png" onmousedown="animate_logo();">
 				<img id="enter1" class="shaded_enter" src="media/book.png" onmousedown="playClick();enter_game1();">
 				<img id="enter2" class="shaded_enter" src="media/quill.png" onmousedown="playClick();enter_game2();">
@@ -65,7 +65,7 @@
 							</span>
 						</div>
 						<div id="footer-next">
-							<!-- <img id="add_delete" class="control" src="media/add.png" ng-click="clear($event)" onclick="playClick();add_user_definition()"> -->
+							<img title="Report spam" id="add_delete" class="control" src="media/alert.png" onclick="playClick();report_spam()">
 							<img title="Next" id="next" ng-click="clear($event)" class="control" src="media/rightarrow.png" onclick="playClick();vote();get_ranked();">
 						</div>
 					</div>

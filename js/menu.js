@@ -160,16 +160,11 @@ function add_definition(id, definition) {
 	var div_footer = document.createElement("div");
 	div_footer.classList.add("button_div_footer");
 	div_main.innerHTML = definition;
-	var img1 = document.createElement("img");
-	img1.src = 'media/exclamation.png';
-	img1.classList.add('vote_button');
-	img1.title = "Report spam";
-	// var img2 = document.createElement("img");
-	// img2.src = 'media/down.png';
-	// img2.classList.add('vote_button');
+	// var img1 = document.createElement("img");
+	// img1.src = 'media/exclamation.png';
+	// img1.classList.add('vote_button');
+	// img1.title = "Report spam";
 	div_footer.appendChild(img1);
-	// div_footer.appendChild(img2);
-	// li.innerHTML = definition;
 	li.onmousedown = (function(id_num) {
 		return function () {
 			definitionID = id_num;
@@ -183,12 +178,12 @@ function add_definition(id, definition) {
 		};
 	})(id);
 
-	img1.onmousedown = (function(id_num) {
-		return function () {
-			definitionID = id_num;
-			report_spam(definitionID);
-		};
-	})(id);
+	// img1.onmousedown = (function(id_num) {
+	// 	return function () {
+	// 		definitionID = id_num;
+	// 		report_spam(definitionID);
+	// 	};
+	// })(id);
 
 	li.appendChild(div_main);
 	li.appendChild(div_footer);

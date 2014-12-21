@@ -1,22 +1,35 @@
 //Global variables
 var canvas = document.getElementById("animation");
 var context = canvas.getContext("2d");
-var width = canvas.width; //930;
-var height = canvas.height; //550;
+var width; // = canvas.width; //930;
+var height; // = canvas.height; //550;
 var animationID = -1;
 var opacity_delta = 5;
 var colours = [{r:235, g:166, b:52}, {r:128, g:128, b:128}];
 var min_opacity = -500;
 var max_opacity = 700;
+var font_size = 30;
 
-var symbols = 	["قاموس", "ਕੋਸ਼", "字典", "речник", "orðabók", "מילון",
+var symbols = 	["قاموس", "ਕੋਸ਼", "字典", "orðabók", "מילון",
 "tự điển", "kamus", "isichazamazwi", "k'amus", "maanatiira", "rimayqillqa",
-"geiriadur", "ວັດຈະນານຸກົມ", "அகராதி", "शब्दकोश", "слоўнік", "dictionnaire",
+"geiriadur", "ວັດຈະນານຸກົມ", "அகராதி", "शब्दकोश", "dictionnaire",
 "qaamuus", "lexicon", "ლექსიკონი", "dicționar"];
 
 var symbol_objects = new Array();
 
 function start_animation() {
+	var portal = document.getElementById("portal");
+
+	if(portal.clientHeight > portal.clientWidth) { //Portrait mode (mobile style settings)
+		canvas = document.getElementById('animation');
+		canvas.setAttribute('width', '850');
+		canvas.setAttribute('height', '1300');
+		font_size = 50;
+	}
+
+	width = canvas.width;
+	height = canvas.height;
+
 	for(var index=0; index < symbols.length; index++) {
 		var init_x = Math.random() * width;
 		var init_y = Math.random() * height;
@@ -73,7 +86,7 @@ function Symbol(symbol_text, x, y, opacity, colour) {
 
 		opacity += delta;
 
-		context.font = "30px 'Courier'";
+		context.font = font_size + "px" + "'Courier'";
 		context.fillStyle = "rgba(" + colours[colour].r + "," + 
 			colours[colour].g + "," + colours[colour].b + "," + opacity/1000.0 + ")";
 		context.fillText(text, x_pos, y_pos);
