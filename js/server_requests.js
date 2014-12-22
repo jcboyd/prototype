@@ -2,6 +2,8 @@ var userID;
 var wordID;
 var definitionID;
 
+//TODO: GENERALISE SERVER REQUESTS
+
 function get_random() {
     var xmlhttp;
     if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari

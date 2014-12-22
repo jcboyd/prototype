@@ -88,8 +88,6 @@ openssl req -nodes -newkey rsa:2048 -keyout myserver.key -out server.csr
 
 https://devcenter.heroku.com/articles/ssl-certificate-self
 
-openssl req -nodes -newkey rsa:2048 -keyout myserver.key -out server.csr
-
 openssl x509 -req -days 365 -in server.csr -signkey myserver.key -out server.crt
 
 https://www.digicert.com/ssl-certificate-installation-apache.htm
@@ -286,5 +284,5 @@ The lines "Options Indexes FollowSymLinks", and "AllowOverride None" where comme
 
 /etc/init.d/httpd restart
 
-
+ALTER TABLE users ADD Mute INT DEFAULT 0;
 

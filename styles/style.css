@@ -8,10 +8,9 @@ body {
 	font:15px/1.3 'Gill Sans', sans-serif;
 }
 
-#animation {
-	width:930px;
-	height:550px;
-}
+/*#animation {
+	width:930px;height="550"
+}*/
 
 #profile-avatar-wrapper {
 	height:200px;
@@ -117,7 +116,7 @@ a a:hover, a:visited, a:link, a:active {
 	background-height:100%;
 }
 
-#insert, #about, #profile {
+#about, #profile {
 	width: 100%;
 	height: 100%;
 	text-align:center;
@@ -142,22 +141,6 @@ a a:hover, a:visited, a:link, a:active {
 	text-align:left;
 }
 
-#insert-main {
-	height:410px;
-	width:890px;
-	padding:20px;
-	background-color: #F5F5F5;
-	float:left;
-}
-
-#insert-footer {
-	height:100px;
-	width:930px;
-	float:left;
-	background-color: #F5F5F5;
-	text-align:left;
-}
-
 #game, #game2 {
 	width: 100%;
 	height: 100%;
@@ -167,14 +150,14 @@ a a:hover, a:visited, a:link, a:active {
 #gamezone {
 	width: 790px;
 	height: 100%;
-	float:left;
+	float:right;
 }
 
 #controls {
 	height:100%;
 	width:140px;
 	background: url('../media/tall_back.png') repeat-x scroll center bottom transparent;
-	float:left;
+	float:right;
 }
 
 #gamezone-main {
@@ -485,4 +468,5 @@ a a:hover, a:visited, a:link, a:active {
 	width:850px;
 	padding:20px;
 	float:left;
+	font:15.5px/1.3 'Gill Sans', sans-serif;
 }

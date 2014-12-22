@@ -24,7 +24,7 @@ function start_animation() {
 		canvas = document.getElementById('animation');
 		canvas.setAttribute('width', '850');
 		canvas.setAttribute('height', '1300');
-		font_size = 50;
+		font_size = 70;
 	}
 
 	width = canvas.width;
