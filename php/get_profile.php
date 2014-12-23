@@ -1,6 +1,18 @@
 <?php
 
+session_start();
+
 $userID = $_GET['userID'];
+$token = $_GET['token'];
+
+if($token == $_SESSION['token']) {
+	echo 'success';
+}
+else {
+	echo $token . ' ' . $_SESSION['token'];
+}
+
+exit();
 
 $user = 'root';
 $pass = '';

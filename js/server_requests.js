@@ -1,6 +1,7 @@
 var userID;
 var wordID;
 var definitionID;
+// var token = '<?php echo $newToken; ?>';
 
 //TODO: GENERALISE SERVER REQUESTS
 
@@ -32,6 +33,7 @@ function get_ranked() {
         xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
     }
     xmlhttp.onreadystatechange=function() {
+        document.getElementById("word").innerHTML = xmlhttp.responseText;
         if (xmlhttp.readyState==4 && xmlhttp.status==200) {
             var results_array = JSON.parse(xmlhttp.responseText);
 
@@ -105,7 +107,8 @@ function get_user_stats() {
             set_profile_data(obj.UserID, obj.Points, obj.Position, obj.Notify);
         }
     }
-    xmlhttp.open("GET","php/get_profile.php?userID=" + userID, true);
+    var token = document.getElementById("token").innerHTML;
+    xmlhttp.open("GET","php/get_profile.php?userID=" + userID + "&token=" + token, true);
     xmlhttp.send();
 }
 

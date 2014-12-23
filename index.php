@@ -1,3 +1,19 @@
+<?php
+
+session_start();
+
+function generateToken() {
+	// generate a token from an unique value
+	$token = md5(uniqid(microtime(), true));  
+
+	// Write the generated token to the session variable to check it against the hidden field when the form is sent
+	$_SESSION['token'] = $token; 
+
+	return $token;
+}
+
+?>
+
 <!DOCTYPE>
 <html>
 <head>
@@ -12,6 +28,11 @@
 	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="styles/mstyle.css" />
 	<!-- <link rel="stylesheet" type="text/css" media="only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2)" href="styles/mstyle.css"/> -->
 </head>
+
+<?php
+   $newToken = generateToken();   
+?>
+
 <body>
 	<div id="main" ng-app ng-controller="InlineEditorController" ng-click="hideTooltip()">
 		<div id="portal">
@@ -73,6 +94,7 @@
 							<span id="login_button">
 								<fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
 							</span>
+							<p id="token"><?php echo $newToken; ?></p>
 						</div>
 						<div id="footer-next">
 							<img title="Report spam" id="add_delete" class="control" src="media/alert.png" onclick="playClick();report_spam()">

@@ -164,7 +164,7 @@ function add_definition(id, definition) {
 	// img1.src = 'media/exclamation.png';
 	// img1.classList.add('vote_button');
 	// img1.title = "Report spam";
-	div_footer.appendChild(img1);
+	// div_footer.appendChild(img1);
 	li.onmousedown = (function(id_num) {
 		return function () {
 			definitionID = id_num;
