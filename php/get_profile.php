@@ -1,18 +1,13 @@
 <?php
 
-session_start();
+include 'validate_token.php';
 
 $userID = $_GET['userID'];
 $token = $_GET['token'];
 
-if($token == $_SESSION['token']) {
-	echo 'success';
+if(!validate_token($token)) {
+	exit();
 }
-else {
-	echo $token . ' ' . $_SESSION['token'];
-}
-
-exit();
 
 $user = 'root';
 $pass = '';

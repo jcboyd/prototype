@@ -1,5 +1,7 @@
 <?php
 
+include 'validate_token.php';
+
 $userID = $_GET['userID'];
 $token = $_GET['token'];
 
