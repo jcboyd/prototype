@@ -17,4 +17,6 @@ if (!$con) {
 $sql =	"DELETE FROM definitions WHERE DefinitionID='" . $definitionID . "';";
 $result = mysqli_query($con, $sql);
 
+echo "Spam successfully removed";
+
 ?>

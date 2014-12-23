@@ -1,7 +1,6 @@
 var userID;
 var wordID;
 var definitionID;
-// var token = '<?php echo $newToken; ?>';
 
 //TODO: GENERALISE SERVER REQUESTS
 
@@ -33,8 +32,8 @@ function get_ranked() {
         xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
     }
     xmlhttp.onreadystatechange=function() {
-        document.getElementById("word").innerHTML = xmlhttp.responseText;
         if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+            // alert(xmlhttp.responseText);
             var results_array = JSON.parse(xmlhttp.responseText);
 
             clear_definitions();
@@ -49,7 +48,9 @@ function get_ranked() {
             definitionID = -1;
         }
     }
-    xmlhttp.open("GET","php/get_ranked.php?userID=" + userID, true);
+    // alert(token);
+    // document.getElementById("token").innerHTML = token;
+    xmlhttp.open("GET","php/get_ranked.php?userID=" + userID + "&token=" + token, true);
     xmlhttp.send();
 }
 
@@ -103,11 +104,12 @@ function get_user_stats() {
     }
     xmlhttp.onreadystatechange=function() {
         if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+            // alert(xmlhttp.responseText);
             var obj = JSON.parse(xmlhttp.responseText);
             set_profile_data(obj.UserID, obj.Points, obj.Position, obj.Notify);
         }
     }
-    var token = document.getElementById("token").innerHTML;
+    // document.getElementById("token").innerHTML = token;
     xmlhttp.open("GET","php/get_profile.php?userID=" + userID + "&token=" + token, true);
     xmlhttp.send();
 }

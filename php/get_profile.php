@@ -6,8 +6,14 @@ $userID = $_GET['userID'];
 $token = $_GET['token'];
 
 if(!validate_token($token)) {
-	exit();
+	die();
 }
+
+// session_start();
+
+// if($token != $_SESSION['token']) {
+// 	die();
+// }
 
 $user = 'root';
 $pass = '';

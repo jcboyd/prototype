@@ -31,7 +31,7 @@ while ($row = $result->fetch_assoc()) {
 
 	$root_link = "http://ec2-54-186-29-34.us-west-2.compute.amazonaws.com/php/";
 	$remove_link = $root_link . "remove_spam.php?definitionID=" . $definitionID;
-	$mute_link = $root_link . "mute_user.php?userID=1629333623960388" . $userId;
+	$mute_link = $root_link . "mute_user.php?userID=" . $userID;
 
 	$headers = "From: " . "Kamusi GAME" . "\r\n";
 	$headers .= "MIME-Version: 1.0\r\n";

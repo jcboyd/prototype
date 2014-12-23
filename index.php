@@ -3,10 +3,10 @@
 session_start();
 
 function generateToken() {
-	// generate a token from an unique value
-	$token = md5(uniqid(microtime(), true));  
+	// generate token from random value
+	$token = md5(rand(pow(2, 32), pow(2, 33)));  
 
-	// Write the generated token to the session variable to check it against the hidden field when the form is sent
+	// Store token in session superglobal
 	$_SESSION['token'] = $token; 
 
 	return $token;
@@ -19,18 +19,13 @@ function generateToken() {
 <head>
 	<title>Kamusi GAME</title>
 	<meta charset="UTF-8">
-	<script src="js/server_requests.js"></script>
-	<script src="js/login.js"></script>
-	<script src="js/sound.js"></script>
-	<script src="js/menu.js"></script>	
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="styles/style.css">
 	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="styles/mstyle.css" />
 	<!-- <link rel="stylesheet" type="text/css" media="only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2)" href="styles/mstyle.css"/> -->
 </head>
 
 <?php
-   $newToken = generateToken();   
+	$newToken = generateToken();   
 ?>
 
 <body>
@@ -94,7 +89,7 @@ function generateToken() {
 							<span id="login_button">
 								<fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
 							</span>
-							<p id="token"><?php echo $newToken; ?></p>
+							<p id="token"></p>
 						</div>
 						<div id="footer-next">
 							<img title="Report spam" id="add_delete" class="control" src="media/alert.png" onclick="playClick();report_spam()">
@@ -164,6 +159,12 @@ function generateToken() {
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript"> var token = "<?php echo $newToken; ?>"; </script>
+	<script src="js/server_requests.js"></script>
+	<script src="js/login.js"></script>
+	<script src="js/sound.js"></script>
+	<script src="js/menu.js"></script>	
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
 	<script src="js/animation.js"></script>
 </body>
 </html>

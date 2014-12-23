@@ -15,4 +15,6 @@ if (!$con) {
 $sql =	"UPDATE users SET Mute=1 WHERE UserID='" . $userID . "';";
 $result = mysqli_query($con, $sql);
 
+echo "Mute successful";
+
 ?>
