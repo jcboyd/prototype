@@ -286,3 +286,5 @@ The lines "Options Indexes FollowSymLinks", and "AllowOverride None" where comme
 
 ALTER TABLE users ADD Mute INT DEFAULT 0;
 
+ALTER TABLE users ADD NumReports INT DEFAULT 0;
+

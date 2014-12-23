@@ -14,13 +14,19 @@ if (!$con) {
 	die('Could not connect: ' . mysqli_error($con));
 }
 
-$sql = "SELECT Mute FROM users WHERE userID='" . $userID . "';";
+//Increment user reports
+$sql = "UPDATE users SET NumReports = NumReports + 1 WHERE userID='" . $userID . "';";
+$result = mysqli_query($con, $sql);
+
+$sql = "SELECT * FROM users WHERE userID='" . $userID . "';";
 $result = mysqli_query($con, $sql);
 $result_array = $result->fetch_assoc();
 
 if($result_array["Mute"]) { //User has been muted before--ignore
 	exit();
 }
+
+$num_reports = $result_array["NumReports"];
 
 $sql =	"SELECT * FROM admin;";
 $result = mysqli_query($con, $sql);
@@ -45,7 +51,8 @@ while ($row = $result->fetch_assoc()) {
 	$message .= "<tr style='background: #ccc;'><td><strong>User:</strong> </td><td>" . $userID . "</td></tr>";
 	$message .= "<tr><td><strong>Word:</strong> </td><td>" . $wordID . "</td></tr>";
 	$message .= "<tr style='background: #ccc;'><td><strong>Definition:</strong> </td><td>" . $definitionID . "</td></tr>";
-	$message .= '<tr><td><a href="' . $remove_link . '">Remove spam</a></td><td><a href="' . $mute_link . '">Mute user</a></td></tr>';
+	$message .= "<tr><td><strong>User reports:</strong> </td><td>" . $num_reports . "</td></tr>";
+	$message .= '<tr style="background: #ccc;"><td><a href="' . $remove_link . '">Remove spam</a></td><td><a href="' . $mute_link . '">Mute user</a></td></tr>';
 	$message .= "</table>";
 	$message .= "</body></html>";
 
