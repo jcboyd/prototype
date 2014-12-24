@@ -33,12 +33,18 @@ function get_ranked() {
     }
     xmlhttp.onreadystatechange=function() {
         if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-            // alert(xmlhttp.responseText);
             var results_array = JSON.parse(xmlhttp.responseText);
 
             clear_definitions();
             wordID = results_array[0].ID;
-            set_word(results_array[0].Word, results_array[0].Full, results_array[0].UserID);
+
+            if(results_array[0].Consensus == 1) {
+                set_consensus_word(results_array[0].Word, results_array[0].Full, results_array[0].Definition);
+                add_definition(results_array[0].DefinitionID, 'That is a good definition');
+            }
+            else {
+                set_word(results_array[0].Word, results_array[0].Full);
+            }
 
             for(var i = 0; i < results_array.length; i++) {
                 if(results_array[i].Definition != undefined) {

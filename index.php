@@ -57,6 +57,7 @@ function generateToken() {
 						<div id="entry">
 							<p id="word"></p>
 							<p id="pos"></p>
+							<p id="consensus"></p>
 						</div>
 						<div id="definitions_wrapper">
 							<!-- This is the tooltip. It is shown only when the showtooltip variable is truthful -->

@@ -113,10 +113,18 @@ function animate_logo() {
 	document.getElementById("enter2").classList.add("animateenter");
 }
 
+function set_consensus_word(word, pos, definition) {
+	document.getElementById("word").innerHTML = word; // + "; proposed by: " + userID;
+	document.getElementById("pos").innerHTML = pos;
+	document.getElementById("consensus").style.display = "inline-block";
+	document.getElementById("consensus").innerHTML = "One meaning is: '" + definition + "'";
+}
+
 function set_word(word, pos) {
 	//document.getElementById("word").innerHTML = word + "; " + pos + "; proposed by: " + userID;
 	document.getElementById("word").innerHTML = word; // + "; proposed by: " + userID;
 	document.getElementById("pos").innerHTML = pos;
+	document.getElementById("consensus").style.display = "none";
 }
 
 function set_avatar(userID) {
@@ -146,7 +154,7 @@ function clear_definitions() {
 	var ul = document.getElementById("definitions");
 	var li =  ul.getElementsByTagName("li");
 
-	for(var i = li.length - 1; i > 0; i = i - 1) {
+	for(var i = li.length - 1; i > 1; i = i - 1) {
 		ul.removeChild(li[i]);
 	}
 }
@@ -155,11 +163,12 @@ function add_definition(id, definition) {
 	var ul = document.getElementById("definitions");
 	var li = document.createElement("li");
 	li.classList.add("inactive_definition");
-	var div_main = document.createElement("div");
-	div_main.classList.add("button_div_main");
-	var div_footer = document.createElement("div");
-	div_footer.classList.add("button_div_footer");
-	div_main.innerHTML = definition;
+	// var div_main = document.createElement("div");
+	// div_main.classList.add("button_div_main");
+	// var div_footer = document.createElement("div");
+	// div_footer.classList.add("button_div_footer");
+	// div_main.innerHTML = definition;
+	li.innerHTML = definition;
 	// var img1 = document.createElement("img");
 	// img1.src = 'media/exclamation.png';
 	// img1.classList.add('vote_button');
@@ -185,8 +194,8 @@ function add_definition(id, definition) {
 	// 	};
 	// })(id);
 
-	li.appendChild(div_main);
-	li.appendChild(div_footer);
+	// li.appendChild(div_main);
+	// li.appendChild(div_footer);
 	ul.appendChild(li);
 }
 

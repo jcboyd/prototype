@@ -33,7 +33,7 @@ $result = mysqli_query($con, $sql);
 $results_array = $result->fetch_assoc();
 $user_position = $results_array["Position"];
 
-$sql =	"SELECT sq.ID, sq.Word, p.Full, d.DefinitionID, d.Definition, d.UserID, d.Votes FROM (" . 
+$sql =	"SELECT sq.ID, sq.Word, sq.Consensus, p.Full, d.DefinitionID, d.Definition, d.UserID, d.Votes FROM (" . 
 		"SELECT * FROM rankedwords " . 
 		"WHERE Rank=" . $user_position .
 		") As sq " .
