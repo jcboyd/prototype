@@ -12,6 +12,18 @@ body {
 	width:930px;height="550"
 }*/
 
+.trophy {
+	width:50px;
+	height:50px;
+}
+
+#about-main, #profile-main {
+	height:410px;
+	width:890px;
+	padding:20px;
+	float:left;
+}
+
 #profile-avatar-wrapper {
 	height:200px;
 	width:310px;
@@ -32,20 +44,18 @@ body {
 	font-size:30px;
 }
 
-#profile_trophies {
-	width:100%;
-	height:100%;
-	font-size:30px;
-}
-
 #profile_trophies_wrapper {
-	width:850px;
-	padding:20px;
+	width:690px;
+	height:170px;
+	float:left;
+	padding-left:100px;
+	padding-right:100px;
 }
 
-#profile_info {
-	width:100%;
-	height:100%;
+#profile_trophies {
+	text-align:center;
+	width:690px;
+	/*height:100%;*/
 	font-size:30px;
 }
 
@@ -121,13 +131,6 @@ a a:hover, a:visited, a:link, a:active {
 	height: 100%;
 	text-align:center;
 	display:none;
-}
-
-#about-main, #profile-main {
-	height:410px;
-	width:890px;
-	padding:20px;
-	float:left;
 }
 
 #about-main {

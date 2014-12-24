@@ -199,6 +199,7 @@ function add_trophy(word, definition) {
 	// cell1.classList.add("left_cell");
 	// cell2.classList.add("right_cell");
 	var img = document.createElement("img");
+	img.classList.add('trophy');
 	img.src = 'media/medal.png';
 	cell1.appendChild(img);
 	cell2.innerHTML = word;
