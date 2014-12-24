@@ -117,7 +117,7 @@ function set_consensus_word(word, pos, definition) {
 	document.getElementById("word").innerHTML = word; // + "; proposed by: " + userID;
 	document.getElementById("pos").innerHTML = pos;
 	document.getElementById("consensus").style.display = "inline-block";
-	document.getElementById("consensus").innerHTML = "One meaning is: '" + definition + "'";
+	document.getElementById("consensus").innerHTML = " : " + definition;
 }
 
 function set_word(word, pos) {
@@ -154,7 +154,7 @@ function clear_definitions() {
 	var ul = document.getElementById("definitions");
 	var li =  ul.getElementsByTagName("li");
 
-	for(var i = li.length - 1; i > 1; i = i - 1) {
+	for(var i = li.length - 1; i > 0; i = i - 1) {
 		ul.removeChild(li[i]);
 	}
 }

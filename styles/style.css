@@ -14,6 +14,11 @@ body {
 
 #consensus {
 	display:none;
+	font-size: 30px;
+	float:left;
+	margin-right:0.5em;
+	color: #eba634;
+	font-style: italic;
 }
 
 .trophy {
@@ -90,7 +95,7 @@ a a:hover, a:visited, a:link, a:active {
 }
 
 #entry {
-	height:40px;
+	min-height:40px;
 	width:710px;
 	padding:20px;
 	color: #af0800;
@@ -109,6 +114,7 @@ a a:hover, a:visited, a:link, a:active {
 	font-size:30px;
 	color:gray;
 	font-style: italic;
+	margin-right:0.5em;
 }
 
 #portal {
@@ -172,6 +178,7 @@ a a:hover, a:visited, a:link, a:active {
 	width:750px;
 	padding:20px;
 	float:left;
+	/*overflow: scroll;*/
 }
 
 #gamezone-footer {

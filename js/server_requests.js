@@ -40,17 +40,22 @@ function get_ranked() {
 
             if(results_array[0].Consensus == 1) {
                 set_consensus_word(results_array[0].Word, results_array[0].Full, results_array[0].Definition);
-                add_definition(results_array[0].DefinitionID, 'That is a good definition');
+                add_definition(results_array[0].DefinitionID, '✓ That is a good definition');
+                for(var i = 1; i < results_array.length; i++) {
+                    if(results_array[i].Definition != undefined) {
+                        add_definition(results_array[i].DefinitionID, results_array[i].Definition);
+                    }
+                }
             }
             else {
                 set_word(results_array[0].Word, results_array[0].Full);
-            }
-
-            for(var i = 0; i < results_array.length; i++) {
-                if(results_array[i].Definition != undefined) {
-                    add_definition(results_array[i].DefinitionID, results_array[i].Definition);
+                for(var i = 0; i < results_array.length; i++) {
+                    if(results_array[i].Definition != undefined) {
+                        add_definition(results_array[i].DefinitionID, results_array[i].Definition);
+                    }
                 }
             }
+            
             definitionID = -1;
         }
     }
