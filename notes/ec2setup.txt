@@ -288,3 +288,13 @@ ALTER TABLE users ADD Mute INT DEFAULT 0;
 
 ALTER TABLE users ADD NumReports INT DEFAULT 0;
 
+CREATE TABLE languages (ID INT auto_increment, LanguageName VARCHAR(64), PRIMARY KEY(ID));
+
+CREATE TABLE translations (ID INT auto_increment, LanguageID INT, DefinitionID INT, UserID VARCHAR(64), FOREIGN KEY (LanguageID) REFERENCES languages(ID), Word VARCHAR(64), PRIMARY KEY(ID), FOREIGN KEY (DefinitionID) REFERENCES definitions(DefinitionID), FOREIGN KEY (UserID) REFERENCES users(USERID));
+
+INSERT INTO languages (Language) VALUES("English");
+INSERT INTO languages (Language) VALUES("French");
+
+ALTER TABLE translations ADD COLUMN UserID VARCHAR(64);
+
+ALTER TABLE translations ADD CONSTRAINT FK_USERS FOREIGN KEY (UserID) REFERENCES users (UserID);

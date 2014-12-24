@@ -19,8 +19,8 @@ function generateToken() {
 <head>
 	<title>Kamusi GAME</title>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="styles/style.css">
-	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="styles/mstyle.css" />
+	<link rel="stylesheet" type="text/css" href="styles/style.css"/>
+	<link rel="stylesheet" type="text/css" href="styles/mstyle.css"/> <!-- media="only screen and (max-device-width: 480px)" -->
 	<!-- <link rel="stylesheet" type="text/css" media="only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2)" href="styles/mstyle.css"/> -->
 </head>
 
@@ -37,10 +37,6 @@ function generateToken() {
 				<img id="enter1" class="shaded_enter" src="media/book.png" onmousedown="playClick();enter_game1();">
 				<img id="enter2" class="shaded_enter" src="media/quill.png" onmousedown="playClick();enter_game2();">
 			</div>
-			<div id="game2">
-				<p>SECOND GAME MODE HERE SOON</p>
-				<img title="Return" class="control" src="media/leftarrow.png" onclick="playClick();display_welcome();">
-			</div>
 			<div id="game">
 				<div id="controls">
 					<div id="controlheader">
@@ -53,7 +49,7 @@ function generateToken() {
 					<img title="Home" id="auction" class="control" src="media/home.png" onclick="playClick();display_welcome();">
 				</div>
 				<div id="gamezone">
-					<div id="gamezone-main">
+					<div id="gamezone-main1">
 						<div id="entry">
 							<p id="word"></p>
 							<p id="pos"></p>
@@ -67,9 +63,6 @@ function generateToken() {
 								 all other bindings on the page that depend on it.  -->
 								<input id="input_tool_box" type="text" ng-model="value" ng-keypress="searchEnter($event);" onFocus="this.select()"/>
 							</div>
-							<!-- <ul id="definitions">
-								<li ng-click="toggleTooltip($event)" id="user_definition" class="inactive_definition">{{value}}</li>
-							</ul> -->
 							<table id="definitions">
 								<tr>
 									<td>
@@ -78,6 +71,10 @@ function generateToken() {
 								</tr>
 							</table>
 						</div>
+					</div>
+					<div id="gamezone-main2">
+						<p>SECOND GAME MODE HERE SOON</p>
+						<img title="Return" class="control" src="media/leftarrow.png" onclick="playClick();display_welcome();">
 					</div>
 					<div id="gamezone-footer">
 						<div id="footer-greeting"><!-- 
@@ -92,11 +89,17 @@ function generateToken() {
 							</span>
 							<p id="token"></p>
 						</div>
-						<div id="footer-next">
+						<div id="footer-next1">
 							<img title="Report spam" id="add_delete" class="control" src="media/alert.png" onclick="playClick();report_spam()">
-							<img title="Next" id="next" ng-click="clear($event)" class="control" src="media/rightarrow.png" onclick="playClick();vote();get_ranked();">
+							<img title="Next" id="next1" ng-click="clear($event)" class="control" src="media/rightarrow.png" onclick="playClick();vote();get_ranked();">
+						</div>
+						<div id="footer-next2">
+							<img title="Next" id="next2" ng-click="clear($event)" class="control" src="media/rightarrow.png" onclick="playClick();submit_translation();get_random_def();">
 						</div>
 					</div>
+				</div>
+				<div id="gamezone2">
+					
 				</div>
 			</div>
 			<div id="about">

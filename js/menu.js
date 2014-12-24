@@ -29,7 +29,6 @@ function InlineEditorController($scope){
 			}
         	document.getElementById("input_tool_box").focus();
 			document.getElementById("input_tool_box").select();
-   //      	document.getElementById("input_tool_box").focus();
 		}
 		else {
 			if ($scope.value == '') {
@@ -72,12 +71,20 @@ function initialise(userID) {
 function enter_game1() {
 	document.getElementById("welcome").style.display = "none";
 	document.getElementById("game").style.display = "inline-block";
+	document.getElementById("gamezone-main1").style.display = "inline-block";
+	document.getElementById("footer-next1").style.display = "inline-block";
+	document.getElementById("gamezone-main2").style.display = "none";
+	document.getElementById("footer-next2").style.display = "none";
 	pause_animation();
 }
 
 function enter_game2() {
 	document.getElementById("welcome").style.display = "none";
-	document.getElementById("game2").style.display = "inline-block";
+	document.getElementById("game").style.display = "inline-block";
+	document.getElementById("gamezone-main2").style.display = "inline-block";
+	document.getElementById("footer-next2").style.display = "inline-block";
+	document.getElementById("gamezone-main1").style.display = "none";
+	document.getElementById("footer-next1").style.display = "none";
 	pause_animation();
 }
 
@@ -100,7 +107,6 @@ function return_to_game() {
 
 function display_welcome() {
 	document.getElementById("game").style.display = "none";
-	document.getElementById("game2").style.display = "none";
 	document.getElementById("welcome").style.display = "inline-block";
 	continue_animation();
 }

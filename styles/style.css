@@ -173,7 +173,7 @@ a a:hover, a:visited, a:link, a:active {
 	float:right;
 }
 
-#gamezone-main {
+#gamezone-main1, #gamezone-main2 {
 	height:410px;
 	width:750px;
 	padding:20px;
@@ -195,7 +195,7 @@ a a:hover, a:visited, a:link, a:active {
 	padding-top:50px;
 }
 
-#footer-next {
+#footer-next1, #footer-next2 {
 	float:left;
 	height:100px;
 	width:200px;
@@ -315,7 +315,7 @@ a a:hover, a:visited, a:link, a:active {
 	font-size:20px;
 }
 
-#next {
+#next1, #next2 {
 	float:right;
 }
 
