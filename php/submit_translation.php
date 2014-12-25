@@ -15,9 +15,9 @@ if (!$con) {
 	die('Could not connect: ' . mysqli_error($con));
 }
 
-$sql = 	"INSERT INTO definitions " .
-		"(LanguageID, DefinitionID, UserID, Word) " .
-		"(" . $languageID . ",'" . $definitionID . "','" . $userID . "," . $word . "');";
+$sql = 	"INSERT INTO translations " .
+		"(LanguageID, DefinitionID, UserID, Word) VALUES " .
+		"(" . $languageID . "," . $definitionID . ",'" . $userID . "','" . $word . "');";
 
 $query = mysqli_query($con, $sql);
 

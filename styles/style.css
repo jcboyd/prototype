@@ -15,8 +15,14 @@ body {
 #consensus {
 	display:none;
 	font-size: 30px;
-	float:left;
 	margin-right:0.5em;
+	color: #eba634;
+	font-style: italic;
+}
+
+#translation_definition {
+	display: inline-block;
+	font-size: 30px;
 	color: #eba634;
 	font-style: italic;
 }
@@ -94,23 +100,28 @@ a a:hover, a:visited, a:link, a:active {
 	background-image: url('../media/kikoi.jpg');
 }
 
-#entry {
+#entry, #translation_entry {
 	min-height:40px;
 	width:710px;
 	padding:20px;
 	color: #af0800;
 	background:white;
+	text-align:left;
 }
 
-#word {
-	font-size: 30px;
-	float:left;
+#translation_entry {
+	height: auto;
+}
+
+#word, #translation_word {
+	display: inline-block;
+	font-size:30px;
 	margin-right:0.5em;
 	text-transform:capitalize;
 }
 
-#pos {
-	float:left;
+#pos, #translation_pos {
+	display: inline-block;
 	font-size:30px;
 	color:gray;
 	font-style: italic;
@@ -173,6 +184,11 @@ a a:hover, a:visited, a:link, a:active {
 	float:right;
 }
 
+#gamezone1, #gamezone2 {
+	height: 450px;
+	width: 790px;
+}
+
 #gamezone-main1, #gamezone-main2 {
 	height:410px;
 	width:750px;
@@ -181,7 +197,7 @@ a a:hover, a:visited, a:link, a:active {
 	/*overflow: scroll;*/
 }
 
-#gamezone-footer {
+#gamezone-footer1, #gamezone-footer2 {
 	height:100px;
 	width:790px;
 	float:left;
@@ -196,12 +212,12 @@ a a:hover, a:visited, a:link, a:active {
 }
 
 #footer-next1, #footer-next2 {
-	float:left;
+	float:right;
 	height:100px;
 	width:200px;
 }
 
-#definitions_wrapper {	
+#definitions_wrapper, #translations_wrapper {	
 	margin-top:20px;
 	width: 750px;
 	height: 310px;
@@ -338,12 +354,12 @@ a a:hover, a:visited, a:link, a:active {
 	transform: scale(1.05);
 }
 
-#user_definition {
+#user_definition, #user_translation {
 	min-height:25px;
 	padding-bottom:20px;
 }
 
-#definitions {
+#definitions, #translations {
 	list-style:none;
 	width: 710px;
 	padding:20px;

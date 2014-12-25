@@ -4,15 +4,22 @@
 	height:100%;
 }
 
-#word {
+#consensus, #translation_definition {
+	display: inline-block;
 	font:55px/1.3 'Gill Sans', sans-serif;
-	float:left;
+	color: #eba634;
+	font-style: italic;
+}
+
+#word, #translation_word{
+	font:55px/1.3 'Gill Sans', sans-serif;
+	display: inline-block;
 	margin-right:0.5em;
 	text-transform:capitalize;
 }
 
-#pos {
-	float:left;
+#pos, #translation_pos {
+	display: inline-block;
 	font:55px/1.3 'Gill Sans', sans-serif;
 	color:gray;
 	font-style: italic;
@@ -102,13 +109,13 @@
 	opacity:0.5;
 }
 
-#game, #game2 {
+#game {
 	width:100%;
 	height:100%;
 	display:none;
 }
 
-#gamezone {
+#gamezone1, #gamezone2 {
 	width:850px;
 	height:700px;
 	float:right;
@@ -128,22 +135,22 @@
 	float:left;
 }
 	
-#entry {
-	height:100px;
+#entry, #translation_entry {
+	height:auto;
 	width:770px;
 	padding:20px;
 	color: #af0800;
 	background:white;
 }
 
-#definitions_wrapper {	
+#definitions_wrapper, #translations_wrapper {	
 	margin-top:20px;
 	width: 810px;
 	height: 600px;
 	overflow: scroll;
 }
 
-#definitions {
+#definitions, #translations {
 	list-style: none;
 	width: 770px;
 	padding:20px;
@@ -153,7 +160,7 @@
 	border-spacing:0;
 }
 
-#gamezone-footer {
+#gamezone-footer1, #gamezone-footer2 {
 	height:160px;
 	width:850px;
 	float:left;
@@ -169,7 +176,7 @@
 }
 
 #footer-next1, #footer-next2 {
-	float:left;
+	float:right;
 	height:160px;
 	width:400px;
 }

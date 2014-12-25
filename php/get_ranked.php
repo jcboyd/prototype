@@ -43,7 +43,7 @@ $sql =	"SELECT sq.ID, sq.Word, sq.Consensus, p.Full, d.DefinitionID, d.Definitio
 		"LEFT JOIN pos As p ON sq.PartOfSpeech = p.Code " .
 		"ORDER BY d.Votes " .
 		"LIMIT 5;";
-		
+
 $result = mysqli_query($con, $sql);
 
 $results_array = array();

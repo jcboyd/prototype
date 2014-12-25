@@ -20,7 +20,7 @@ function generateToken() {
 	<title>Kamusi GAME</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="styles/style.css"/>
-	<link rel="stylesheet" type="text/css" href="styles/mstyle.css"/> <!-- media="only screen and (max-device-width: 480px)" -->
+	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="styles/mstyle.css"/>
 	<!-- <link rel="stylesheet" type="text/css" media="only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2)" href="styles/mstyle.css"/> -->
 </head>
 
@@ -29,7 +29,7 @@ function generateToken() {
 ?>
 
 <body>
-	<div id="main" ng-app ng-controller="InlineEditorController" ng-click="hideTooltip()">
+	<div id="main" >
 		<div id="portal">
 			<div id="welcome">
 				<canvas width="930" height="550" id="animation">Your browser doesn't support HTML5.</canvas>
@@ -37,7 +37,7 @@ function generateToken() {
 				<img id="enter1" class="shaded_enter" src="media/book.png" onmousedown="playClick();enter_game1();">
 				<img id="enter2" class="shaded_enter" src="media/quill.png" onmousedown="playClick();enter_game2();">
 			</div>
-			<div id="game">
+			<div id="game" ng-app>
 				<div id="controls">
 					<div id="controlheader">
 						<img id="controltitle" src="media/banner.png">
@@ -48,38 +48,26 @@ function generateToken() {
 					<img title="Info" id="information" class="control" src="media/info.png" onclick="playClick();display_about();">
 					<img title="Home" id="auction" class="control" src="media/home.png" onclick="playClick();display_welcome();">
 				</div>
-				<div id="gamezone">
-					<div id="gamezone-main1">
+				<div id="gamezone1" ng-controller="InlineEditorController" ng-click="hideTooltip();">
+					<div id="gamezone-main1" >
 						<div id="entry">
 							<p id="word"></p>
 							<p id="pos"></p>
 							<p id="consensus"></p>
 						</div>
 						<div id="definitions_wrapper">
-							<!-- This is the tooltip. It is shown only when the showtooltip variable is truthful -->
 							<div class="input_tool" ng-click="$event.stopPropagation()" ng-show="showtooltip">
-								<!-- ng-model binds the contents of the text field with the "value" model.
-								 Any changes to the text field will automatically update the value, and
-								 all other bindings on the page that depend on it.  -->
 								<input id="input_tool_box" type="text" ng-model="value" ng-keypress="searchEnter($event);" onFocus="this.select()"/>
 							</div>
 							<table id="definitions">
-								<tr>
-									<td>
-										<li ng-click="toggleTooltip($event)" id="user_definition" class="inactive_definition">{{value}}</li>
-									</td>
-								</tr>
+								<tr><td>
+									<li ng-click="toggleTooltip($event)" id="user_definition" class="inactive_definition">{{value}}</li>
+								</td></tr>
 							</table>
 						</div>
 					</div>
-					<div id="gamezone-main2">
-						<p>SECOND GAME MODE HERE SOON</p>
-						<img title="Return" class="control" src="media/leftarrow.png" onclick="playClick();display_welcome();">
-					</div>
-					<div id="gamezone-footer">
-						<div id="footer-greeting"><!-- 
-							<p id="greeting"></p>
-							<span><img id="avatar" src="" width="50"></span> -->
+					<div id="gamezone-footer1">
+						<div id="footer-greeting">
 							<a class="tooltip">
 								<p id="greeting"></p>
 								<span><img id="avatar" src="" width="50"></span>
@@ -87,19 +75,45 @@ function generateToken() {
 							<span id="login_button">
 								<fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
 							</span>
-							<p id="token"></p>
 						</div>
 						<div id="footer-next1">
-							<img title="Report spam" id="add_delete" class="control" src="media/alert.png" onclick="playClick();report_spam()">
+							<img title="Report spam" id="add_delete" class="control" src="media/alert.png" onclick="playClick();report_spam();">
 							<img title="Next" id="next1" ng-click="clear($event)" class="control" src="media/rightarrow.png" onclick="playClick();vote();get_ranked();">
-						</div>
-						<div id="footer-next2">
-							<img title="Next" id="next2" ng-click="clear($event)" class="control" src="media/rightarrow.png" onclick="playClick();submit_translation();get_random_def();">
 						</div>
 					</div>
 				</div>
-				<div id="gamezone2">
-					
+				<div id="gamezone2" ng-controller="InlineEditorController2" ng-click="hideTooltip2();">
+					<div id="gamezone-main2">
+						<div id="translation_entry">
+							<p id="translation_word"></p>
+							<p id="translation_pos"></p>
+							<p id="translation_definition"></p>
+						</div>
+						<div id="translations_wrapper">
+							<div class="input_tool" ng-click="$event.stopPropagation()" ng-show="showtooltip2">
+								<input id="translation_input_tool_box" type="text" ng-model="translation" ng-keypress="searchEnter2($event);" onFocus="this.select()"/>
+							</div>
+							<table id="translations">
+								<tr><td>
+									<li ng-click="toggleTooltip2($event)" id="user_translation" class="inactive_definition">{{translation}}</li>
+								</td></tr>
+							</table>
+						</div>
+					</div>
+					<div id="gamezone-footer2">
+						<!-- <div id="footer-greeting">
+							<a class="tooltip">
+								<p id="greeting"></p>
+								<span><img id="avatar" src="" width="50"></span>
+							</a>
+							<span id="login_button">
+								<fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+							</span>
+						</div> -->
+						<div id="footer-next2">
+							<img title="Next" id="next2" ng-click="clear2($event)" class="control" src="media/rightarrow.png" onclick="playClick();soumettre_traduction();get_random_def();">
+						</div>
+					</div>
 				</div>
 			</div>
 			<div id="about">

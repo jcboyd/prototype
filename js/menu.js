@@ -1,17 +1,17 @@
-var default_value = '✎ I can write the winning definition!';
 var min_length = 4;
 
-function InlineEditorController($scope){
+var default_value = '✎ I can write the winning definition!';
+var translation_default_value = '✎ Je peux traduire ça!';
 
+function InlineEditorController($scope){
 	$scope.showtooltip = false;
 	$scope.value = default_value;
 
 	$scope.hideTooltip = function(){
-
 		$scope.showtooltip = false;
 		if ($scope.value == '') {
 			$scope.value = default_value;
-			document.getElementById("user_definition").className = "inactive_definition";
+			document.getElementById('user_definition').className = "inactive_definition";
 		}
 	}
 
@@ -25,7 +25,6 @@ function InlineEditorController($scope){
 			document.getElementById("user_definition").className = "active_definition";
 			if($scope.value == default_value) {
 				$scope.value = '';
-
 			}
         	document.getElementById("input_tool_box").focus();
 			document.getElementById("input_tool_box").select();
@@ -50,20 +49,58 @@ function InlineEditorController($scope){
 	}
 }
 
-function add_user_definition() {
-	document.getElementById("add_delete").src = "media/delete.png";
-	document.getElementById("add_delete").onclick = delete_user_definition;
-	// var ul = document.getElementById("definitions");
-	// var li = document.createElement("li");
-	document.getElementById("user_definition").style.display = "inline-block";
-	// li.classList.add("inactive_definition");
-	// li.id = "user_definition";
-	// ul.appendChild(li);
+//THIS IS REALLY UGLY - TO BE REWORKED
+function InlineEditorController2($scope){
+
+	$scope.showtooltip2 = false;
+	$scope.translation = translation_default_value;
+
+	$scope.hideTooltip2 = function(){
+		$scope.showtooltip2 = false;
+		if ($scope.translation == '') {
+			$scope.translation = translation_default_value
+			document.getElementById('user_translation').className = "inactive_definition";
+		}
+	}
+
+	$scope.toggleTooltip2 = function(e){
+		e.stopPropagation();
+
+		$scope.showtooltip2 = !$scope.showtooltip2;
+		
+		if($scope.showtooltip2) {
+			remove_active();
+			document.getElementById("user_translation").className = "active_definition";
+			if($scope.translation == translation_default_value) {
+				$scope.translation = '';
+			}
+   //      	document.getElementById("translation_input_tool_box").focus();
+			// document.getElementById("translation_input_tool_box").select();
+		}
+		else {
+			if ($scope.translation == '') {
+				$scope.translation = translation_default_value;
+				document.getElementById("user_translation").className = "inactive_definition";
+			}
+		}
+	}
+
+	$scope.clear2 = function(e) {
+		e.stopPropagation();
+		$scope.translation = translation_default_value;
+	}
+
+	$scope.searchEnter2 = function(e) {
+        if (e.keyCode == 13) {
+            $scope.hideTooltip2();
+        }
+	}
 }
 
 function initialise(userID) {
 	set_avatar(userID);
 	get_ranked();
+	get_random_def();
 	get_user_stats();
 	get_user_trophies();
 }
@@ -71,20 +108,24 @@ function initialise(userID) {
 function enter_game1() {
 	document.getElementById("welcome").style.display = "none";
 	document.getElementById("game").style.display = "inline-block";
-	document.getElementById("gamezone-main1").style.display = "inline-block";
-	document.getElementById("footer-next1").style.display = "inline-block";
-	document.getElementById("gamezone-main2").style.display = "none";
-	document.getElementById("footer-next2").style.display = "none";
+	document.getElementById("gamezone1").style.display = "inline-block";
+	document.getElementById("gamezone2").style.display = "none";
+	// document.getElementById("gamezone-main1").style.display = "inline-block";
+	// document.getElementById("gamezone-main2").style.display = "none";
+	// document.getElementById("footer-next1").style.display = "inline-block";
+	// document.getElementById("footer-next2").style.display = "none";
 	pause_animation();
 }
 
 function enter_game2() {
 	document.getElementById("welcome").style.display = "none";
 	document.getElementById("game").style.display = "inline-block";
-	document.getElementById("gamezone-main2").style.display = "inline-block";
-	document.getElementById("footer-next2").style.display = "inline-block";
-	document.getElementById("gamezone-main1").style.display = "none";
-	document.getElementById("footer-next1").style.display = "none";
+	document.getElementById("gamezone1").style.display = "none";
+	document.getElementById("gamezone2").style.display = "inline-block";
+	// document.getElementById("gamezone-main1").style.display = "none";
+	// document.getElementById("gamezone-main2").style.display = "inline-block";
+	// document.getElementById("footer-next1").style.display = "none";
+	// document.getElementById("footer-next2").style.display = "inline-block";
 	pause_animation();
 }
 
@@ -120,15 +161,14 @@ function animate_logo() {
 }
 
 function set_consensus_word(word, pos, definition) {
-	document.getElementById("word").innerHTML = word; // + "; proposed by: " + userID;
+	document.getElementById("word").innerHTML = word;
 	document.getElementById("pos").innerHTML = pos;
 	document.getElementById("consensus").style.display = "inline-block";
 	document.getElementById("consensus").innerHTML = " : " + definition;
 }
 
 function set_word(word, pos) {
-	//document.getElementById("word").innerHTML = word + "; " + pos + "; proposed by: " + userID;
-	document.getElementById("word").innerHTML = word; // + "; proposed by: " + userID;
+	document.getElementById("word").innerHTML = word;
 	document.getElementById("pos").innerHTML = pos;
 	document.getElementById("consensus").style.display = "none";
 }
@@ -165,6 +205,27 @@ function clear_definitions() {
 	}
 }
 
+// function add_i_dont_know() {
+// 	var table = document.getElementById("translations");
+// 	var li = document.createElement("li");
+// 	li.className = "inactive_definition";
+// 	li.innerHTML = "Je ne sais pas...";
+// 	li.onmousedown = (function() {
+// 		return function () {
+// 			if (this.className == "active_definition") {
+// 				this.className = "inactive_definition";
+// 				i_dont_know = false;
+// 			}
+// 			else {
+// 				document.getElementById("user_translation").className = 'inactive_definition';
+// 				this.className = "active_definition";
+// 				i_dont_know = true;
+// 			}
+// 		};
+// 	})();
+// 	table.appendChild(li);
+// }
+
 function add_definition(id, definition) {
 	var ul = document.getElementById("definitions");
 	var li = document.createElement("li");
@@ -182,13 +243,14 @@ function add_definition(id, definition) {
 	// div_footer.appendChild(img1);
 	li.onmousedown = (function(id_num) {
 		return function () {
-			definitionID = id_num;
 			if (this.className == "active_definition") {
 				remove_active();
+				definitionID = -1;
 			}
 			else {
 				remove_active();
 				this.className = "active_definition";
+				definitionID = id_num;
 			}
 		};
 	})(id);
@@ -265,6 +327,14 @@ function vote() {
 		submit_vote(definitionID, 1);
 	}
 	else if(user_definition != default_value && user_definition.length >= min_length) {
-		submit_definition(document.getElementById("input_tool_box").value);
+		submit_definition(user_definition);
+	}
+}
+
+function soumettre_traduction() {
+	var user_translation = document.getElementById("translation_input_tool_box").value;
+	var class_name = document.getElementById("user_translation").className;
+	if(class_name == "active_definition" && user_translation != translation_default_value) {
+		submit_translation(user_translation);
 	}
 }

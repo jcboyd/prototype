@@ -1,6 +1,9 @@
 var userID;
 var wordID;
 var definitionID;
+var i_dont_know = true;
+
+var translationDefinitionID;
 
 //TODO: GENERALISE SERVER REQUESTS
 
@@ -199,15 +202,17 @@ function get_random_def() {
     xmlhttp.onreadystatechange=function() {
         if (xmlhttp.readyState==4 && xmlhttp.status==200) {
             obj = JSON.parse(xmlhttp.responseText);
-            document.getElementById("word").innerHTML = obj.Word;
-            document.getElementById("definition").innerHTML = obj.Definition;
+            document.getElementById("translation_word").innerHTML = obj.Word;
+            document.getElementById("translation_pos").innerHTML = obj.PartOfSpeech;
+            document.getElementById("translation_definition").innerHTML = obj.Definition;
+            translationDefinitionID = obj.DefinitionID;
         }
     }
     xmlhttp.open("GET","php/get_random_def.php", true);
     xmlhttp.send();
 }
 
-function submit_translation() {
+function submit_translation(translation) {
     var xmlhttp;
     if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp=new XMLHttpRequest();
@@ -215,6 +220,6 @@ function submit_translation() {
     else {// code for IE6, IE5
         xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
     }
-    xmlhttp.open("GET","php/submit_translation.php?wordID=" + wordID + "&definition=" + definition + "&userID=" + userID, true);
+    xmlhttp.open("GET","php/submit_translation.php?word=" + translation + "&definitionID=" + translationDefinitionID + "&userID=" + userID, true);
     xmlhttp.send();
 }
