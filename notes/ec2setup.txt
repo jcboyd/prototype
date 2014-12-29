@@ -1,10 +1,9 @@
 Source: http://www.name.com/blog/general/development/2012/01/so-you-want-free-web-hosting-an-amazon-ec2-how-to/
 
-Change access rights for digital certificate:
+Change access rights for private key:
 
-chmod a-rwx ec2.pem
-chmod u+rw ec2.pem
-ssh -i ec2.pem ec2-user@54.186.29.34
+chmod 600 ec2.pem
+ssh -i ec2.pem ec2-user@54.148.149.85
 
 Install Yum package manager:
 
@@ -36,7 +35,7 @@ cd /var/www/html
 
 Copy files:
 
-scp -i ec2.pem -r prototype ec2-user@54.186.29.34:scp_temp
+scp -i ec2.pem -r prototype ec2-user@54.148.149.85:scp_temp
 
 Create Database:
 
@@ -45,8 +44,6 @@ SHOW DATABASES;
 CREATE DATABASE kamusi;
 mysql> USE kamusi;
 mysql> CREATE TABLE wordnet (ID INT, Word VARCHAR(64), Definition VARCHAR(256));
-
-CREATE TABLE A (ID INT, Word VARCHAR(64), Definition VARCHAR(256));
 
 Install mysql driver for php
 
@@ -93,7 +90,7 @@ openssl x509 -req -days 365 -in server.csr -signkey myserver.key -out server.crt
 https://www.digicert.com/ssl-certificate-installation-apache.htm
 https://www.sslshopper.com/article-how-to-create-and-install-an-apache-self-signed-certificate.html
 
-Place these files on server in /etc/ssl/crt
+Place these files on server in /etc/ssl/certs
 
 Add the following to etc/httpd/conf/httpd.conf:
 
@@ -102,8 +99,8 @@ Add the following to etc/httpd/conf/httpd.conf:
     DocumentRoot /var/www/html
     ServerName dummy-host.example.com
     SSLEngine on
-    SSLCertificateFile /etc/ssl/crt/server.crt
-    SSLCertificateKeyFile /etc/ssl/crt/myserver.key
+    SSLCertificateFile /etc/ssl/certs/server.crt
+    SSLCertificateKeyFile /etc/ssl/certs/myserver.key
     ErrorLog logs/dummy-host.example.com-error_log
     CustomLog logs/dummy-host.example.com-access_log common
 </VirtualHost>

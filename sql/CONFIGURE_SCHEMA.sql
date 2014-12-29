@@ -14,10 +14,10 @@ CREATE TABLE rankedwords (ID INT, Word VARCHAR(64), PartOfSpeech VARCHAR(16), Ra
 
 CREATE TABLE definitions (DefinitionID INT auto_increment, WordID INT, Definition VARCHAR(256), UserID VARCHAR(64), Votes INT DEFAULT 0, PRIMARY KEY(DefinitionID), FOREIGN KEY (WordID) REFERENCES rankedwords (ID), FOREIGN KEY (UserID) REFERENCES users (UserID));
 
-CREATE INDEX RankIndex ON rankedwords(Rank);
-
 CREATE TABLE pos (ID INT auto_increment, Code VARCHAR(64), Full VARCHAR(64), PRIMARY KEY (ID));
 
 CREATE TABLE languages (ID INT auto_increment, LanguageName VARCHAR(64), PRIMARY KEY(ID));
 
 CREATE TABLE translations (ID INT auto_increment, LanguageID INT, DefinitionID INT, UserID VARCHAR(64), FOREIGN KEY (LanguageID) REFERENCES languages(ID), Word VARCHAR(64), PRIMARY KEY(ID), FOREIGN KEY (DefinitionID) REFERENCES definitions(DefinitionID), FOREIGN KEY (UserID) REFERENCES users(USERID));
+
+CREATE INDEX RankIndex ON rankedwords(Rank);

@@ -19,8 +19,8 @@ function generateToken() {
 <head>
 	<title>Kamusi GAME</title>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="styles/style.css"/>
-	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="styles/mstyle.css"/>
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="css/mstyle.css"/>
 	<!-- <link rel="stylesheet" type="text/css" media="only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2)" href="styles/mstyle.css"/> -->
 </head>
 
