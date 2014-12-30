@@ -104,7 +104,7 @@ function check_user(response) {
         }
     }
     var noCache = new Date().getTime();
-    xmlhttp.open("GET","php/check_user.php?userID=" + response.id + "&noCache=" + "noCache", true);
+    xmlhttp.open("GET","php/check_user.php?userID=" + response.id + "&noCache=" + noCache, true);
     xmlhttp.send();
 }
 
@@ -220,6 +220,7 @@ function submit_translation(translation) {
     else {// code for IE6, IE5
         xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
     }
-    xmlhttp.open("GET","php/submit_translation.php?word=" + translation + "&definitionID=" + translationDefinitionID + "&userID=" + userID, true);
+    var noCache = new Date().getTime();
+    xmlhttp.open("GET","php/submit_translation.php?word=" + translation + "&definitionID=" + translationDefinitionID + "&userID=" + userID + "&noCache=" + noCache, true);
     xmlhttp.send();
 }
