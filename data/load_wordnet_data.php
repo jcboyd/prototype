@@ -25,8 +25,8 @@ function import_file() {
 	}
 
 	$var = 0; $entryID = 0;
-	$currentWord = ''; $currentDefinition = '';
-	$gotWord = False; $gotDefinition = False;
+	$currentWord = ''; $currentDefinition = ''; $currentPos = '';
+	$gotWord = False; $gotDefinition = False; $gotPos = False;
 	
     while (!feof($handle)) {
         $buffer = fgets($handle, 4096);
@@ -47,10 +47,14 @@ function import_file() {
         		$currentDefinition = getField($buffer, 'gloss> "', '"');
         		$gotDefinition = True;
         		break;
+            case 'part_of_speech':
+                $currentPos = getField($buffer, 'part_of_speech> <http://wordnet-rdf.princeton.edu/ontology#', '>');
+                $gotPos = True;
+                break;
         }
 
         if($gotWord and $gotDefinition) {
-        	$sql = "INSERT INTO wordnet (ID, Word, Definition) VALUES (" . $entryID . ",'" . $currentWord . "','" . $currentDefinition . "')";
+        	$sql = "INSERT INTO wordnet (ID, Word, PartOfSpeech, Definition) VALUES (" . $entryID . ",'" . $currentWord . "','" . $currentPos . "','" . $currentDefinition . "')";
 			$retval = mysqli_query($con, $sql);
 			$gotWord = False;
 			$gotDefinition = False;

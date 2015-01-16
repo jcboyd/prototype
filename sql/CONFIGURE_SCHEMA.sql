@@ -6,7 +6,7 @@ CREATE TABLE app (app_id VARCHAR(64), app_secret VARCHAR(64));
 
 CREATE TABLE admin (Alias VARCHAR(64), Email VARCHAR(256));
 
-CREATE TABLE wordnet (ID INT, Word VARCHAR(64), Definition VARCHAR(256));
+CREATE TABLE wordnet (ID INT, Word VARCHAR(64), PartOfSpeech VARCHAR(64), Definition VARCHAR(256));
 
 CREATE TABLE users (UserID VARCHAR(64), Points INT DEFAULT 0, Rating INT DEFAULT 0, Position INT DEFAULT 1, Notify INT DEFAULT 0, Mute INT DEFAULT 0, NumReports INT DEFAULT 0, PRIMARY KEY(UserID));
 
