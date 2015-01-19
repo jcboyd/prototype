@@ -203,7 +203,7 @@ a a:hover, a:visited, a:link, a:active {
 	float:left;
 }
 
-#footer-greeting {
+#footer-greeting, #footer-greeting2 {
 	float:left;
 	height:50px;
 	width:560px;
@@ -335,7 +335,7 @@ a a:hover, a:visited, a:link, a:active {
 	float:right;
 }
 
-#greeting {
+#greeting, #greeting2 {
 	float:left;
 }
 

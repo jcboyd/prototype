@@ -97,6 +97,10 @@ function InlineEditorController2($scope){
 	}
 }
 
+function set_greeting() {
+
+}
+
 function initialise(userID) {
 	set_avatar(userID);
 	get_ranked();
@@ -176,6 +180,12 @@ function set_word(word, pos) {
 function set_avatar(userID) {
     document.getElementById("avatar").src = "https://graph.facebook.com/" + userID + "/picture";
     document.getElementById("profile_avatar").src = "https://graph.facebook.com/" + userID + "/picture??width=200&height=200";
+}
+
+function set_greeting(userName) {
+	document.getElementById("greeting").innerHTML = "Write something, " + userName.split(" ")[0] + "!";
+	document.getElementById("greeting2").innerHTML = "Translate something, " + userName.split(" ")[0] + "!";
+	document.getElementById("profile_name").innerHTML = userName;
 }
 
 function set_profile_data(userID, points, position, notify) {

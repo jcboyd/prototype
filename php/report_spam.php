@@ -52,7 +52,7 @@ while ($row = $result->fetch_assoc()) {
 	$message .= "<tr><td><strong>Word:</strong> </td><td>" . $wordID . "</td></tr>";
 	$message .= "<tr style='background: #ccc;'><td><strong>Definition:</strong> </td><td>" . $definitionID . "</td></tr>";
 	$message .= "<tr><td><strong>User reports:</strong> </td><td>" . $num_reports . "</td></tr>";
-	$message .= '<tr style="background: #ccc;"><td><a href="' . $remove_link . '">Remove spam</a></td><td><a href="' . $mute_link . '">Mute user</a></td></tr>';
+	$message .= '<tr style="background: #ccc;"><td><a href="' . $remove_link . '">Mute spammer</a></td><td><a href="' . $mute_link . '">Mute reporter</a></td></tr>';
 	$message .= "</table>";
 	$message .= "</body></html>";
 

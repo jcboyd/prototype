@@ -42,7 +42,7 @@ function get_ranked() {
             wordID = results_array[0].ID;
 
             if(results_array[0].Consensus == 1) {
-                set_consensus_word(results_array[0].Word, results_array[0].Full, results_array[0].Definition);
+                set_consensus_word(results_array[0].Word, results_array[0].PartOfSpeech, results_array[0].Definition);
                 add_definition(results_array[0].DefinitionID, '✓ That is a good definition');
                 for(var i = 1; i < results_array.length; i++) {
                     if(results_array[i].Definition != undefined) {
@@ -51,7 +51,7 @@ function get_ranked() {
                 }
             }
             else {
-                set_word(results_array[0].Word, results_array[0].Full);
+                set_word(results_array[0].Word, results_array[0].PartOfSpeech);
                 for(var i = 0; i < results_array.length; i++) {
                     if(results_array[i].Definition != undefined) {
                         add_definition(results_array[i].DefinitionID, results_array[i].Definition);
@@ -92,13 +92,14 @@ function check_user(response) {
         if (xmlhttp.readyState==4 && xmlhttp.status==200) {
             obj = JSON.parse(xmlhttp.responseText);
             if(obj.CheckResult == 1) {
-                document.getElementById('greeting').innerHTML = 'Welcome back, ' + response.name + '!';
-                document.getElementById('profile_name').innerHTML = response.name;
+                // document.getElementById('greeting').innerHTML = 'Welcome back, ' + response.name + '!';
+                // document.getElementById('profile_name').innerHTML = response.name;
             }
             else {
-                document.getElementById('greeting').innerHTML = 'Welcome, ' + response.name + '!';
-                document.getElementById('profile_name').innerHTML = response.name;
+                // document.getElementById('greeting').innerHTML = 'Welcome, ' + response.name + '!';
+                // document.getElementById('profile_name').innerHTML = response.name;
             }
+            set_greeting(response.name);
             userID = response.id;
             initialise(userID);
         }

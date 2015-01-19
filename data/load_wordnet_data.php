@@ -30,7 +30,7 @@ function import_file() {
 	
     while (!feof($handle)) {
         $buffer = fgets($handle, 4096);
-        $currentEntryID = getField($buffer, '/wn31/', '-n');
+        $currentEntryID = getField($buffer, '/wn31/', '-');
 
         if($currentEntryID != $entryID) {
         	$entryID = $currentEntryID;
@@ -53,7 +53,7 @@ function import_file() {
                 break;
         }
 
-        if($gotWord and $gotDefinition) {
+        if($gotWord and $gotDefinition and $gotPos) {
         	$sql = "INSERT INTO wordnet (ID, Word, PartOfSpeech, Definition) VALUES (" . $entryID . ",'" . $currentWord . "','" . $currentPos . "','" . $currentDefinition . "')";
 			$retval = mysqli_query($con, $sql);
 			$gotWord = False;

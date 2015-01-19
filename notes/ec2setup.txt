@@ -221,6 +221,12 @@ INSERT INTO pos (Code, Full) VALUES ('num', 'cardinal number');
 INSERT INTO pos (Code, Full) VALUES ('neg', 'neg');
 INSERT INTO pos (Code, Full) VALUES ('ex', 'ex');
 INSERT INTO pos (Code, Full) VALUES ('infinitive marke', 'infinitive marker');
+INSERT INTO pos (Code, Full) VALUES('noun', 'noun');
+INSERT INTO pos (Code, Full) VALUES('verb', 'verb');
+INSERT INTO pos (Code, Full) VALUES('adjective', 'adjective');
+INSERT INTO pos (Code, Full) VALUES('adjective_satellite', 'adjective satellite');
+INSERT INTO pos (Code, Full) VALUES('adverb', 'adverb');
+INSERT INTO pos (Code, Full) VALUES('phrase', 'phrase');
 
 CREATE TABLE pos (ID INT auto_increment, Code VARCHAR(64), Full VARCHAR(64), PRIMARY KEY (ID), FOREIGN KEY (Code) REFERENCES rankedwords(PartOfSpeech));
 

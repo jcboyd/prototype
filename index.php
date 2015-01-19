@@ -25,7 +25,7 @@ function generateToken() {
 </head>
 
 <?php
-	$newToken = generateToken();   
+	$newToken = generateToken();
 ?>
 
 <body>
@@ -101,15 +101,10 @@ function generateToken() {
 						</div>
 					</div>
 					<div id="gamezone-footer2">
-						<!-- <div id="footer-greeting">
-							<a class="tooltip">
-								<p id="greeting"></p>
-								<span><img id="avatar" src="" width="50"></span>
-							</a>
-							<span id="login_button">
-								<fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
-							</span>
-						</div> -->
+						<div id="footer-greeting2">
+							<p id="greeting2"></p>
+							<!-- <span><img id="avatar" src="" width="50"></span> -->
+						</div>
 						<div id="footer-next2">
 							<img title="Next" id="next2" ng-click="clear2($event)" class="control" src="media/rightarrow.png" onclick="playClick();soumettre_traduction();get_random_def();">
 						</div>

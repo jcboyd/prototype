@@ -1,6 +1,6 @@
 <?php
 
-$userID = '1479788208970002'; // $_GET['userID'];
+$userID = $_GET['userID'];
 
 $user = 'root';
 $pass = '';
