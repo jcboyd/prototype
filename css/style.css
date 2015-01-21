@@ -32,7 +32,7 @@ body {
 	height:50px;
 }
 
-#about-main, #profile-main {
+#about-main, #profile-main, #settings-main {
 	height:410px;
 	width:890px;
 	padding:20px;
@@ -147,7 +147,7 @@ a a:hover, a:visited, a:link, a:active {
 	background-height:100%;
 }
 
-#about, #profile {
+#about, #profile, #settings {
 	width: 100%;
 	height: 100%;
 	text-align:center;
@@ -158,11 +158,23 @@ a a:hover, a:visited, a:link, a:active {
 	text-align:justify !important
 }
 
-#about-footer, #profile-footer {
+#about-footer, #profile-footer, #settings-footer {
 	height:100px;
 	width:930px;
 	float:left;
 	text-align:left;
+}
+
+#profile-footer-left {
+	height:100px;
+	width:830px;
+	float:left;
+}
+
+#profile-footer-right {
+	height:100px;
+	width:100px;
+	float:left;
 }
 
 #game, #game2 {
@@ -319,6 +331,10 @@ a a:hover, a:visited, a:link, a:active {
 	height:100px;
 	width:100px;
 	opacity:0.5;
+}
+
+.settings_button {
+	float:right;
 }
 
 .control:hover {
@@ -498,7 +514,7 @@ a a:hover, a:visited, a:link, a:active {
 	outline: none;
 }
 
-#profile-data, #about-data {
+#profile-data, #about-data, #settings-data {
 	height:370px;
 	width:850px;
 	padding:20px;

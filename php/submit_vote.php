@@ -34,7 +34,7 @@ $user_id = $results_array["UserID"];
 $votes = $results_array["Votes"];
 
 //Increment user score--if eligible
-if($votes == 1 && $user_id != 'wordnet') {
+if($votes == 3 && $user_id != 'wordnet') {
 	$sql = 	"UPDATE users " .
 			"SET Points = Points + 1 " . 
 			"WHERE UserID = '" . $user_id . "';";

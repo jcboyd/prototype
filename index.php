@@ -167,7 +167,36 @@ function generateToken() {
 					</div>
 				</div>
 				<div id="profile-footer">
-					<img title="Return" class="control" src="media/leftarrow.png" onclick="playClick();return_to_game();">
+					<div id="profile-footer-left">
+						<img title="Return" class="control" src="media/leftarrow.png" onclick="playClick();return_to_game();">
+					</div>
+					<div id="profile-footer-right">
+						<img id="settings_button" title="Settings" class="control" src="media/settings.png" onclick="playClick();display_settings();">
+					</div>
+				</div>
+			</div>
+			<div id="settings">
+				<div id="settings-main">
+					<p>My language is:</p>
+					</br>
+					<select size="1">
+			  			<option>English</option>
+			  			<option>French</option>
+					</select>
+					</br></br>
+					<p>Notify me:</p>
+					</br>
+					<select size="1">
+			  			<option>Any time</option>
+			  			<option>Once daily</option>
+			  			<option>Once weekly</option>
+			  			<option>When pigs fly...</option>
+					</select>
+					<!-- <div id="settings-data">
+					</div> -->
+				</div>
+				<div id="settings-footer">
+					<img title="Return" class="control" src="media/leftarrow.png" onclick="playClick();display_profile();">
 				</div>
 			</div>
 		</div>

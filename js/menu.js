@@ -133,12 +133,18 @@ function enter_game2() {
 	pause_animation();
 }
 
+function display_settings() {
+	document.getElementById("profile").style.display = "none";
+	document.getElementById("settings").style.display = "inline-block";
+}
+
 function display_about() {
 	document.getElementById("game").style.display = "none";
 	document.getElementById("about").style.display = "inline-block";
 }
 
 function display_profile() {
+	document.getElementById("settings").style.display = "none";
 	document.getElementById("welcome").style.display = "none";
 	document.getElementById("game").style.display = "none";
 	document.getElementById("profile").style.display = "inline-block";
@@ -251,6 +257,7 @@ function add_definition(id, definition) {
 	// img1.classList.add('vote_button');
 	// img1.title = "Report spam";
 	// div_footer.appendChild(img1);
+
 	li.onmousedown = (function(id_num) {
 		return function () {
 			if (this.className == "active_definition") {
@@ -262,6 +269,16 @@ function add_definition(id, definition) {
 				this.className = "active_definition";
 				definitionID = id_num;
 			}
+		};
+	})(id);
+
+	li.ondblclick = (function(id_num) {
+		return function () {
+			remove_active();
+			this.className = "active_definition";
+			definitionID = id_num;
+			vote();
+			get_ranked();
 		};
 	})(id);
 
