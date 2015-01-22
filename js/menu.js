@@ -198,6 +198,7 @@ function set_profile_data(userID, points, position, notify) {
 	document.getElementById("profile_points").innerHTML = points;
 	document.getElementById("profile_attempts").innerHTML = position;
 	if(notify == 1) {
+		document.getElementById("gamezone2").style.display = "none";
 		display_profile();
 		complete_notification();
 	}

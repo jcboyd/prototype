@@ -177,14 +177,15 @@ function generateToken() {
 			</div>
 			<div id="settings">
 				<div id="settings-main">
-					<p>My language is:</p>
+					<p>My language is...</p>
 					</br>
 					<select size="1">
 			  			<option>English</option>
-			  			<option>French</option>
+			  			<option>Français</option>
+			  			<option>tiếng Việt</option>
 					</select>
 					</br></br>
-					<p>Notify me:</p>
+					<p>Notify me...</p>
 					</br>
 					<select size="1">
 			  			<option>Any time</option>
