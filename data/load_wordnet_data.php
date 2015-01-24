@@ -1,5 +1,5 @@
 <?php
-ini_set('max_execution_time', 300); //300 seconds = 5 minutes
+ini_set('max_execution_time', 600); //300 seconds = 5 minutes
 
 //Extract the substring of #line between #head and #tail substrings
 function getField($line, $head, $tail) {
@@ -24,42 +24,40 @@ function import_file() {
 		die('Could not connect: ' . mysqli_error($con));
 	}
 
-	$var = 0; $entryID = 0;
-	$currentWord = ''; $currentDefinition = ''; $currentPos = '';
-	$gotWord = False; $gotDefinition = False; $gotPos = False;
+    $entryID = 0;
+	$currentDefinition = ''; $currentPos = '';
+    $words = array();
 	
     while (!feof($handle)) {
         $buffer = fgets($handle, 4096);
         $currentEntryID = getField($buffer, '/wn31/', '-');
 
-        if($currentEntryID != $entryID) {
-        	$entryID = $currentEntryID;
+        if($currentEntryID != $entryID && $currentEntryID != "") {
+
+            $sql = "INSERT INTO definitions (GroupID, Definition, UserID) VALUES ('" . $entryID . "','" . $currentDefinition . "','wordnet')";
+            $retval = mysqli_query($con, $sql);
+
+            foreach ($words as $word) {
+                $sql = "INSERT INTO words (Word, PartOfSpeech, DefinitionID) VALUES ('" . $word . "','" . $currentPos . "','" . $entryID . "')";
+                $retval = mysqli_query($con, $sql);
+            }
+            $words = array();
+            $entryID = $currentEntryID;
         }
 
         $lineType = getField($buffer, '#', '>');
 
         switch ($lineType) {
         	case 'label':
-        		$currentWord = getField($buffer, 'label> "', '"');
-        		$gotWord = True;
+        		$words[] = getField($buffer, 'label> "', '"');
         		break;
         	case 'gloss':
         		$currentDefinition = getField($buffer, 'gloss> "', '"');
-        		$gotDefinition = True;
         		break;
             case 'part_of_speech':
                 $currentPos = getField($buffer, 'part_of_speech> <http://wordnet-rdf.princeton.edu/ontology#', '>');
-                $gotPos = True;
                 break;
         }
-
-        if($gotWord and $gotDefinition and $gotPos) {
-        	$sql = "INSERT INTO wordnet (ID, Word, PartOfSpeech, Definition) VALUES (" . $entryID . ",'" . $currentWord . "','" . $currentPos . "','" . $currentDefinition . "')";
-			$retval = mysqli_query($con, $sql);
-			$gotWord = False;
-			$gotDefinition = False;
-        }
-        $var++;
     }
     fclose($handle);
 

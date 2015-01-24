@@ -20,14 +20,13 @@ if (!$con) {
 //Increment points
 $sql = 	"UPDATE definitions " .
 		"SET Votes = Votes + " . $vote . " " . 
-		"WHERE DefinitionID = " . $definitionID . ";";
+		"WHERE ID = " . $definitionID . ";";
 $query = mysqli_query($con, $sql);
 
 $sql = 	"SELECT UserID, Votes FROM definitions " .
-		"WHERE DefinitionID = " . $definitionID . ";";
+		"WHERE ID = " . $definitionID . ";";
 
 $result = mysqli_query($con, $sql);
-
 $results_array = $result->fetch_assoc();
 
 $user_id = $results_array["UserID"];

@@ -1,7 +1,7 @@
 var min_length = 4;
 
 var default_value = '✎ I can write the winning definition!';
-var translation_default_value = '✎ Je peux traduire ça!';
+var translation_default_value = '✎ Trong tiếng Việt từ này có nghĩa là ...';
 
 function InlineEditorController($scope){
 	$scope.showtooltip = false;
@@ -58,7 +58,7 @@ function InlineEditorController2($scope){
 	$scope.hideTooltip2 = function(){
 		$scope.showtooltip2 = false;
 		if ($scope.translation == '') {
-			$scope.translation = translation_default_value
+			$scope.translation = translation_default_value;
 			document.getElementById('user_translation').className = "inactive_definition";
 		}
 	}
@@ -69,7 +69,7 @@ function InlineEditorController2($scope){
 		$scope.showtooltip2 = !$scope.showtooltip2;
 		
 		if($scope.showtooltip2) {
-			remove_active();
+			remove_active_translations();
 			document.getElementById("user_translation").className = "active_definition";
 			if($scope.translation == translation_default_value) {
 				$scope.translation = '';
@@ -97,16 +97,13 @@ function InlineEditorController2($scope){
 	}
 }
 
-function set_greeting() {
-
-}
-
 function initialise(userID) {
 	set_avatar(userID);
 	get_ranked();
 	get_random_def();
 	get_user_stats();
 	get_user_trophies();
+	add_translation_dunno('♻ Tôi không biết...');
 }
 
 function enter_game1() {
@@ -190,7 +187,7 @@ function set_avatar(userID) {
 
 function set_greeting(userName) {
 	document.getElementById("greeting").innerHTML = "Write something, " + userName.split(" ")[0] + "!";
-	document.getElementById("greeting2").innerHTML = "Translate something, " + userName.split(" ")[0] + "!";
+	document.getElementById("greeting2").innerHTML = "Xin chào buổi ngày, " + userName.split(" ")[0] + "!";
 	document.getElementById("profile_name").innerHTML = userName;
 }
 
@@ -201,6 +198,15 @@ function set_profile_data(userID, points, position, notify) {
 		document.getElementById("gamezone2").style.display = "none";
 		display_profile();
 		complete_notification();
+	}
+}
+
+function remove_active_translations() {
+	var ul = document.getElementById("translations");
+	var li =  ul.getElementsByTagName("li");
+
+	for(var i = 0; i < li.length; i++) {
+		li[i].className = "inactive_definition";
 	}
 }
 
@@ -222,29 +228,39 @@ function clear_definitions() {
 	}
 }
 
-// function add_i_dont_know() {
-// 	var table = document.getElementById("translations");
-// 	var li = document.createElement("li");
-// 	li.className = "inactive_definition";
-// 	li.innerHTML = "Je ne sais pas...";
-// 	li.onmousedown = (function() {
-// 		return function () {
-// 			if (this.className == "active_definition") {
-// 				this.className = "inactive_definition";
-// 				i_dont_know = false;
-// 			}
-// 			else {
-// 				document.getElementById("user_translation").className = 'inactive_definition';
-// 				this.className = "active_definition";
-// 				i_dont_know = true;
-// 			}
-// 		};
-// 	})();
-// 	table.appendChild(li);
-// }
+function add_translation_dunno(definition) {
+	var ul = document.getElementById('translations');
+	var li = document.createElement("li");
+	li.setAttribute("id", "translation_dunno");
+	li.classList.add("inactive_definition");
+	li.innerHTML = definition;
+
+	li.onmousedown = (function() {
+		return function () {
+			if (this.className == "active_definition") {
+				this.className = "inactive_definition";
+			}
+			else {
+				document.getElementById('user_translation').className = 'inactive_definition';
+				this.className = "active_definition";
+			}
+		};
+	})();
+
+	li.ondblclick = (function() {
+		return function () {
+			document.getElementById('user_translation').className = 'inactive_definition';
+			this.className = "active_definition";
+			playClick();
+			get_random_def();
+		};
+	})();
+
+	ul.appendChild(li);
+}
 
 function add_definition(id, definition) {
-	var ul = document.getElementById("definitions");
+	var ul = document.getElementById('definitions');
 	var li = document.createElement("li");
 	li.classList.add("inactive_definition");
 	// var div_main = document.createElement("div");
@@ -278,6 +294,7 @@ function add_definition(id, definition) {
 			remove_active();
 			this.className = "active_definition";
 			definitionID = id_num;
+			playClick();
 			vote();
 			get_ranked();
 		};
@@ -319,35 +336,6 @@ function add_trophy(word, definition) {
 	// cell2.appendChild(img1);
 	// cell2.appendChild(img2);
 }
-
-// function clear_definitions() {
-// 	var table = document.getElementById("definitions");
-// 	while (table.rows[1]) {
-// 		table.rows[1].
-// 		table.deleteRow(1); 
-// 	}
-// }
-
-// function add_definition(id, definition) {
-// 	var table = document.getElementById("definitions");
-// 	var row = table.insertRow(0);
-// 	var cell1 = row.insertCell(0);
-// 	var cell2 = row.insertCell(1);
-// 	cell1.classList.add("left_cell");
-// 	cell2.classList.add("right_cell");
-// 	cell1.innerHTML = definition;
-// 	var img1 = document.createElement("img");
-// 	img1.src = 'media/up.png';
-// 	img1.classList.add('vote_button');
-// 	var img2 = document.createElement("img");
-// 	img2.src = 'media/down.png';
-// 	img2.classList.add('vote_button');
-// 	//NOTE THIS PROBABLY CAUSES A MEMORY LEAK - TO BE REVIEWED
-// 	img1.onclick = (function(definition_id) { return function() { vote(definition_id, 1); playClick(); }; })(id);
-// 	img2.onclick = (function(definition_id) { return function() { vote(definition_id, -1); playClick(); }; })(id);
-// 	cell2.appendChild(img1);
-// 	cell2.appendChild(img2);
-// }
 
 function vote() {
 	var user_definition = document.getElementById("input_tool_box").value;

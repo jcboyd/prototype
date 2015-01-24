@@ -1,9 +1,9 @@
 <?php
 
-$languageID = 1; //French by default
-$definitionID = $_GET['definitionID'];
+$languageID = 3; //Vietnamese by default
+$wordID = $_GET['wordID'];
 $userID = $_GET['userID'];
-$word = $_GET['word'];
+$translation = $_GET['translation'];
 
 $user = 'root';
 $pass = '';
@@ -16,8 +16,8 @@ if (!$con) {
 }
 
 $sql = 	"INSERT INTO translations " .
-		"(LanguageID, DefinitionID, UserID, Word) VALUES " .
-		"(" . $languageID . "," . $definitionID . ",'" . $userID . "','" . $word . "');";
+		"(LanguageID, WordID, UserID, Translation) VALUES " .
+		"(" . $languageID . "," . $wordID . ",'" . $userID . "','" . $translation . "');";
 
 $query = mysqli_query($con, $sql);
 

@@ -1,9 +1,9 @@
 var userID;
 var wordID;
 var definitionID;
-var i_dont_know = true;
+var groupID;
 
-var translationDefinitionID;
+var translationID;
 
 //TODO: GENERALISE SERVER REQUESTS
 
@@ -39,26 +39,27 @@ function get_ranked() {
             var results_array = JSON.parse(xmlhttp.responseText);
 
             clear_definitions();
-            wordID = results_array[0].ID;
+            wordID = results_array[0].WordID;
+            groupID = results_array[0].GroupID;
+            // if(results_array[0].Consensus == 1) {
+            //     set_consensus_word(results_array[0].Word, results_array[0].PartOfSpeech, results_array[0].Definition);
+            //     add_definition(results_array[0].DefinitionID, '✓ That is a good definition');
+            //     for(var i = 1; i < results_array.length; i++) {
+            //         if(results_array[i].Definition != undefined) {
+            //             add_definition(results_array[i].DefinitionID, results_array[i].Definition);
+            //         }
+            //     }
+            // }
+            // else {
+            set_word(results_array[0].Word, results_array[0].PartOfSpeech);
+            add_definition(-1, '♻ I don\'t know...', 'definitions');
 
-            if(results_array[0].Consensus == 1) {
-                set_consensus_word(results_array[0].Word, results_array[0].PartOfSpeech, results_array[0].Definition);
-                add_definition(results_array[0].DefinitionID, '✓ That is a good definition');
-                for(var i = 1; i < results_array.length; i++) {
-                    if(results_array[i].Definition != undefined) {
-                        add_definition(results_array[i].DefinitionID, results_array[i].Definition);
-                    }
+            for(var i = 0; i < results_array.length; i++) {
+                if(results_array[i].Definition != undefined) {
+                    add_definition(results_array[i].DefinitionID, results_array[i].Definition, 'definitions');
                 }
             }
-            else {
-                set_word(results_array[0].Word, results_array[0].PartOfSpeech);
-                for(var i = 0; i < results_array.length; i++) {
-                    if(results_array[i].Definition != undefined) {
-                        add_definition(results_array[i].DefinitionID, results_array[i].Definition);
-                    }
-                }
-            }
-            
+            // }
             definitionID = -1;
         }
     }
@@ -76,7 +77,7 @@ function submit_definition(definition) {
     else {// code for IE6, IE5
         xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
     }
-    xmlhttp.open("GET","php/submit_definition.php?wordID=" + wordID + "&definition=" + definition + "&userID=" + userID, true);
+    xmlhttp.open("GET","php/submit_definition.php?wordID=" + wordID + "&groupID=" + groupID  + "&definition=" + definition + "&userID=" + userID, true);
     xmlhttp.send();
 }
 
@@ -206,7 +207,7 @@ function get_random_def() {
             document.getElementById("translation_word").innerHTML = obj.Word;
             document.getElementById("translation_pos").innerHTML = obj.PartOfSpeech;
             document.getElementById("translation_definition").innerHTML = obj.Definition;
-            translationDefinitionID = obj.DefinitionID;
+            translationID = obj.ID;
         }
     }
     xmlhttp.open("GET","php/get_random_def.php", true);
@@ -222,6 +223,6 @@ function submit_translation(translation) {
         xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
     }
     var noCache = new Date().getTime();
-    xmlhttp.open("GET","php/submit_translation.php?word=" + translation + "&definitionID=" + translationDefinitionID + "&userID=" + userID + "&noCache=" + noCache, true);
+    xmlhttp.open("GET","php/submit_translation.php?translation=" + translation + "&wordID=" + translationID + "&userID=" + userID + "&noCache=" + noCache, true);
     xmlhttp.send();
 }

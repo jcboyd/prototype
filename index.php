@@ -179,7 +179,7 @@ function generateToken() {
 				<div id="settings-main">
 					<p>My language is...</p>
 					</br>
-					<select size="1">
+					<select onchange= size="1">
 			  			<option>English</option>
 			  			<option>Français</option>
 			  			<option>tiếng Việt</option>
