@@ -186,8 +186,8 @@ function set_avatar(userID) {
 }
 
 function set_greeting(userName) {
-	document.getElementById("greeting").innerHTML = "Write something, " + userName.split(" ")[0] + "!";
-	document.getElementById("greeting2").innerHTML = "Xin chào buổi ngày, " + userName.split(" ")[0] + "!";
+	document.getElementById("greeting").innerHTML = "Write or vote for a definition, " + userName.split(" ")[0] + "!";
+	document.getElementById("greeting2").innerHTML = "Chào " + userName.split(" ")[0] + "!";
 	document.getElementById("profile_name").innerHTML = userName;
 }
 
