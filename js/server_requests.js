@@ -52,7 +52,7 @@ function get_ranked() {
             // }
             // else {
             set_word(results_array[0].Word, results_array[0].PartOfSpeech);
-            add_definition(-1, '♻ I don\'t know...', 'definitions');
+            add_definition(-1, '❓ I don\'t know...', 'definitions');
 
             for(var i = 0; i < results_array.length; i++) {
                 if(results_array[i].Definition != undefined) {
@@ -208,6 +208,9 @@ function get_random_def() {
             document.getElementById("translation_pos").innerHTML = obj.PartOfSpeech;
             document.getElementById("translation_definition").innerHTML = obj.Definition;
             translationID = obj.ID;
+            // var newBottom = document.getElementById("translation_entry").getBoundingClientRect().bottom;
+            // var intString = (newBottom + 100).toString() + "px";
+            // document.getElementById("translation_input_tool_box").style.top="100px";
         }
     }
     xmlhttp.open("GET","php/get_random_def.php", true);

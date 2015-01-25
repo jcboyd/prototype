@@ -484,11 +484,11 @@ a a:hover, a:visited, a:link, a:active {
 	border-radius:3px;
 	width: 400px;
 	padding: 10px;
-
+	
 	position: absolute;
 	left:50%;
 	margin-left:-205px;
-	top: 80px;
+	top: 110px;
 }
 
 .input_tool:after{
