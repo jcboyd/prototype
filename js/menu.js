@@ -1,6 +1,6 @@
 var min_length = 4;
 
-var default_value = '✎ I can write the winning definition!';
+var default_value = '✎ I can write the winning definition for this idea!';
 var translation_default_value = '✎ Trong tiếng Việt từ này có nghĩa là ...';
 
 function InlineEditorController($scope){
@@ -47,6 +47,11 @@ function InlineEditorController($scope){
             $scope.hideTooltip();
         }
 	}
+}
+
+function focusToolbox() {
+	document.getElementById("input_tool_box").focus();
+	document.getElementById("input_tool_box").select();
 }
 
 //THIS IS REALLY UGLY - TO BE REWORKED
@@ -97,13 +102,29 @@ function InlineEditorController2($scope){
 	}
 }
 
+// function secondEnter(e) {
+// 	if (e.keyCode == 13) {
+// 		var gamezone1 = document.getElementById("gamezone1");
+// 		var gamezone2 = document.getElementById("gamezone2");
+// 		var definition = document.getElementById("user_translation").className;
+// 		var translation = document.getElementById("user_translation").className;
+
+// 		if(gamezone1.style.display == "inline-block" && definition == "active_definition") {
+			
+// 		}
+// 		else if(gamezone1.style.display == "inline-block" && translation == "active_definition") {
+
+// 		}
+// 	}
+// }
+
 function initialise(userID) {
 	set_avatar(userID);
 	get_ranked();
 	get_random_def();
 	get_user_stats();
 	get_user_trophies();
-	add_translation_dunno('❓ Tôi không biết...');
+	add_translation_dunno('? Tôi không biết...');
 }
 
 function enter_game1() {
@@ -175,7 +196,7 @@ function animate_logo() {
 // }
 
 function set_consensus(definition) {
-	document.getElementById("consensus").innerHTML = definition;
+	document.getElementById("consensus").innerHTML = "General Sense: " + definition;
 }
 
 function set_word(word, pos) {

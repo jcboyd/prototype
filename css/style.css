@@ -12,20 +12,20 @@ body {
 	width:930px;height="550"
 }*/
 
-#consensus {
+#consensus, #translation_definition {
 	/*display:none;*/
-	font-size: 30px;
+	font-size: 15px;
 	margin-right:0.5em;
 	color: #eba634;
 	font-style: italic;
 }
 
-#translation_definition {
+/*#translation_definition {
 	display: inline-block;
 	font-size: 30px;
 	color: #eba634;
 	font-style: italic;
-}
+}*/
 
 .trophy {
 	width:50px;
@@ -488,7 +488,7 @@ a a:hover, a:visited, a:link, a:active {
 	position: absolute;
 	left:50%;
 	margin-left:-205px;
-	top: 110px;
+	top: 135px;
 }
 
 .input_tool:after{
@@ -506,7 +506,7 @@ a a:hover, a:visited, a:link, a:active {
 .input_tool input{
 	border: none;
 	width: 100%;
-	line-height: 34px;
+	line-height: 30px;
 	border-radius: 3px;
 	box-shadow: 0 2px 6px #bbb inset;
 	text-align: center;

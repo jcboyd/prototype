@@ -28,7 +28,7 @@ function generateToken() {
 	$newToken = generateToken();
 ?>
 
-<body>
+<body> <!-- onkeypress="secondEnter(event)" -->
 	<div id="main" >
 		<div id="portal">
 			<div id="welcome">
