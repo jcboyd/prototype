@@ -117,7 +117,7 @@ a a:hover, a:visited, a:link, a:active {
 	display: inline-block;
 	font-size:30px;
 	margin-right:0.5em;
-	text-transform:capitalize;
+	/*text-transform:capitalize;*/
 }
 
 #pos, #translation_pos {
@@ -236,6 +236,27 @@ a a:hover, a:visited, a:link, a:active {
 	overflow: scroll;
 }
 
+#translations_wrapper {
+	height: 185px;
+}
+
+#hunt_wrapper {
+	margin-top:20px;
+	width: 750px;
+	/*height: 310px;*/
+}
+
+#hunt {
+	list-style:none;
+	width: 710px;
+	padding:20px;
+	background:white;
+	text-align:left;
+	font-size: 20px;
+	border-spacing:0;
+	float:left;
+}
+
 #definition_button {
 	padding:20px 30px;
 	background-color:#e35885;
@@ -286,13 +307,13 @@ a a:hover, a:visited, a:link, a:active {
 }
 
 #enter1 {
-	top: 211px;
-	left: 347px;
+	top: 225px;
+	left: 350px;
 }
 
 #enter2 {
-	top: 211px;
-	left: 475px;
+	top: 225px;
+	left: 480px;
 }
 
 #enter1:hover {

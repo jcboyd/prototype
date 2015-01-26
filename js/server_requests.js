@@ -59,10 +59,10 @@ function get_ranked() {
             for(var i = 0; i < results_array.length; i++) {
                 if(results_array[i].Author == 'wordnet') {
                     set_consensus(results_array[i].Definition);
-                    add_definition(results_array[i].DefinitionID, "✔ Keep the General Sense. It's a good definition as is!");
+                    add_definition(results_array[i].DefinitionID, "▶ Keep the General Sense. It's a good definition as is!");
                 }
                 else if(results_array[i].Definition != undefined) {
-                    add_definition(results_array[i].DefinitionID, results_array[i].Definition);
+                    add_definition(results_array[i].DefinitionID, "▶ " + results_array[i].Definition);
                 }
             }
             // }
@@ -213,6 +213,12 @@ function get_random_def() {
             document.getElementById("translation_word").innerHTML = obj.Word;
             document.getElementById("translation_pos").innerHTML = obj.PartOfSpeech;
             document.getElementById("translation_definition").innerHTML = "General Sense: " + obj.Definition;
+
+            var underscored_word = obj.Word.replace(" /g", "_");
+
+            document.getElementById("wiktionary").href = "https://en.wiktionary.org/wiki/" + underscored_word;
+            document.getElementById("dictionary").href = "http://dictionary.reference.com/browse/" + underscored_word;
+            document.getElementById("wordnik").href = "https://www.wordnik.com/words/" + underscored_word;
             translationID = obj.ID;
             // var newBottom = document.getElementById("translation_entry").getBoundingClientRect().bottom;
             // var intString = (newBottom + 100).toString() + "px";
