@@ -173,7 +173,7 @@ function submit_vote(definition_id, vote) {
     xmlhttp.send();
 }
 
-function report_spam(definition_id) {
+function report_spam() {
     var xmlhttp;
     if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp=new XMLHttpRequest();
@@ -182,7 +182,7 @@ function report_spam(definition_id) {
         xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
     }
 
-    xmlhttp.open("GET","php/report_spam.php?wordID=" + wordID + "&definitionID=" + definition_id + "&userID=" + userID, true);
+    xmlhttp.open("GET","php/report_spam.php?wordID=" + wordID + "&definitionID=" + definitionID + "&userID=" + userID, true);
     xmlhttp.send();
 }
 

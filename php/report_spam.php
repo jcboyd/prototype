@@ -28,6 +28,16 @@ if($result_array["Mute"]) { //User has been muted before--ignore
 
 $num_reports = $result_array["NumReports"];
 
+$sql = "SELECT * FROM words WHERE ID=" . $wordID . ";";
+$result = mysqli_query($con, $sql);
+$results_array = $result->fetch_assoc();
+$word = $results_array["Word"];
+
+$sql = "SELECT * FROM definitions WHERE ID=" . $definitionID . ";";
+$result = mysqli_query($con, $sql);
+$results_array = $result->fetch_assoc();
+$definition = $results_array["Definition"];
+
 $sql =	"SELECT * FROM admin;";
 $result = mysqli_query($con, $sql);
 
@@ -49,8 +59,8 @@ while ($row = $result->fetch_assoc()) {
 
 	$message .= '<table style="border-color: #000;" cellpadding="10">';
 	$message .= "<tr style='background: #ccc;'><td><strong>User:</strong> </td><td>" . $userID . "</td></tr>";
-	$message .= "<tr><td><strong>Word:</strong> </td><td>" . $wordID . "</td></tr>";
-	$message .= "<tr style='background: #ccc;'><td><strong>Definition:</strong> </td><td>" . $definitionID . "</td></tr>";
+	$message .= "<tr><td><strong>Word:</strong> </td><td>" . $word . "</td></tr>";
+	$message .= "<tr style='background: #ccc;'><td><strong>Definition:</strong> </td><td>" . $definition . "</td></tr>";
 	$message .= "<tr><td><strong>User reports:</strong> </td><td>" . $num_reports . "</td></tr>";
 	$message .= '<tr style="background: #ccc;"><td><a href="' . $remove_link . '">Mute spammer</a></td><td><a href="' . $mute_link . '">Mute reporter</a></td></tr>';
 	$message .= "</table>";
