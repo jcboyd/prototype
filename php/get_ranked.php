@@ -78,7 +78,7 @@ $word_id = $results_array["ID"];
 $definitionID = $results_array['DefinitionID'];
 
 // Return all definitions corersponding to this GroupID
-$sql =  "SELECT sq.ID As WordID, sq.Word, sq.PartOfSpeech, d.ID As DefinitionID, d.Definition, d.GroupID ";
+$sql =  "SELECT sq.ID As WordID, sq.Word, sq.PartOfSpeech, d.ID As DefinitionID, d.Definition, d.GroupID, d.UserID As Author ";
 $sql .= "FROM (SELECT * FROM words WHERE ID=" . $word_id . ") AS sq ";
 $sql .= "LEFT JOIN definitions As d ON sq.DefinitionID = d.GroupID ORDER BY Votes desc;";
 

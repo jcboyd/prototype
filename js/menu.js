@@ -167,17 +167,20 @@ function animate_logo() {
 	document.getElementById("enter2").classList.add("animateenter");
 }
 
-function set_consensus_word(word, pos, definition) {
-	document.getElementById("word").innerHTML = word;
-	document.getElementById("pos").innerHTML = pos;
-	document.getElementById("consensus").style.display = "inline-block";
-	document.getElementById("consensus").innerHTML = " : " + definition;
+// function set_consensus_word(word, pos, definition) {
+// 	document.getElementById("word").innerHTML = word;
+// 	document.getElementById("pos").innerHTML = pos;
+// 	document.getElementById("consensus").style.display = "inline-block";
+// 	document.getElementById("consensus").innerHTML = " : " + definition;
+// }
+
+function set_consensus(definition) {
+	document.getElementById("consensus").innerHTML = definition;
 }
 
 function set_word(word, pos) {
 	document.getElementById("word").innerHTML = word;
 	document.getElementById("pos").innerHTML = pos;
-	document.getElementById("consensus").style.display = "none";
 }
 
 function set_avatar(userID) {

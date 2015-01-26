@@ -54,9 +54,15 @@ function get_ranked() {
             set_word(results_array[0].Word, results_array[0].PartOfSpeech);
             add_definition(-1, '❓ I don\'t know...', 'definitions');
 
+            document.getElementById("consensus").innerHTML = "";
+
             for(var i = 0; i < results_array.length; i++) {
-                if(results_array[i].Definition != undefined) {
-                    add_definition(results_array[i].DefinitionID, results_array[i].Definition, 'definitions');
+                if(results_array[i].Author == 'wordnet') {
+                    set_consensus(results_array[i].Definition);
+                    add_definition(results_array[i].DefinitionID, '✔ I like this definition');
+                }
+                else if(results_array[i].Definition != undefined) {
+                    add_definition(results_array[i].DefinitionID, results_array[i].Definition);
                 }
             }
             // }
