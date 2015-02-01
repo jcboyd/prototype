@@ -35,7 +35,7 @@ function generateToken() {
 				<canvas width="930" height="550" id="animation">Your browser doesn't support HTML5.</canvas>
 				<img id="logo" src="media/logo.png" onmousedown="animate_logo();">
 				<img title="Better English" id="enter1" class="shaded_enter" src="media/uk.png" onmousedown="playClick();enter_game1();">
-				<img title="Match to English" id="enter2" class="shaded_enter" src="media/vn.png" onmousedown="playClick();enter_game2();">
+				<img title="Từ này là" id="enter2" class="shaded_enter" src="media/vn.png" onmousedown="playClick();enter_game2();">
 			</div>
 			<div id="game" ng-app>
 				<div id="controls">
