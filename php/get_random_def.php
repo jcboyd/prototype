@@ -18,6 +18,7 @@ if (!$con) {
 	die('Could not connect: ' . mysqli_error($con));
 }
 
+$result = mysqli_query($con, $sql);
 // $sql = 	"SELECT sq.ID, sq.Definition, r.Word, r.PartOfSpeech FROM " .
 // 		"(SELECT * FROM definitions ORDER BY RAND() LIMIT 1) As sq, rankedwords As r " . 
 // 		"WHERE sq.WordID = r.ID;";

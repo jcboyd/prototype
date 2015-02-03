@@ -23,11 +23,11 @@ $sql = "SELECT * FROM users WHERE UserID='" . $userID . "';";
 $result = mysqli_query($con, $sql);
 $results_array = $result->fetch_assoc();
 
-$user_position = $results_array["Position"];
+$user_position = $results_array["PositionMode1"];
 
 // increment user position
 $sql =	"UPDATE users " .
-		"SET Position = Position + 1 " .
+		"SET PositionMode1 = PositionMode1 + 1 " .
 		"WHERE UserID = " . $userID . ";";
 
 $result = mysqli_query($con, $sql);
@@ -54,24 +54,31 @@ $result = mysqli_query($con, $sql);
 // 	$results_array[] = $row;
 // }
 
-$sql = 	"SELECT Word, PartOfSpeech from rankedwords WHERE Rank=" . $user_position;
+// Retrieve ID of word with first Rank greater than user_position, i.e. the first word with a sense.
+$sql =  "SELECT w.ID As ID, w.DefinitionID As DefinitionID FROM ( ";
+$sql .= "SELECT * FROM rankedwords WHERE Rank >= " . $user_position . "ORDER BY(Rank) LIMIT 1";
+$sql .= ") As sq, words As w ";
+$sql .= "WHERE sq.Word = w.Word ";
+$sql .= "LIMIT 1;";
+
+// $sql = 	"SELECT Word, PartOfSpeech from rankedwords WHERE Rank=" . $user_position;
 $result = mysqli_query($con, $sql);
 $results_array = $result->fetch_assoc();
 
-$word = $results_array["Word"];
-$pos = $results_array["PartOfSpeech"];
+// $word = $results_array["Word"];
+// $pos = $results_array["PartOfSpeech"];
 
 // Currently we will only ever return one sense (LIMIT 1)
-$sql = "SELECT * FROM words WHERE Word='" . $word . "'AND PartOfSpeech='" . $pos . "' LIMIT 1;";
-$result = mysqli_query($con, $sql);
-$num_results = mysqli_num_rows($result);
+// $sql = "SELECT * FROM words WHERE Word='" . $word . "'AND PartOfSpeech='" . $pos . "' LIMIT 1;";
+// $result = mysqli_query($con, $sql);
+// $num_results = mysqli_num_rows($result);
 
-if($num_results == 0) { //word does not exist - enter into word table
-	$sql = "INSERT INTO words (Word, PartOfSpeech) VALUES('" . $word . "','" . $pos . "');";
-	$result = mysqli_query($con, $sql);
-	$sql = "SELECT * FROM words WHERE Word='" . $word . "'AND PartOfSpeech='" . $pos . "' LIMIT 1;";
-	$result = mysqli_query($con, $sql);
-}
+// if($num_results == 0) { //word does not exist - enter into word table
+// 	$sql = "INSERT INTO words (Word, PartOfSpeech) VALUES('" . $word . "','" . $pos . "');";
+// 	$result = mysqli_query($con, $sql);
+// 	$sql = "SELECT * FROM words WHERE Word='" . $word . "'AND PartOfSpeech='" . $pos . "' LIMIT 1;";
+// 	$result = mysqli_query($con, $sql);
+// }
 
 $results_array = $result->fetch_assoc();
 $word_id = $results_array["ID"];

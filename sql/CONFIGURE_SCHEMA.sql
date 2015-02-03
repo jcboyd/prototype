@@ -10,7 +10,7 @@ CREATE TABLE wordnet (ID INT auto_increment, Word VARCHAR(64), PartOfSpeech VARC
 
 CREATE TABLE languages (ID INT auto_increment, LanguageName VARCHAR(64), PRIMARY KEY(ID));
 
-CREATE TABLE users (UserID VARCHAR(64), Points INT DEFAULT 0, Rating INT DEFAULT 0, Position INT DEFAULT 1, PositionTrans INT DEFAULT 1, Notify INT DEFAULT 0, Mute INT DEFAULT 0, NumReports INT DEFAULT 0, Language INT, NotificationFrequency INT, PRIMARY KEY(UserID), FOREIGN KEY (Language) REFERENCES languages (ID));
+CREATE TABLE users (UserID VARCHAR(64), Points INT DEFAULT 0, Rating INT DEFAULT 0, PositionMode1 INT DEFAULT 1, PositionMode2 INT DEFAULT 1, Notify INT DEFAULT 0, Mute INT DEFAULT 0, NumReports INT DEFAULT 0, Language INT, NotificationFrequency INT, PRIMARY KEY(UserID), FOREIGN KEY (Language) REFERENCES languages (ID));
 
 CREATE TABLE rankedwords (ID INT, Word VARCHAR(64), PartOfSpeech VARCHAR(16), Rank INT, Consensus TINYINT(1) DEFAULT 0, PRIMARY KEY(ID));
 
