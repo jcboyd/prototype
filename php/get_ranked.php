@@ -3,11 +3,11 @@
 include 'validate_token.php';
 
 $userID = $_GET['userID'];
-$token = $_GET['token'];
+// $token = $_GET['token'];
 
-if(!validate_token($token)) {
-	die();
-}
+// if(!validate_token($token)) {
+// 	die();
+// }
 
 $user = 'root';
 $pass = '';
@@ -24,13 +24,6 @@ $result = mysqli_query($con, $sql);
 $results_array = $result->fetch_assoc();
 
 $user_position = $results_array["PositionMode1"];
-
-// increment user position
-$sql =	"UPDATE users " .
-		"SET PositionMode1 = PositionMode1 + 1 " .
-		"WHERE UserID = " . $userID . ";";
-
-$result = mysqli_query($con, $sql);
 
 // $user_position = mysqli_fetch_array($result);
 
@@ -55,10 +48,10 @@ $result = mysqli_query($con, $sql);
 // }
 
 // Retrieve ID of word with first Rank greater than user_position, i.e. the first word with a sense.
-$sql =  "SELECT w.ID As ID, w.DefinitionID As DefinitionID FROM ( ";
-$sql .= "SELECT * FROM rankedwords WHERE Rank >= " . $user_position . "ORDER BY(Rank) LIMIT 1";
-$sql .= ") As sq, words As w ";
-$sql .= "WHERE sq.Word = w.Word ";
+$sql =  "SELECT w.ID As ID, w.DefinitionID As DefinitionID, sq.Rank As Rank FROM ( ";
+$sql .= "SELECT * FROM rankedwords WHERE Rank >= " . $user_position . " ORDER BY(Rank)"; // . " ORDER BY(Rank) LIMIT 1";
+$sql .= ") As sq LEFT JOIN words As w ";
+$sql .= "ON sq.Word = w.Word ";
 $sql .= "LIMIT 1;";
 
 // $sql = 	"SELECT Word, PartOfSpeech from rankedwords WHERE Rank=" . $user_position;
@@ -80,9 +73,15 @@ $results_array = $result->fetch_assoc();
 // 	$result = mysqli_query($con, $sql);
 // }
 
-$results_array = $result->fetch_assoc();
-$word_id = $results_array["ID"];
-$definitionID = $results_array['DefinitionID'];
+// $results_array = $result->fetch_assoc();
+$word_id = $results_array['ID'];
+// $definitionID = $results_array['DefinitionID'];
+
+$new_rank = $results_array['Rank'] + 1;
+
+// increment user position
+$sql =	"UPDATE users SET PositionMode1 = " . $new_rank . " WHERE UserID = " . $userID . ";";
+$result = mysqli_query($con, $sql);
 
 // Return all definitions corersponding to this GroupID
 $sql =  "SELECT sq.ID As WordID, sq.Word, sq.PartOfSpeech, d.ID As DefinitionID, d.Definition, d.GroupID, d.UserID As Author ";

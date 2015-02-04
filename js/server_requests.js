@@ -225,7 +225,7 @@ function get_random_def() {
             // document.getElementById("translation_input_tool_box").style.top="100px";
         }
     }
-    xmlhttp.open("GET","php/get_random_def.php", true);
+    xmlhttp.open("GET","php/get_random_def.php?userID=" + userID, true);
     xmlhttp.send();
 }
 
