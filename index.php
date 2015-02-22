@@ -115,7 +115,7 @@ function generateToken() {
 							<!-- <span><img id="avatar" src="" width="50"></span> -->
 						</div>
 						<div id="footer-next2">
-							<img title="Next" id="next2" ng-click="clear2($event)" class="control" src="media/rightarrow.png" onclick="playClick();soumettre_traduction();get_random_def();">
+							<img title="Next" id="next2" ng-click="clear2($event)" class="control" src="media/rightarrow.png" onclick="playClick();soumettre_traduction();get_ranked_mode_2();">
 						</div>
 					</div>
 				</div>

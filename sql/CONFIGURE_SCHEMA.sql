@@ -23,3 +23,7 @@ CREATE TABLE translations (ID INT auto_increment, WordID INT, UserID VARCHAR(64)
 CREATE TABLE pos (ID INT auto_increment, Code VARCHAR(64), Full VARCHAR(64), PRIMARY KEY (ID));
 
 CREATE INDEX RankIndex ON rankedwords(Rank);
+
+CREATE INDEX WordIndex ON rankedwords (Word);
+
+CREATE INDEX WordIndex ON words (Word);

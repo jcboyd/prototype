@@ -199,7 +199,7 @@ function complete_notification() {
     xmlhttp.send();
 }
 
-function get_random_def() {
+function get_ranked_mode_2() {
     var xmlhttp;
     if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp=new XMLHttpRequest();
@@ -225,7 +225,7 @@ function get_random_def() {
             // document.getElementById("translation_input_tool_box").style.top="100px";
         }
     }
-    xmlhttp.open("GET","php/get_random_def.php?userID=" + userID, true);
+    xmlhttp.open("GET","php/get_ranked_mode_2.php?userID=" + userID, true);
     xmlhttp.send();
 }
 

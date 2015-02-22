@@ -121,7 +121,7 @@ function InlineEditorController2($scope){
 function initialise(userID) {
 	set_avatar(userID);
 	get_ranked();
-	get_random_def();
+	get_ranked_mode_2();
 	get_user_stats();
 	get_user_trophies();
 	add_translation_dunno('? Tôi không biết...');
@@ -276,7 +276,7 @@ function add_translation_dunno(definition) {
 			document.getElementById('user_translation').className = 'inactive_definition';
 			this.className = "active_definition";
 			playClick();
-			get_random_def();
+			get_ranked_mode_2();
 		};
 	})();
 

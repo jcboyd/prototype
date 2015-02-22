@@ -26,11 +26,9 @@ $results_array = $result->fetch_assoc();
 
 $user_position = $results_array["PositionMode2"];
 
-$sql =  "SELECT w.ID As ID, w.DefinitionID As DefinitionID, sq.Rank As Rank FROM ( ";
-$sql .= "SELECT * FROM rankedwords WHERE Rank >= " . $user_position . " ORDER BY(Rank)";
-$sql .= ") As sq LEFT JOIN words As w ";
-$sql .= "ON sq.Word = w.Word ";
-$sql .= "LIMIT 1;";
+$sql =  "SELECT ID As ID, DefinitionID As DefinitionID, Rank As Rank FROM (";
+$sql.=	"SELECT w.ID, w.DefinitionID, r.Rank FROM rankedwords As r LEFT JOIN words As w ON r.Word = w.Word";
+$sql.=	") As sq WHERE sq.ID IS NOT NULL AND sq.Rank >=" . $user_position . " ORDER BY(sq.Rank) LIMIT 1;";
 
 $result = mysqli_query($con, $sql);
 $results_array = $result->fetch_assoc();
@@ -47,15 +45,6 @@ $sql =  "SELECT sq.ID, sq.Word, sq.PartOfSpeech, sq.DefinitionID, d.Definition F
 $sql .= "(SELECT * FROM words WHERE ID=" . $word_id . ") AS sq ";
 $sql .= "LEFT JOIN definitions As d ON sq.DefinitionID = d.GroupID ";
 $sql .= "ORDER BY Votes desc LIMIT 1;";
-
-// $sql = 	"SELECT sq.ID, sq.Definition, r.Word, r.PartOfSpeech FROM " .
-// 		"(SELECT * FROM definitions ORDER BY RAND() LIMIT 1) As sq, rankedwords As r " . 
-// 		"WHERE sq.WordID = r.ID;";
-
-// $sql = 	"SELECT sq.ID, sq.Word, sq.PartOfSpeech, sq.DefinitionID, d.Definition FROM " .
-// 		"(SELECT * FROM words WHERE DefinitionID IS NOT NULL ORDER BY RAND() LIMIT 1) As sq " .
-// 		"LEFT JOIN definitions As d " . 
-// 		"ON sq.DefinitionID = d.GroupID ORDER By Votes LIMIT 1;";
 
 $results_array = mysqli_query($con, $sql)->fetch_assoc();
 
