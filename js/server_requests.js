@@ -128,7 +128,7 @@ function get_user_stats() {
         if (xmlhttp.readyState==4 && xmlhttp.status==200) {
             // alert(xmlhttp.responseText);
             var obj = JSON.parse(xmlhttp.responseText);
-            set_profile_data(obj.UserID, obj.Points, obj.Position, obj.Notify);
+            set_profile_data(obj.UserID, obj.Points, obj.PositionMode1, obj.Notify);
         }
     }
     // document.getElementById("token").innerHTML = token;
